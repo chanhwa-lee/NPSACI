@@ -1,0 +1,112 @@
+Loading required package: stats4
+
+Attaching package: ‘sn’
+
+The following object is masked from ‘package:stats’:
+
+    sd
+
+Loading required package: survival
+Loading required package: Matrix
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:plyr’:
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘geex’
+
+The following object is masked from ‘package:lme4’:
+
+    show
+
+The following object is masked from ‘package:Matrix’:
+
+    show
+
+The following object is masked from ‘package:sn’:
+
+    show
+
+The following object is masked from ‘package:stats4’:
+
+    show
+
+The following object is masked from ‘package:methods’:
+
+    show
+
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ readr     2.1.4
+✔ ggplot2   3.4.4     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     0.3.5     ✔ tidyr     1.2.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::arrange()   masks plyr::arrange()
+✖ purrr::compact()   masks plyr::compact()
+✖ dplyr::count()     masks plyr::count()
+✖ dplyr::desc()      masks plyr::desc()
+✖ lubridate::dst()   masks sn::dst()
+✖ tidyr::expand()    masks Matrix::expand()
+✖ dplyr::failwith()  masks plyr::failwith()
+✖ dplyr::filter()    masks stats::filter()
+✖ dplyr::id()        masks plyr::id()
+✖ dplyr::lag()       masks stats::lag()
+✖ dplyr::mutate()    masks plyr::mutate()
+✖ tidyr::pack()      masks Matrix::pack()
+✖ dplyr::rename()    masks plyr::rename()
+✖ lubridate::show()  masks geex::show(), lme4::show(), Matrix::show(), sn::show(), stats4::show(), methods::show()
+✖ dplyr::summarise() masks plyr::summarise()
+✖ dplyr::summarize() masks plyr::summarize()
+✖ tidyr::unpack()    masks Matrix::unpack()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+[1] "[Analysis setting]"
+[1] "taus: 0.3"
+[1] "thetas: 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9"
+[1] "m: 200"
+[1] "N_total: 2563"
+[1] "cluster size dist'n: "
+
+ 5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 
+19  7  8 10 17 11 12 17  6 15 13  6  8 14 16 21 
+[1] "observed time summary: "
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.04065 0.33677 0.61800 1.00000 7.00000 
+[1] "event indicator table: "
+
+   0    1 
+1518 1045 
+[1] "treatment indicator table: "
+
+   0    1 
+ 918 1645 
+[1] "C model fitted"
+[1] "A model fitted"
+[1] "Estimates computed"
+[1] "SEs computed"
+      mu-hat0    mu-hat1       ASE0       ASE1
+0.1 0.3204828 0.07520506 0.08867365 0.03291013
+0.2 0.4726343 0.12343506 0.08005697 0.03870256
+0.3 0.4789476 0.13109958 0.04454878 0.02943592
+0.4 0.4565883 0.12987437 0.03516423 0.02174574
+0.5 0.4385168 0.12948585 0.03295395 0.01504541
+0.6 0.4322503 0.13247545 0.02997491 0.01244280
+0.7 0.4286291 0.13296765 0.02837899 0.01491209
+0.8 0.4119424 0.11854811 0.03437071 0.01595752
+0.9 0.3779557 0.08455582 0.05681845 0.01204293
+Warning message:
+In parfm(Surv(X_ij, 1 - Delta_ij) ~ L1_ij + L2_ij + L3_ij + L4_ij +  :
+  optimisation procedure did not converge,
+              conv = : see ?optimx for details
+[1] "Total run time was 5204.53 seconds"

@@ -1,0 +1,338 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+ randomForestSRC 3.2.2 
+ 
+ Type rfsrc.news() to see new features, changes, and bug fixes. 
+ 
+
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ readr     2.1.4
+✔ ggplot2   3.3.6     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     0.3.5     ✔ tidyr     1.2.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ purrr::accumulate() masks foreach::accumulate()
+✖ tidyr::extract()    masks dbarts::extract()
+✖ dplyr::filter()     masks stats::filter()
+✖ dplyr::lag()        masks stats::lag()
+✖ purrr::partial()    masks randomForestSRC::partial()
+✖ purrr::when()       masks foreach::when()
+ℹ Use the [conflicted package](http://conflicted.r-lib.org/) to force all conflicts to become errors
+[1] "[Analysis setting]"
+[1] "n.cpus: 8"
+[1] "method: nonpara"
+[1] "taus: 0.1, 0.2, 0.3, 0.4, 0.5"
+[1] "thetas: 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9"
+[1] "r: 20"
+[1] "m: 100"
+[1] "N_total: 1295"
+[1] "cluster size dist'n: "
+
+ 5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 
+ 5  5  5  7  5  8  9  3  4  4  8 11  7  4  6  9 
+[1] "observed time summary: "
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.04062 0.37503 0.62992 1.00000 5.00000 
+[1] "event indicator table: "
+
+  0   1 
+759 536 
+[1] "treatment indicator table: "
+
+  0   1 
+471 824 
+[1] ""
+[1] "Estimation start"
+[1] "   Split: 1"
+Note: Using an external vector in selections is ambiguous.
+ℹ Use `all_of(X.T.names)` instead of `X.T.names` to silence this message.
+ℹ See <https://tidyselect.r-lib.org/reference/faq-external-vector.html>.
+This message is displayed once per session.
+Note: Using an external vector in selections is ambiguous.
+ℹ Use `all_of(X.C.names)` instead of `X.C.names` to silence this message.
+ℹ See <https://tidyselect.r-lib.org/reference/faq-external-vector.html>.
+This message is displayed once per session.
+Note: Using an external vector in selections is ambiguous.
+ℹ Use `all_of(X.A.names)` instead of `X.A.names` to silence this message.
+ℹ See <https://tidyselect.r-lib.org/reference/faq-external-vector.html>.
+This message is displayed once per session.
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 635
+	number of test observations: 0
+	number of explanatory variables: 15
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) (3: 100) (4: 100) (5: 100) 
+(6: 100) (7: 100) (8: 100) (9: 100) (10: 100) 
+(11: 100) (12: 100) (13: 100) (14: 100) (15: 100) 
+
+[1] "     Cluster: 1"
+[1] "     Cluster: 2"
+[1] "     Cluster: 3"
+[1] "     Cluster: 4"
+[1] "     Cluster: 5"
+[1] "     Cluster: 8"
+[1] "     Cluster: 9"
+[1] "     Cluster: 12"
+[1] "     Cluster: 13"
+[1] "     Cluster: 14"
+[1] "     Cluster: 15"
+[1] "     Cluster: 16"
+[1] "     Cluster: 18"
+[1] "     Cluster: 20"
+[1] "     Cluster: 22"
+[1] "     Cluster: 27"
+[1] "     Cluster: 31"
+[1] "     Cluster: 37"
+[1] "     Cluster: 38"
+[1] "     Cluster: 39"
+[1] "     Cluster: 43"
+[1] "     Cluster: 45"
+[1] "     Cluster: 47"
+[1] "     Cluster: 48"
+[1] "     Cluster: 50"
+[1] "     Cluster: 52"
+[1] "     Cluster: 56"
+[1] "     Cluster: 57"
+[1] "     Cluster: 58"
+[1] "     Cluster: 59"
+[1] "     Cluster: 60"
+[1] "     Cluster: 66"
+[1] "     Cluster: 67"
+[1] "     Cluster: 68"
+[1] "     Cluster: 70"
+[1] "     Cluster: 72"
+[1] "     Cluster: 73"
+[1] "     Cluster: 76"
+[1] "     Cluster: 78"
+[1] "     Cluster: 79"
+[1] "     Cluster: 80"
+[1] "     Cluster: 81"
+[1] "     Cluster: 83"
+[1] "     Cluster: 85"
+[1] "     Cluster: 88"
+[1] "     Cluster: 89"
+[1] "     Cluster: 90"
+[1] "     Cluster: 92"
+[1] "     Cluster: 93"
+[1] "     Cluster: 95"
+[1] "   Split: 2"
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 660
+	number of test observations: 0
+	number of explanatory variables: 15
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) (3: 100) (4: 100) (5: 100) 
+(6: 100) (7: 100) (8: 100) (9: 100) (10: 100) 
+(11: 100) (12: 100) (13: 100) (14: 100) (15: 100) 
+
+[1] "     Cluster: 6"
+[1] "     Cluster: 7"
+[1] "     Cluster: 10"
+[1] "     Cluster: 11"
+[1] "     Cluster: 17"
+[1] "     Cluster: 19"
+[1] "     Cluster: 21"
+[1] "     Cluster: 23"
+[1] "     Cluster: 24"
+[1] "     Cluster: 25"
+[1] "     Cluster: 26"
+[1] "     Cluster: 28"
+[1] "     Cluster: 29"
+[1] "     Cluster: 30"
+[1] "     Cluster: 32"
+[1] "     Cluster: 33"
+[1] "     Cluster: 34"
+[1] "     Cluster: 35"
+[1] "     Cluster: 36"
+[1] "     Cluster: 40"
+[1] "     Cluster: 41"
+[1] "     Cluster: 42"
+[1] "     Cluster: 44"
+[1] "     Cluster: 46"
+[1] "     Cluster: 49"
+[1] "     Cluster: 51"
+[1] "     Cluster: 53"
+[1] "     Cluster: 54"
+[1] "     Cluster: 55"
+[1] "     Cluster: 61"
+[1] "     Cluster: 62"
+[1] "     Cluster: 63"
+[1] "     Cluster: 64"
+[1] "     Cluster: 65"
+[1] "     Cluster: 69"
+[1] "     Cluster: 71"
+[1] "     Cluster: 74"
+[1] "     Cluster: 75"
+[1] "     Cluster: 77"
+[1] "     Cluster: 82"
+[1] "     Cluster: 84"
+[1] "     Cluster: 86"
+[1] "     Cluster: 87"
+[1] "     Cluster: 91"
+[1] "     Cluster: 94"
+[1] "     Cluster: 96"
+[1] "     Cluster: 97"
+[1] "     Cluster: 98"
+[1] "     Cluster: 99"
+[1] "     Cluster: 100"
+[1] ""
+[1] "IF for proposed nonparametric estimator computed."
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+[1] ""
+[1] "Total run time was 68.346 seconds"
+[1] "Estimation result: "
+# A tibble: 360 × 5
+   estimand theta   tau   est     se
+   <chr>    <dbl> <dbl> <dbl>  <dbl>
+ 1 mu         0.1   0.1 0.172 0.182 
+ 2 mu         0.1   0.2 0.351 0.132 
+ 3 mu         0.1   0.3 0.397 0.193 
+ 4 mu         0.1   0.4 0.396 0.194 
+ 5 mu         0.1   0.5 0.436 0.220 
+ 6 mu         0.2   0.1 0.242 0.0969
+ 7 mu         0.2   0.2 0.384 0.0710
+ 8 mu         0.2   0.3 0.452 0.100 
+ 9 mu         0.2   0.4 0.476 0.103 
+10 mu         0.2   0.5 0.530 0.116 
+# ℹ 350 more rows
+[1] ""
+[1] "OR weights"
+`summarise()` has grouped output by 'estimand'. You can override using the
+`.groups` argument.
+# A tibble: 27 × 6
+# Groups:   estimand [3]
+   estimand theta mean_value median_value min_value max_value
+   <fct>    <dbl>      <dbl>        <dbl>     <dbl>     <dbl>
+ 1 mu         0.1      0.697        0.141 0.0000659      8.08
+ 2 mu         0.2      0.927        0.526 0.00982        5.55
+ 3 mu         0.3      1.01         0.878 0.112          3.60
+ 4 mu         0.4      1.03         0.971 0.374          2.40
+ 5 mu         0.5      1.03         1.00  0.600          1.73
+ 6 mu         0.6      1.01         0.997 0.771          1.49
+ 7 mu         0.7      0.976        0.983 0.444          1.43
+ 8 mu         0.8      0.944        0.983 0.171          1.56
+ 9 mu         0.9      0.912        0.911 0.0309         2.28
+10 mu_1       0.1      0.960        0.379 0.000301       7.47
+11 mu_1       0.2      1.01         0.841 0.0255         3.87
+12 mu_1       0.3      1.03         1.03  0.186          2.47
+13 mu_1       0.4      1.03         0.998 0.458          1.89
+14 mu_1       0.5      1.02         1.01  0.642          1.67
+15 mu_1       0.6      0.994        0.976 0.643          1.50
+16 mu_1       0.7      0.966        0.978 0.379          1.41
+17 mu_1       0.8      0.937        0.968 0.148          1.61
+18 mu_1       0.9      0.909        0.904 0.0258         2.33
+19 mu_0       0.1      0.668        0.108 0.0000397      8.36
+20 mu_0       0.2      0.905        0.479 0.00559        5.97
+21 mu_0       0.3      0.997        0.826 0.0715         4.08
+22 mu_0       0.4      1.03         0.967 0.319          2.74
+23 mu_0       0.5      1.04         0.998 0.558          2.01
+24 mu_0       0.6      1.02         1.01  0.697          1.51
+25 mu_0       0.7      1.00         1.00  0.594          1.47
+26 mu_0       0.8      0.969        0.977 0.262          1.41
+27 mu_0       0.9      0.935        0.892 0.0766         1.89
+[1] ""
+[1] "IPCW weights"
+`summarise()` has grouped output by 'estimand'. You can override using the
+`.groups` argument.
+# A tibble: 27 × 6
+# Groups:   estimand [3]
+   estimand theta mean_value median_value min_value max_value
+   <fct>    <dbl>      <dbl>        <dbl>     <dbl>     <dbl>
+ 1 mu         0.1      0.485    0.0000979  1.49e-18     20.6 
+ 2 mu         0.2      0.708    0.00812    1.56e-12     15.0 
+ 3 mu         0.3      1.07     0.0737     5.19e- 9     13.2 
+ 4 mu         0.4      1.23     0.316      1.64e- 6     13.3 
+ 5 mu         0.5      1.11     0.788      1.42e- 4      5.93
+ 6 mu         0.6      0.990    0.940      5.44e- 3      2.29
+ 7 mu         0.7      1.04     1.11       2.44e- 3      3.33
+ 8 mu         0.8      1.21     0.841      4.84e- 5      7.61
+ 9 mu         0.9      1.66     0.125      1.75e- 8     32.3 
+10 mu_1       0.1      0.653    0.000643   1.49e-17     21.3 
+11 mu_1       0.2      0.844    0.0327     7.80e-12      9.34
+12 mu_1       0.3      1.20     0.172      1.73e- 8     15.4 
+13 mu_1       0.4      1.24     0.510      4.09e- 6     11.6 
+14 mu_1       0.5      1.08     0.929      2.84e- 4      4.17
+15 mu_1       0.6      0.994    1.07       5.63e- 3      2.33
+16 mu_1       0.7      1.06     1.19       3.17e- 4      3.92
+17 mu_1       0.8      1.24     0.704      5.50e- 6      8.88
+18 mu_1       0.9      1.70     0.0875     5.37e- 9     35.9 
+19 mu_0       0.1      0.467    0.0000444  0            20.8 
+20 mu_0       0.2      0.674    0.00224    0            16.4 
+21 mu_0       0.3      1.01     0.0332     0            12.2 
+22 mu_0       0.4      1.22     0.136      0            14.4 
+23 mu_0       0.5      1.14     0.520      0             7.71
+24 mu_0       0.6      0.983    0.868      0             3.27
+25 mu_0       0.7      0.975    0.990      0             2.73
+26 mu_0       0.8      1.10     1.14       0             5.64
+27 mu_0       0.9      1.27     0.337      0            13.2 
+[1] "Total run time was 72.065 seconds"

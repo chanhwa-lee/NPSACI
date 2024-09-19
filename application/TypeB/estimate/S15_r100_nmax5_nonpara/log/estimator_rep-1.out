@@ -1,0 +1,1808 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+Loading required package: nnls
+Loading required package: gam
+Loading required package: splines
+Loaded gam 1.20.2
+
+Super Learner
+Version: 2.0-28
+Package created on 2021-05-04
+
+
+ randomForestSRC 3.2.2 
+ 
+ Type rfsrc.news() to see new features, changes, and bug fixes. 
+ 
+
+Loading required package: Matrix
+[1] "[Analysis setting]"
+[1] "n.cpus: 8"
+[1] "method: nonpara"
+[1] "taus: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500"
+[1] "alphas: 0.3, 0.3025, 0.305, 0.3075, 0.31, 0.3125, 0.315, 0.3175, 0.32, 0.3225, 0.325, 0.3275, 0.33, 0.3325, 0.335, 0.3375, 0.34, 0.3425, 0.345, 0.3475, 0.35, 0.3525, 0.355, 0.3575, 0.36, 0.3625, 0.365, 0.3675, 0.37, 0.3725, 0.375, 0.3775, 0.38, 0.3825, 0.385, 0.3875, 0.39, 0.3925, 0.395, 0.3975, 0.4, 0.4025, 0.405, 0.4075, 0.41, 0.4125, 0.415, 0.4175, 0.42, 0.4225, 0.425, 0.4275, 0.43, 0.4325, 0.435, 0.4375, 0.44, 0.4425, 0.445, 0.4475, 0.45, 0.4525, 0.455, 0.4575, 0.46, 0.4625, 0.465, 0.4675, 0.47, 0.4725, 0.475, 0.4775, 0.48, 0.4825, 0.485, 0.4875, 0.49, 0.4925, 0.495, 0.4975, 0.5, 0.5025, 0.505, 0.5075, 0.51, 0.5125, 0.515, 0.5175, 0.52, 0.5225, 0.525, 0.5275, 0.53, 0.5325, 0.535, 0.5375, 0.54, 0.5425, 0.545, 0.5475, 0.55, 0.5525, 0.555, 0.5575, 0.56, 0.5625, 0.565, 0.5675, 0.57, 0.5725, 0.575, 0.5775, 0.58, 0.5825, 0.585, 0.5875, 0.59, 0.5925, 0.595, 0.5975, 0.6"
+[1] "r: 100"
+[1] "m: 881"
+[1] "N_total: 3491"
+[1] "cluster size dist'n: "
+
+  2   3   4   5 
+ 96 167 292 326 
+[1] "observed time summary: "
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    5.0   424.0   438.0   424.2   451.0   462.0 
+[1] "event indicator table: "
+
+   0    1 
+3479   12 
+[1] "event time summary: "
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   45.0   191.5   262.5   256.3   337.2   451.0 
+[1] "censoring time summary: "
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    5.0   424.0   438.0   424.8   451.0   462.0 
+[1] "treatment indicator table: "
+
+   0    1 
+1838 1653 
+[1] ""
+[1] "Estimation start"
+[1] "   Split: 1"
+Note: Using an external vector in selections is ambiguous.
+ℹ Use `all_of(X.T.names)` instead of `X.T.names` to silence this message.
+ℹ See <https://tidyselect.r-lib.org/reference/faq-external-vector.html>.
+This message is displayed once per session.
+Note: Using an external vector in selections is ambiguous.
+ℹ Use `all_of(X.C.names)` instead of `X.C.names` to silence this message.
+ℹ See <https://tidyselect.r-lib.org/reference/faq-external-vector.html>.
+This message is displayed once per session.
+Note: Using an external vector in selections is ambiguous.
+ℹ Use `all_of(X.A.names)` instead of `X.A.names` to silence this message.
+ℹ See <https://tidyselect.r-lib.org/reference/faq-external-vector.html>.
+This message is displayed once per session.
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 2348
+	number of test observations: 0
+	number of explanatory variables: 2
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) 
+[1] "     Cluster: 8"
+[1] "     Cluster: 12"
+[1] "     Cluster: 17"
+[1] "     Cluster: 20"
+[1] "     Cluster: 24"
+[1] "     Cluster: 25"
+[1] "     Cluster: 27"
+[1] "     Cluster: 28"
+[1] "     Cluster: 34"
+[1] "     Cluster: 35"
+[1] "     Cluster: 36"
+[1] "     Cluster: 48"
+[1] "     Cluster: 52"
+[1] "     Cluster: 54"
+[1] "     Cluster: 57"
+[1] "     Cluster: 58"
+[1] "     Cluster: 62"
+[1] "     Cluster: 63"
+[1] "     Cluster: 77"
+[1] "     Cluster: 79"
+[1] "     Cluster: 80"
+[1] "     Cluster: 81"
+[1] "     Cluster: 82"
+[1] "     Cluster: 87"
+[1] "     Cluster: 92"
+[1] "     Cluster: 93"
+[1] "     Cluster: 108"
+[1] "     Cluster: 111"
+[1] "     Cluster: 112"
+[1] "     Cluster: 116"
+[1] "     Cluster: 119"
+[1] "     Cluster: 120"
+[1] "     Cluster: 121"
+[1] "     Cluster: 127"
+[1] "     Cluster: 128"
+[1] "     Cluster: 131"
+[1] "     Cluster: 132"
+[1] "     Cluster: 135"
+[1] "     Cluster: 136"
+[1] "     Cluster: 137"
+[1] "     Cluster: 139"
+[1] "     Cluster: 140"
+[1] "     Cluster: 144"
+[1] "     Cluster: 146"
+[1] "     Cluster: 153"
+[1] "     Cluster: 154"
+[1] "     Cluster: 155"
+[1] "     Cluster: 156"
+[1] "     Cluster: 159"
+[1] "     Cluster: 166"
+[1] "     Cluster: 168"
+[1] "     Cluster: 170"
+[1] "     Cluster: 172"
+[1] "     Cluster: 173"
+[1] "     Cluster: 175"
+[1] "     Cluster: 176"
+[1] "     Cluster: 177"
+[1] "     Cluster: 181"
+[1] "     Cluster: 182"
+[1] "     Cluster: 187"
+[1] "     Cluster: 188"
+[1] "     Cluster: 191"
+[1] "     Cluster: 192"
+[1] "     Cluster: 198"
+[1] "     Cluster: 201"
+[1] "     Cluster: 204"
+[1] "     Cluster: 208"
+[1] "     Cluster: 210"
+[1] "     Cluster: 213"
+[1] "     Cluster: 216"
+[1] "     Cluster: 219"
+[1] "     Cluster: 220"
+[1] "     Cluster: 222"
+[1] "     Cluster: 224"
+[1] "     Cluster: 226"
+[1] "     Cluster: 227"
+[1] "     Cluster: 229"
+[1] "     Cluster: 232"
+[1] "     Cluster: 233"
+[1] "     Cluster: 235"
+[1] "     Cluster: 238"
+[1] "     Cluster: 241"
+[1] "     Cluster: 242"
+[1] "     Cluster: 244"
+[1] "     Cluster: 246"
+[1] "     Cluster: 254"
+[1] "     Cluster: 257"
+[1] "     Cluster: 270"
+[1] "     Cluster: 272"
+[1] "     Cluster: 274"
+[1] "     Cluster: 278"
+[1] "     Cluster: 285"
+[1] "     Cluster: 299"
+[1] "     Cluster: 300"
+[1] "     Cluster: 302"
+[1] "     Cluster: 306"
+[1] "     Cluster: 307"
+[1] "     Cluster: 315"
+[1] "     Cluster: 319"
+[1] "     Cluster: 320"
+[1] "     Cluster: 322"
+[1] "     Cluster: 323"
+[1] "     Cluster: 325"
+[1] "     Cluster: 326"
+[1] "     Cluster: 329"
+[1] "     Cluster: 331"
+[1] "     Cluster: 336"
+[1] "     Cluster: 338"
+[1] "     Cluster: 340"
+[1] "     Cluster: 343"
+[1] "     Cluster: 347"
+[1] "     Cluster: 349"
+[1] "     Cluster: 357"
+[1] "     Cluster: 359"
+[1] "     Cluster: 362"
+[1] "     Cluster: 363"
+[1] "     Cluster: 364"
+[1] "     Cluster: 376"
+[1] "     Cluster: 377"
+[1] "     Cluster: 385"
+[1] "     Cluster: 388"
+[1] "     Cluster: 389"
+[1] "     Cluster: 391"
+[1] "     Cluster: 393"
+[1] "     Cluster: 397"
+[1] "     Cluster: 398"
+[1] "     Cluster: 402"
+[1] "     Cluster: 403"
+[1] "     Cluster: 404"
+[1] "     Cluster: 405"
+[1] "     Cluster: 417"
+[1] "     Cluster: 421"
+[1] "     Cluster: 422"
+[1] "     Cluster: 425"
+[1] "     Cluster: 430"
+[1] "     Cluster: 431"
+[1] "     Cluster: 432"
+[1] "     Cluster: 434"
+[1] "     Cluster: 435"
+[1] "     Cluster: 438"
+[1] "     Cluster: 439"
+[1] "     Cluster: 442"
+[1] "     Cluster: 446"
+[1] "     Cluster: 447"
+[1] "     Cluster: 448"
+[1] "     Cluster: 450"
+[1] "     Cluster: 451"
+[1] "     Cluster: 453"
+[1] "     Cluster: 455"
+[1] "     Cluster: 464"
+[1] "     Cluster: 466"
+[1] "     Cluster: 474"
+[1] "     Cluster: 476"
+[1] "     Cluster: 485"
+[1] "     Cluster: 489"
+[1] "     Cluster: 491"
+[1] "     Cluster: 492"
+[1] "     Cluster: 493"
+[1] "     Cluster: 495"
+[1] "     Cluster: 497"
+[1] "     Cluster: 500"
+[1] "     Cluster: 505"
+[1] "     Cluster: 506"
+[1] "     Cluster: 507"
+[1] "     Cluster: 508"
+[1] "     Cluster: 509"
+[1] "     Cluster: 513"
+[1] "     Cluster: 517"
+[1] "     Cluster: 521"
+[1] "     Cluster: 534"
+[1] "     Cluster: 542"
+[1] "     Cluster: 548"
+[1] "     Cluster: 549"
+[1] "     Cluster: 550"
+[1] "     Cluster: 551"
+[1] "     Cluster: 555"
+[1] "     Cluster: 556"
+[1] "     Cluster: 557"
+[1] "     Cluster: 558"
+[1] "     Cluster: 569"
+[1] "     Cluster: 570"
+[1] "     Cluster: 572"
+[1] "     Cluster: 573"
+[1] "     Cluster: 575"
+[1] "     Cluster: 581"
+[1] "     Cluster: 582"
+[1] "     Cluster: 583"
+[1] "     Cluster: 586"
+[1] "     Cluster: 593"
+[1] "     Cluster: 595"
+[1] "     Cluster: 597"
+[1] "     Cluster: 599"
+[1] "     Cluster: 600"
+[1] "     Cluster: 603"
+[1] "     Cluster: 607"
+[1] "     Cluster: 609"
+[1] "     Cluster: 610"
+[1] "     Cluster: 613"
+[1] "     Cluster: 618"
+[1] "     Cluster: 622"
+[1] "     Cluster: 624"
+[1] "     Cluster: 626"
+[1] "     Cluster: 631"
+[1] "     Cluster: 634"
+[1] "     Cluster: 636"
+[1] "     Cluster: 639"
+[1] "     Cluster: 640"
+[1] "     Cluster: 647"
+[1] "     Cluster: 649"
+[1] "     Cluster: 651"
+[1] "     Cluster: 658"
+[1] "     Cluster: 660"
+[1] "     Cluster: 673"
+[1] "     Cluster: 680"
+[1] "     Cluster: 682"
+[1] "     Cluster: 683"
+[1] "     Cluster: 688"
+[1] "     Cluster: 690"
+[1] "     Cluster: 701"
+[1] "     Cluster: 704"
+[1] "     Cluster: 705"
+[1] "     Cluster: 706"
+[1] "     Cluster: 708"
+[1] "     Cluster: 709"
+[1] "     Cluster: 716"
+[1] "     Cluster: 718"
+[1] "     Cluster: 725"
+[1] "     Cluster: 726"
+[1] "     Cluster: 730"
+[1] "     Cluster: 731"
+[1] "     Cluster: 732"
+[1] "     Cluster: 734"
+[1] "     Cluster: 735"
+[1] "     Cluster: 736"
+[1] "     Cluster: 737"
+[1] "     Cluster: 741"
+[1] "     Cluster: 742"
+[1] "     Cluster: 747"
+[1] "     Cluster: 751"
+[1] "     Cluster: 753"
+[1] "     Cluster: 754"
+[1] "     Cluster: 758"
+[1] "     Cluster: 759"
+[1] "     Cluster: 760"
+[1] "     Cluster: 764"
+[1] "     Cluster: 765"
+[1] "     Cluster: 769"
+[1] "     Cluster: 772"
+[1] "     Cluster: 773"
+[1] "     Cluster: 774"
+[1] "     Cluster: 779"
+[1] "     Cluster: 780"
+[1] "     Cluster: 781"
+[1] "     Cluster: 783"
+[1] "     Cluster: 789"
+[1] "     Cluster: 790"
+[1] "     Cluster: 791"
+[1] "     Cluster: 794"
+[1] "     Cluster: 796"
+[1] "     Cluster: 797"
+[1] "     Cluster: 798"
+[1] "     Cluster: 802"
+[1] "     Cluster: 804"
+[1] "     Cluster: 806"
+[1] "     Cluster: 807"
+[1] "     Cluster: 808"
+[1] "     Cluster: 811"
+[1] "     Cluster: 812"
+[1] "     Cluster: 813"
+[1] "     Cluster: 817"
+[1] "     Cluster: 823"
+[1] "     Cluster: 825"
+[1] "     Cluster: 826"
+[1] "     Cluster: 837"
+[1] "     Cluster: 839"
+[1] "     Cluster: 842"
+[1] "     Cluster: 843"
+[1] "     Cluster: 844"
+[1] "     Cluster: 845"
+[1] "     Cluster: 846"
+[1] "     Cluster: 847"
+[1] "     Cluster: 848"
+[1] "     Cluster: 849"
+[1] "     Cluster: 850"
+[1] "     Cluster: 851"
+[1] "     Cluster: 856"
+[1] "     Cluster: 865"
+[1] "     Cluster: 867"
+[1] "     Cluster: 868"
+[1] "     Cluster: 870"
+[1] "     Cluster: 871"
+[1] "     Cluster: 875"
+[1] "     Cluster: 881"
+[1] "   Split: 2"
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 2329
+	number of test observations: 0
+	number of explanatory variables: 2
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) 
+[1] "     Cluster: 3"
+[1] "     Cluster: 4"
+[1] "     Cluster: 6"
+[1] "     Cluster: 7"
+[1] "     Cluster: 10"
+[1] "     Cluster: 11"
+[1] "     Cluster: 13"
+[1] "     Cluster: 14"
+[1] "     Cluster: 16"
+[1] "     Cluster: 21"
+[1] "     Cluster: 22"
+[1] "     Cluster: 23"
+[1] "     Cluster: 26"
+[1] "     Cluster: 29"
+[1] "     Cluster: 30"
+[1] "     Cluster: 33"
+[1] "     Cluster: 37"
+[1] "     Cluster: 38"
+[1] "     Cluster: 39"
+[1] "     Cluster: 41"
+[1] "     Cluster: 43"
+[1] "     Cluster: 45"
+[1] "     Cluster: 46"
+[1] "     Cluster: 55"
+[1] "     Cluster: 59"
+[1] "     Cluster: 61"
+[1] "     Cluster: 68"
+[1] "     Cluster: 70"
+[1] "     Cluster: 72"
+[1] "     Cluster: 73"
+[1] "     Cluster: 78"
+[1] "     Cluster: 84"
+[1] "     Cluster: 86"
+[1] "     Cluster: 89"
+[1] "     Cluster: 91"
+[1] "     Cluster: 95"
+[1] "     Cluster: 96"
+[1] "     Cluster: 97"
+[1] "     Cluster: 98"
+[1] "     Cluster: 101"
+[1] "     Cluster: 102"
+[1] "     Cluster: 103"
+[1] "     Cluster: 104"
+[1] "     Cluster: 105"
+[1] "     Cluster: 106"
+[1] "     Cluster: 107"
+[1] "     Cluster: 113"
+[1] "     Cluster: 117"
+[1] "     Cluster: 118"
+[1] "     Cluster: 123"
+[1] "     Cluster: 126"
+[1] "     Cluster: 129"
+[1] "     Cluster: 142"
+[1] "     Cluster: 143"
+[1] "     Cluster: 149"
+[1] "     Cluster: 150"
+[1] "     Cluster: 158"
+[1] "     Cluster: 160"
+[1] "     Cluster: 167"
+[1] "     Cluster: 180"
+[1] "     Cluster: 184"
+[1] "     Cluster: 186"
+[1] "     Cluster: 189"
+[1] "     Cluster: 190"
+[1] "     Cluster: 193"
+[1] "     Cluster: 194"
+[1] "     Cluster: 197"
+[1] "     Cluster: 200"
+[1] "     Cluster: 202"
+[1] "     Cluster: 205"
+[1] "     Cluster: 206"
+[1] "     Cluster: 207"
+[1] "     Cluster: 209"
+[1] "     Cluster: 211"
+[1] "     Cluster: 214"
+[1] "     Cluster: 221"
+[1] "     Cluster: 225"
+[1] "     Cluster: 228"
+[1] "     Cluster: 231"
+[1] "     Cluster: 234"
+[1] "     Cluster: 240"
+[1] "     Cluster: 247"
+[1] "     Cluster: 248"
+[1] "     Cluster: 249"
+[1] "     Cluster: 250"
+[1] "     Cluster: 251"
+[1] "     Cluster: 255"
+[1] "     Cluster: 256"
+[1] "     Cluster: 259"
+[1] "     Cluster: 260"
+[1] "     Cluster: 267"
+[1] "     Cluster: 268"
+[1] "     Cluster: 271"
+[1] "     Cluster: 276"
+[1] "     Cluster: 277"
+[1] "     Cluster: 279"
+[1] "     Cluster: 280"
+[1] "     Cluster: 283"
+[1] "     Cluster: 284"
+[1] "     Cluster: 286"
+[1] "     Cluster: 287"
+[1] "     Cluster: 291"
+[1] "     Cluster: 292"
+[1] "     Cluster: 295"
+[1] "     Cluster: 296"
+[1] "     Cluster: 301"
+[1] "     Cluster: 308"
+[1] "     Cluster: 310"
+[1] "     Cluster: 311"
+[1] "     Cluster: 313"
+[1] "     Cluster: 316"
+[1] "     Cluster: 317"
+[1] "     Cluster: 321"
+[1] "     Cluster: 328"
+[1] "     Cluster: 330"
+[1] "     Cluster: 341"
+[1] "     Cluster: 342"
+[1] "     Cluster: 346"
+[1] "     Cluster: 350"
+[1] "     Cluster: 351"
+[1] "     Cluster: 352"
+[1] "     Cluster: 353"
+[1] "     Cluster: 355"
+[1] "     Cluster: 358"
+[1] "     Cluster: 365"
+[1] "     Cluster: 366"
+[1] "     Cluster: 368"
+[1] "     Cluster: 369"
+[1] "     Cluster: 370"
+[1] "     Cluster: 371"
+[1] "     Cluster: 375"
+[1] "     Cluster: 379"
+[1] "     Cluster: 383"
+[1] "     Cluster: 387"
+[1] "     Cluster: 395"
+[1] "     Cluster: 396"
+[1] "     Cluster: 406"
+[1] "     Cluster: 407"
+[1] "     Cluster: 408"
+[1] "     Cluster: 410"
+[1] "     Cluster: 413"
+[1] "     Cluster: 414"
+[1] "     Cluster: 416"
+[1] "     Cluster: 424"
+[1] "     Cluster: 427"
+[1] "     Cluster: 429"
+[1] "     Cluster: 436"
+[1] "     Cluster: 443"
+[1] "     Cluster: 444"
+[1] "     Cluster: 452"
+[1] "     Cluster: 456"
+[1] "     Cluster: 459"
+[1] "     Cluster: 460"
+[1] "     Cluster: 461"
+[1] "     Cluster: 463"
+[1] "     Cluster: 467"
+[1] "     Cluster: 468"
+[1] "     Cluster: 470"
+[1] "     Cluster: 471"
+[1] "     Cluster: 472"
+[1] "     Cluster: 473"
+[1] "     Cluster: 475"
+[1] "     Cluster: 477"
+[1] "     Cluster: 480"
+[1] "     Cluster: 483"
+[1] "     Cluster: 484"
+[1] "     Cluster: 486"
+[1] "     Cluster: 494"
+[1] "     Cluster: 499"
+[1] "     Cluster: 501"
+[1] "     Cluster: 504"
+[1] "     Cluster: 510"
+[1] "     Cluster: 515"
+[1] "     Cluster: 518"
+[1] "     Cluster: 524"
+[1] "     Cluster: 527"
+[1] "     Cluster: 531"
+[1] "     Cluster: 535"
+[1] "     Cluster: 536"
+[1] "     Cluster: 539"
+[1] "     Cluster: 540"
+[1] "     Cluster: 545"
+[1] "     Cluster: 546"
+[1] "     Cluster: 547"
+[1] "     Cluster: 552"
+[1] "     Cluster: 553"
+[1] "     Cluster: 559"
+[1] "     Cluster: 561"
+[1] "     Cluster: 564"
+[1] "     Cluster: 565"
+[1] "     Cluster: 567"
+[1] "     Cluster: 568"
+[1] "     Cluster: 571"
+[1] "     Cluster: 574"
+[1] "     Cluster: 576"
+[1] "     Cluster: 579"
+[1] "     Cluster: 584"
+[1] "     Cluster: 585"
+[1] "     Cluster: 587"
+[1] "     Cluster: 598"
+[1] "     Cluster: 601"
+[1] "     Cluster: 602"
+[1] "     Cluster: 605"
+[1] "     Cluster: 612"
+[1] "     Cluster: 614"
+[1] "     Cluster: 615"
+[1] "     Cluster: 616"
+[1] "     Cluster: 617"
+[1] "     Cluster: 620"
+[1] "     Cluster: 623"
+[1] "     Cluster: 627"
+[1] "     Cluster: 628"
+[1] "     Cluster: 635"
+[1] "     Cluster: 643"
+[1] "     Cluster: 645"
+[1] "     Cluster: 654"
+[1] "     Cluster: 655"
+[1] "     Cluster: 656"
+[1] "     Cluster: 659"
+[1] "     Cluster: 661"
+[1] "     Cluster: 663"
+[1] "     Cluster: 664"
+[1] "     Cluster: 665"
+[1] "     Cluster: 666"
+[1] "     Cluster: 667"
+[1] "     Cluster: 670"
+[1] "     Cluster: 671"
+[1] "     Cluster: 674"
+[1] "     Cluster: 675"
+[1] "     Cluster: 676"
+[1] "     Cluster: 677"
+[1] "     Cluster: 678"
+[1] "     Cluster: 679"
+[1] "     Cluster: 681"
+[1] "     Cluster: 686"
+[1] "     Cluster: 692"
+[1] "     Cluster: 693"
+[1] "     Cluster: 695"
+[1] "     Cluster: 696"
+[1] "     Cluster: 699"
+[1] "     Cluster: 700"
+[1] "     Cluster: 703"
+[1] "     Cluster: 707"
+[1] "     Cluster: 710"
+[1] "     Cluster: 713"
+[1] "     Cluster: 714"
+[1] "     Cluster: 715"
+[1] "     Cluster: 720"
+[1] "     Cluster: 729"
+[1] "     Cluster: 733"
+[1] "     Cluster: 738"
+[1] "     Cluster: 740"
+[1] "     Cluster: 744"
+[1] "     Cluster: 746"
+[1] "     Cluster: 748"
+[1] "     Cluster: 750"
+[1] "     Cluster: 755"
+[1] "     Cluster: 757"
+[1] "     Cluster: 767"
+[1] "     Cluster: 768"
+[1] "     Cluster: 771"
+[1] "     Cluster: 775"
+[1] "     Cluster: 782"
+[1] "     Cluster: 784"
+[1] "     Cluster: 785"
+[1] "     Cluster: 786"
+[1] "     Cluster: 801"
+[1] "     Cluster: 803"
+[1] "     Cluster: 805"
+[1] "     Cluster: 809"
+[1] "     Cluster: 815"
+[1] "     Cluster: 819"
+[1] "     Cluster: 821"
+[1] "     Cluster: 833"
+[1] "     Cluster: 835"
+[1] "     Cluster: 836"
+[1] "     Cluster: 838"
+[1] "     Cluster: 840"
+[1] "     Cluster: 841"
+[1] "     Cluster: 852"
+[1] "     Cluster: 853"
+[1] "     Cluster: 854"
+[1] "     Cluster: 855"
+[1] "     Cluster: 857"
+[1] "     Cluster: 859"
+[1] "     Cluster: 860"
+[1] "     Cluster: 862"
+[1] "     Cluster: 872"
+[1] "     Cluster: 873"
+[1] "     Cluster: 874"
+[1] "     Cluster: 877"
+[1] "     Cluster: 878"
+[1] "     Cluster: 879"
+[1] "     Cluster: 880"
+[1] "   Split: 3"
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 2305
+	number of test observations: 0
+	number of explanatory variables: 2
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) 
+[1] "     Cluster: 1"
+[1] "     Cluster: 2"
+[1] "     Cluster: 5"
+[1] "     Cluster: 9"
+[1] "     Cluster: 15"
+[1] "     Cluster: 18"
+[1] "     Cluster: 19"
+[1] "     Cluster: 31"
+[1] "     Cluster: 32"
+[1] "     Cluster: 40"
+[1] "     Cluster: 42"
+[1] "     Cluster: 44"
+[1] "     Cluster: 47"
+[1] "     Cluster: 49"
+[1] "     Cluster: 50"
+[1] "     Cluster: 51"
+[1] "     Cluster: 53"
+[1] "     Cluster: 56"
+[1] "     Cluster: 60"
+[1] "     Cluster: 64"
+[1] "     Cluster: 65"
+[1] "     Cluster: 66"
+[1] "     Cluster: 67"
+[1] "     Cluster: 69"
+[1] "     Cluster: 71"
+[1] "     Cluster: 74"
+[1] "     Cluster: 75"
+[1] "     Cluster: 76"
+[1] "     Cluster: 83"
+[1] "     Cluster: 85"
+[1] "     Cluster: 88"
+[1] "     Cluster: 90"
+[1] "     Cluster: 94"
+[1] "     Cluster: 99"
+[1] "     Cluster: 100"
+[1] "     Cluster: 109"
+[1] "     Cluster: 110"
+[1] "     Cluster: 114"
+[1] "     Cluster: 115"
+[1] "     Cluster: 122"
+[1] "     Cluster: 124"
+[1] "     Cluster: 125"
+[1] "     Cluster: 130"
+[1] "     Cluster: 133"
+[1] "     Cluster: 134"
+[1] "     Cluster: 138"
+[1] "     Cluster: 141"
+[1] "     Cluster: 145"
+[1] "     Cluster: 147"
+[1] "     Cluster: 148"
+[1] "     Cluster: 151"
+[1] "     Cluster: 152"
+[1] "     Cluster: 157"
+[1] "     Cluster: 161"
+[1] "     Cluster: 162"
+[1] "     Cluster: 163"
+[1] "     Cluster: 164"
+[1] "     Cluster: 165"
+[1] "     Cluster: 169"
+[1] "     Cluster: 171"
+[1] "     Cluster: 174"
+[1] "     Cluster: 178"
+[1] "     Cluster: 179"
+[1] "     Cluster: 183"
+[1] "     Cluster: 185"
+[1] "     Cluster: 195"
+[1] "     Cluster: 196"
+[1] "     Cluster: 199"
+[1] "     Cluster: 203"
+[1] "     Cluster: 212"
+[1] "     Cluster: 215"
+[1] "     Cluster: 217"
+[1] "     Cluster: 218"
+[1] "     Cluster: 223"
+[1] "     Cluster: 230"
+[1] "     Cluster: 236"
+[1] "     Cluster: 237"
+[1] "     Cluster: 239"
+[1] "     Cluster: 243"
+[1] "     Cluster: 245"
+[1] "     Cluster: 252"
+[1] "     Cluster: 253"
+[1] "     Cluster: 258"
+[1] "     Cluster: 261"
+[1] "     Cluster: 262"
+[1] "     Cluster: 263"
+[1] "     Cluster: 264"
+[1] "     Cluster: 265"
+[1] "     Cluster: 266"
+[1] "     Cluster: 269"
+[1] "     Cluster: 273"
+[1] "     Cluster: 275"
+[1] "     Cluster: 281"
+[1] "     Cluster: 282"
+[1] "     Cluster: 288"
+[1] "     Cluster: 289"
+[1] "     Cluster: 290"
+[1] "     Cluster: 293"
+[1] "     Cluster: 294"
+[1] "     Cluster: 297"
+[1] "     Cluster: 298"
+[1] "     Cluster: 303"
+[1] "     Cluster: 304"
+[1] "     Cluster: 305"
+[1] "     Cluster: 309"
+[1] "     Cluster: 312"
+[1] "     Cluster: 314"
+[1] "     Cluster: 318"
+[1] "     Cluster: 324"
+[1] "     Cluster: 327"
+[1] "     Cluster: 332"
+[1] "     Cluster: 333"
+[1] "     Cluster: 334"
+[1] "     Cluster: 335"
+[1] "     Cluster: 337"
+[1] "     Cluster: 339"
+[1] "     Cluster: 344"
+[1] "     Cluster: 345"
+[1] "     Cluster: 348"
+[1] "     Cluster: 354"
+[1] "     Cluster: 356"
+[1] "     Cluster: 360"
+[1] "     Cluster: 361"
+[1] "     Cluster: 367"
+[1] "     Cluster: 372"
+[1] "     Cluster: 373"
+[1] "     Cluster: 374"
+[1] "     Cluster: 378"
+[1] "     Cluster: 380"
+[1] "     Cluster: 381"
+[1] "     Cluster: 382"
+[1] "     Cluster: 384"
+[1] "     Cluster: 386"
+[1] "     Cluster: 390"
+[1] "     Cluster: 392"
+[1] "     Cluster: 394"
+[1] "     Cluster: 399"
+[1] "     Cluster: 400"
+[1] "     Cluster: 401"
+[1] "     Cluster: 409"
+[1] "     Cluster: 411"
+[1] "     Cluster: 412"
+[1] "     Cluster: 415"
+[1] "     Cluster: 418"
+[1] "     Cluster: 419"
+[1] "     Cluster: 420"
+[1] "     Cluster: 423"
+[1] "     Cluster: 426"
+[1] "     Cluster: 428"
+[1] "     Cluster: 433"
+[1] "     Cluster: 437"
+[1] "     Cluster: 440"
+[1] "     Cluster: 441"
+[1] "     Cluster: 445"
+[1] "     Cluster: 449"
+[1] "     Cluster: 454"
+[1] "     Cluster: 457"
+[1] "     Cluster: 458"
+[1] "     Cluster: 462"
+[1] "     Cluster: 465"
+[1] "     Cluster: 469"
+[1] "     Cluster: 478"
+[1] "     Cluster: 479"
+[1] "     Cluster: 481"
+[1] "     Cluster: 482"
+[1] "     Cluster: 487"
+[1] "     Cluster: 488"
+[1] "     Cluster: 490"
+[1] "     Cluster: 496"
+[1] "     Cluster: 498"
+[1] "     Cluster: 502"
+[1] "     Cluster: 503"
+[1] "     Cluster: 511"
+[1] "     Cluster: 512"
+[1] "     Cluster: 514"
+[1] "     Cluster: 516"
+[1] "     Cluster: 519"
+[1] "     Cluster: 520"
+[1] "     Cluster: 522"
+[1] "     Cluster: 523"
+[1] "     Cluster: 525"
+[1] "     Cluster: 526"
+[1] "     Cluster: 528"
+[1] "     Cluster: 529"
+[1] "     Cluster: 530"
+[1] "     Cluster: 532"
+[1] "     Cluster: 533"
+[1] "     Cluster: 537"
+[1] "     Cluster: 538"
+[1] "     Cluster: 541"
+[1] "     Cluster: 543"
+[1] "     Cluster: 544"
+[1] "     Cluster: 554"
+[1] "     Cluster: 560"
+[1] "     Cluster: 562"
+[1] "     Cluster: 563"
+[1] "     Cluster: 566"
+[1] "     Cluster: 577"
+[1] "     Cluster: 578"
+[1] "     Cluster: 580"
+[1] "     Cluster: 588"
+[1] "     Cluster: 589"
+[1] "     Cluster: 590"
+[1] "     Cluster: 591"
+[1] "     Cluster: 592"
+[1] "     Cluster: 594"
+[1] "     Cluster: 596"
+[1] "     Cluster: 604"
+[1] "     Cluster: 606"
+[1] "     Cluster: 608"
+[1] "     Cluster: 611"
+[1] "     Cluster: 619"
+[1] "     Cluster: 621"
+[1] "     Cluster: 625"
+[1] "     Cluster: 629"
+[1] "     Cluster: 630"
+[1] "     Cluster: 632"
+[1] "     Cluster: 633"
+[1] "     Cluster: 637"
+[1] "     Cluster: 638"
+[1] "     Cluster: 641"
+[1] "     Cluster: 642"
+[1] "     Cluster: 644"
+[1] "     Cluster: 646"
+[1] "     Cluster: 648"
+[1] "     Cluster: 650"
+[1] "     Cluster: 652"
+[1] "     Cluster: 653"
+[1] "     Cluster: 657"
+[1] "     Cluster: 662"
+[1] "     Cluster: 668"
+[1] "     Cluster: 669"
+[1] "     Cluster: 672"
+[1] "     Cluster: 684"
+[1] "     Cluster: 685"
+[1] "     Cluster: 687"
+[1] "     Cluster: 689"
+[1] "     Cluster: 691"
+[1] "     Cluster: 694"
+[1] "     Cluster: 697"
+[1] "     Cluster: 698"
+[1] "     Cluster: 702"
+[1] "     Cluster: 711"
+[1] "     Cluster: 712"
+[1] "     Cluster: 717"
+[1] "     Cluster: 719"
+[1] "     Cluster: 721"
+[1] "     Cluster: 722"
+[1] "     Cluster: 723"
+[1] "     Cluster: 724"
+[1] "     Cluster: 727"
+[1] "     Cluster: 728"
+[1] "     Cluster: 739"
+[1] "     Cluster: 743"
+[1] "     Cluster: 745"
+[1] "     Cluster: 749"
+[1] "     Cluster: 752"
+[1] "     Cluster: 756"
+[1] "     Cluster: 761"
+[1] "     Cluster: 762"
+[1] "     Cluster: 763"
+[1] "     Cluster: 766"
+[1] "     Cluster: 770"
+[1] "     Cluster: 776"
+[1] "     Cluster: 777"
+[1] "     Cluster: 778"
+[1] "     Cluster: 787"
+[1] "     Cluster: 788"
+[1] "     Cluster: 792"
+[1] "     Cluster: 793"
+[1] "     Cluster: 795"
+[1] "     Cluster: 799"
+[1] "     Cluster: 800"
+[1] "     Cluster: 810"
+[1] "     Cluster: 814"
+[1] "     Cluster: 816"
+[1] "     Cluster: 818"
+[1] "     Cluster: 820"
+[1] "     Cluster: 822"
+[1] "     Cluster: 824"
+[1] "     Cluster: 827"
+[1] "     Cluster: 828"
+[1] "     Cluster: 829"
+[1] "     Cluster: 830"
+[1] "     Cluster: 831"
+[1] "     Cluster: 832"
+[1] "     Cluster: 834"
+[1] "     Cluster: 858"
+[1] "     Cluster: 861"
+[1] "     Cluster: 863"
+[1] "     Cluster: 864"
+[1] "     Cluster: 866"
+[1] "     Cluster: 869"
+[1] "     Cluster: 876"
+[1] ""
+[1] "IF for proposed nonparametric estimator computed."
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+[1] ""
+[1] "Total run time was 429.268 seconds"
+[1] "Estimation result: "
+# A tibble: 48,400 × 5
+   estimand theta   tau       est        se
+   <chr>    <dbl> <int>     <dbl>     <dbl>
+ 1 mu         0.3    10 0         0        
+ 2 mu         0.3    20 0         0        
+ 3 mu         0.3    30 0         0        
+ 4 mu         0.3    40 0         0        
+ 5 mu         0.3    50 0.0000796 0.0000608
+ 6 mu         0.3    60 0.000412  0.000327 
+ 7 mu         0.3    70 0.00109   0.000804 
+ 8 mu         0.3    80 0.00109   0.000804 
+ 9 mu         0.3    90 0.00109   0.000804 
+10 mu         0.3   100 0.00109   0.000804 
+# ℹ 48,390 more rows
+[1] ""
+[1] "OR weights"
+`summarise()` has grouped output by 'estimand'. You can override using the
+`.groups` argument.
+# A tibble: 363 × 6
+# Groups:   estimand [3]
+    estimand theta mean_value median_value min_value max_value
+    <fct>    <dbl>      <dbl>        <dbl>     <dbl>     <dbl>
+  1 mu       0.3            1            1         1         1
+  2 mu       0.302          1            1         1         1
+  3 mu       0.305          1            1         1         1
+  4 mu       0.308          1            1         1         1
+  5 mu       0.31           1            1         1         1
+  6 mu       0.312          1            1         1         1
+  7 mu       0.315          1            1         1         1
+  8 mu       0.318          1            1         1         1
+  9 mu       0.32           1            1         1         1
+ 10 mu       0.322          1            1         1         1
+ 11 mu       0.325          1            1         1         1
+ 12 mu       0.328          1            1         1         1
+ 13 mu       0.33           1            1         1         1
+ 14 mu       0.332          1            1         1         1
+ 15 mu       0.335          1            1         1         1
+ 16 mu       0.338          1            1         1         1
+ 17 mu       0.34           1            1         1         1
+ 18 mu       0.342          1            1         1         1
+ 19 mu       0.345          1            1         1         1
+ 20 mu       0.348          1            1         1         1
+ 21 mu       0.35           1            1         1         1
+ 22 mu       0.352          1            1         1         1
+ 23 mu       0.355          1            1         1         1
+ 24 mu       0.358          1            1         1         1
+ 25 mu       0.36           1            1         1         1
+ 26 mu       0.362          1            1         1         1
+ 27 mu       0.365          1            1         1         1
+ 28 mu       0.368          1            1         1         1
+ 29 mu       0.37           1            1         1         1
+ 30 mu       0.372          1            1         1         1
+ 31 mu       0.375          1            1         1         1
+ 32 mu       0.378          1            1         1         1
+ 33 mu       0.38           1            1         1         1
+ 34 mu       0.382          1            1         1         1
+ 35 mu       0.385          1            1         1         1
+ 36 mu       0.388          1            1         1         1
+ 37 mu       0.39           1            1         1         1
+ 38 mu       0.392          1            1         1         1
+ 39 mu       0.395          1            1         1         1
+ 40 mu       0.398          1            1         1         1
+ 41 mu       0.4            1            1         1         1
+ 42 mu       0.402          1            1         1         1
+ 43 mu       0.405          1            1         1         1
+ 44 mu       0.408          1            1         1         1
+ 45 mu       0.41           1            1         1         1
+ 46 mu       0.412          1            1         1         1
+ 47 mu       0.415          1            1         1         1
+ 48 mu       0.418          1            1         1         1
+ 49 mu       0.42           1            1         1         1
+ 50 mu       0.422          1            1         1         1
+ 51 mu       0.425          1            1         1         1
+ 52 mu       0.428          1            1         1         1
+ 53 mu       0.43           1            1         1         1
+ 54 mu       0.432          1            1         1         1
+ 55 mu       0.435          1            1         1         1
+ 56 mu       0.438          1            1         1         1
+ 57 mu       0.44           1            1         1         1
+ 58 mu       0.442          1            1         1         1
+ 59 mu       0.445          1            1         1         1
+ 60 mu       0.448          1            1         1         1
+ 61 mu       0.45           1            1         1         1
+ 62 mu       0.452          1            1         1         1
+ 63 mu       0.455          1            1         1         1
+ 64 mu       0.458          1            1         1         1
+ 65 mu       0.46           1            1         1         1
+ 66 mu       0.462          1            1         1         1
+ 67 mu       0.465          1            1         1         1
+ 68 mu       0.468          1            1         1         1
+ 69 mu       0.47           1            1         1         1
+ 70 mu       0.472          1            1         1         1
+ 71 mu       0.475          1            1         1         1
+ 72 mu       0.478          1            1         1         1
+ 73 mu       0.48           1            1         1         1
+ 74 mu       0.482          1            1         1         1
+ 75 mu       0.485          1            1         1         1
+ 76 mu       0.488          1            1         1         1
+ 77 mu       0.49           1            1         1         1
+ 78 mu       0.492          1            1         1         1
+ 79 mu       0.495          1            1         1         1
+ 80 mu       0.498          1            1         1         1
+ 81 mu       0.5            1            1         1         1
+ 82 mu       0.502          1            1         1         1
+ 83 mu       0.505          1            1         1         1
+ 84 mu       0.507          1            1         1         1
+ 85 mu       0.51           1            1         1         1
+ 86 mu       0.512          1            1         1         1
+ 87 mu       0.515          1            1         1         1
+ 88 mu       0.518          1            1         1         1
+ 89 mu       0.52           1            1         1         1
+ 90 mu       0.522          1            1         1         1
+ 91 mu       0.525          1            1         1         1
+ 92 mu       0.528          1            1         1         1
+ 93 mu       0.53           1            1         1         1
+ 94 mu       0.532          1            1         1         1
+ 95 mu       0.535          1            1         1         1
+ 96 mu       0.538          1            1         1         1
+ 97 mu       0.54           1            1         1         1
+ 98 mu       0.542          1            1         1         1
+ 99 mu       0.545          1            1         1         1
+100 mu       0.548          1            1         1         1
+101 mu       0.55           1            1         1         1
+102 mu       0.552          1            1         1         1
+103 mu       0.555          1            1         1         1
+104 mu       0.558          1            1         1         1
+105 mu       0.56           1            1         1         1
+106 mu       0.562          1            1         1         1
+107 mu       0.565          1            1         1         1
+108 mu       0.568          1            1         1         1
+109 mu       0.57           1            1         1         1
+110 mu       0.572          1            1         1         1
+111 mu       0.575          1            1         1         1
+112 mu       0.578          1            1         1         1
+113 mu       0.58           1            1         1         1
+114 mu       0.582          1            1         1         1
+115 mu       0.585          1            1         1         1
+116 mu       0.588          1            1         1         1
+117 mu       0.59           1            1         1         1
+118 mu       0.592          1            1         1         1
+119 mu       0.595          1            1         1         1
+120 mu       0.598          1            1         1         1
+121 mu       0.6            1            1         1         1
+122 mu_1     0.3            1            1         1         1
+123 mu_1     0.302          1            1         1         1
+124 mu_1     0.305          1            1         1         1
+125 mu_1     0.308          1            1         1         1
+126 mu_1     0.31           1            1         1         1
+127 mu_1     0.312          1            1         1         1
+128 mu_1     0.315          1            1         1         1
+129 mu_1     0.318          1            1         1         1
+130 mu_1     0.32           1            1         1         1
+131 mu_1     0.322          1            1         1         1
+132 mu_1     0.325          1            1         1         1
+133 mu_1     0.328          1            1         1         1
+134 mu_1     0.33           1            1         1         1
+135 mu_1     0.332          1            1         1         1
+136 mu_1     0.335          1            1         1         1
+137 mu_1     0.338          1            1         1         1
+138 mu_1     0.34           1            1         1         1
+139 mu_1     0.342          1            1         1         1
+140 mu_1     0.345          1            1         1         1
+141 mu_1     0.348          1            1         1         1
+142 mu_1     0.35           1            1         1         1
+143 mu_1     0.352          1            1         1         1
+144 mu_1     0.355          1            1         1         1
+145 mu_1     0.358          1            1         1         1
+146 mu_1     0.36           1            1         1         1
+147 mu_1     0.362          1            1         1         1
+148 mu_1     0.365          1            1         1         1
+149 mu_1     0.368          1            1         1         1
+150 mu_1     0.37           1            1         1         1
+151 mu_1     0.372          1            1         1         1
+152 mu_1     0.375          1            1         1         1
+153 mu_1     0.378          1            1         1         1
+154 mu_1     0.38           1            1         1         1
+155 mu_1     0.382          1            1         1         1
+156 mu_1     0.385          1            1         1         1
+157 mu_1     0.388          1            1         1         1
+158 mu_1     0.39           1            1         1         1
+159 mu_1     0.392          1            1         1         1
+160 mu_1     0.395          1            1         1         1
+161 mu_1     0.398          1            1         1         1
+162 mu_1     0.4            1            1         1         1
+163 mu_1     0.402          1            1         1         1
+164 mu_1     0.405          1            1         1         1
+165 mu_1     0.408          1            1         1         1
+166 mu_1     0.41           1            1         1         1
+167 mu_1     0.412          1            1         1         1
+168 mu_1     0.415          1            1         1         1
+169 mu_1     0.418          1            1         1         1
+170 mu_1     0.42           1            1         1         1
+171 mu_1     0.422          1            1         1         1
+172 mu_1     0.425          1            1         1         1
+173 mu_1     0.428          1            1         1         1
+174 mu_1     0.43           1            1         1         1
+175 mu_1     0.432          1            1         1         1
+176 mu_1     0.435          1            1         1         1
+177 mu_1     0.438          1            1         1         1
+178 mu_1     0.44           1            1         1         1
+179 mu_1     0.442          1            1         1         1
+180 mu_1     0.445          1            1         1         1
+181 mu_1     0.448          1            1         1         1
+182 mu_1     0.45           1            1         1         1
+183 mu_1     0.452          1            1         1         1
+184 mu_1     0.455          1            1         1         1
+185 mu_1     0.458          1            1         1         1
+186 mu_1     0.46           1            1         1         1
+187 mu_1     0.462          1            1         1         1
+188 mu_1     0.465          1            1         1         1
+189 mu_1     0.468          1            1         1         1
+190 mu_1     0.47           1            1         1         1
+191 mu_1     0.472          1            1         1         1
+192 mu_1     0.475          1            1         1         1
+193 mu_1     0.478          1            1         1         1
+194 mu_1     0.48           1            1         1         1
+195 mu_1     0.482          1            1         1         1
+196 mu_1     0.485          1            1         1         1
+197 mu_1     0.488          1            1         1         1
+198 mu_1     0.49           1            1         1         1
+199 mu_1     0.492          1            1         1         1
+200 mu_1     0.495          1            1         1         1
+201 mu_1     0.498          1            1         1         1
+202 mu_1     0.5            1            1         1         1
+203 mu_1     0.502          1            1         1         1
+204 mu_1     0.505          1            1         1         1
+205 mu_1     0.507          1            1         1         1
+206 mu_1     0.51           1            1         1         1
+207 mu_1     0.512          1            1         1         1
+208 mu_1     0.515          1            1         1         1
+209 mu_1     0.518          1            1         1         1
+210 mu_1     0.52           1            1         1         1
+211 mu_1     0.522          1            1         1         1
+212 mu_1     0.525          1            1         1         1
+213 mu_1     0.528          1            1         1         1
+214 mu_1     0.53           1            1         1         1
+215 mu_1     0.532          1            1         1         1
+216 mu_1     0.535          1            1         1         1
+217 mu_1     0.538          1            1         1         1
+218 mu_1     0.54           1            1         1         1
+219 mu_1     0.542          1            1         1         1
+220 mu_1     0.545          1            1         1         1
+221 mu_1     0.548          1            1         1         1
+222 mu_1     0.55           1            1         1         1
+223 mu_1     0.552          1            1         1         1
+224 mu_1     0.555          1            1         1         1
+225 mu_1     0.558          1            1         1         1
+226 mu_1     0.56           1            1         1         1
+227 mu_1     0.562          1            1         1         1
+228 mu_1     0.565          1            1         1         1
+229 mu_1     0.568          1            1         1         1
+230 mu_1     0.57           1            1         1         1
+231 mu_1     0.572          1            1         1         1
+232 mu_1     0.575          1            1         1         1
+233 mu_1     0.578          1            1         1         1
+234 mu_1     0.58           1            1         1         1
+235 mu_1     0.582          1            1         1         1
+236 mu_1     0.585          1            1         1         1
+237 mu_1     0.588          1            1         1         1
+238 mu_1     0.59           1            1         1         1
+239 mu_1     0.592          1            1         1         1
+240 mu_1     0.595          1            1         1         1
+241 mu_1     0.598          1            1         1         1
+242 mu_1     0.6            1            1         1         1
+243 mu_0     0.3            1            1         1         1
+244 mu_0     0.302          1            1         1         1
+245 mu_0     0.305          1            1         1         1
+246 mu_0     0.308          1            1         1         1
+247 mu_0     0.31           1            1         1         1
+248 mu_0     0.312          1            1         1         1
+249 mu_0     0.315          1            1         1         1
+250 mu_0     0.318          1            1         1         1
+251 mu_0     0.32           1            1         1         1
+252 mu_0     0.322          1            1         1         1
+253 mu_0     0.325          1            1         1         1
+254 mu_0     0.328          1            1         1         1
+255 mu_0     0.33           1            1         1         1
+256 mu_0     0.332          1            1         1         1
+257 mu_0     0.335          1            1         1         1
+258 mu_0     0.338          1            1         1         1
+259 mu_0     0.34           1            1         1         1
+260 mu_0     0.342          1            1         1         1
+261 mu_0     0.345          1            1         1         1
+262 mu_0     0.348          1            1         1         1
+263 mu_0     0.35           1            1         1         1
+264 mu_0     0.352          1            1         1         1
+265 mu_0     0.355          1            1         1         1
+266 mu_0     0.358          1            1         1         1
+267 mu_0     0.36           1            1         1         1
+268 mu_0     0.362          1            1         1         1
+269 mu_0     0.365          1            1         1         1
+270 mu_0     0.368          1            1         1         1
+271 mu_0     0.37           1            1         1         1
+272 mu_0     0.372          1            1         1         1
+273 mu_0     0.375          1            1         1         1
+274 mu_0     0.378          1            1         1         1
+275 mu_0     0.38           1            1         1         1
+276 mu_0     0.382          1            1         1         1
+277 mu_0     0.385          1            1         1         1
+278 mu_0     0.388          1            1         1         1
+279 mu_0     0.39           1            1         1         1
+280 mu_0     0.392          1            1         1         1
+281 mu_0     0.395          1            1         1         1
+282 mu_0     0.398          1            1         1         1
+283 mu_0     0.4            1            1         1         1
+284 mu_0     0.402          1            1         1         1
+285 mu_0     0.405          1            1         1         1
+286 mu_0     0.408          1            1         1         1
+287 mu_0     0.41           1            1         1         1
+288 mu_0     0.412          1            1         1         1
+289 mu_0     0.415          1            1         1         1
+290 mu_0     0.418          1            1         1         1
+291 mu_0     0.42           1            1         1         1
+292 mu_0     0.422          1            1         1         1
+293 mu_0     0.425          1            1         1         1
+294 mu_0     0.428          1            1         1         1
+295 mu_0     0.43           1            1         1         1
+296 mu_0     0.432          1            1         1         1
+297 mu_0     0.435          1            1         1         1
+298 mu_0     0.438          1            1         1         1
+299 mu_0     0.44           1            1         1         1
+300 mu_0     0.442          1            1         1         1
+301 mu_0     0.445          1            1         1         1
+302 mu_0     0.448          1            1         1         1
+303 mu_0     0.45           1            1         1         1
+304 mu_0     0.452          1            1         1         1
+305 mu_0     0.455          1            1         1         1
+306 mu_0     0.458          1            1         1         1
+307 mu_0     0.46           1            1         1         1
+308 mu_0     0.462          1            1         1         1
+309 mu_0     0.465          1            1         1         1
+310 mu_0     0.468          1            1         1         1
+311 mu_0     0.47           1            1         1         1
+312 mu_0     0.472          1            1         1         1
+313 mu_0     0.475          1            1         1         1
+314 mu_0     0.478          1            1         1         1
+315 mu_0     0.48           1            1         1         1
+316 mu_0     0.482          1            1         1         1
+317 mu_0     0.485          1            1         1         1
+318 mu_0     0.488          1            1         1         1
+319 mu_0     0.49           1            1         1         1
+320 mu_0     0.492          1            1         1         1
+321 mu_0     0.495          1            1         1         1
+322 mu_0     0.498          1            1         1         1
+323 mu_0     0.5            1            1         1         1
+324 mu_0     0.502          1            1         1         1
+325 mu_0     0.505          1            1         1         1
+326 mu_0     0.507          1            1         1         1
+327 mu_0     0.51           1            1         1         1
+328 mu_0     0.512          1            1         1         1
+329 mu_0     0.515          1            1         1         1
+330 mu_0     0.518          1            1         1         1
+331 mu_0     0.52           1            1         1         1
+332 mu_0     0.522          1            1         1         1
+333 mu_0     0.525          1            1         1         1
+334 mu_0     0.528          1            1         1         1
+335 mu_0     0.53           1            1         1         1
+336 mu_0     0.532          1            1         1         1
+337 mu_0     0.535          1            1         1         1
+338 mu_0     0.538          1            1         1         1
+339 mu_0     0.54           1            1         1         1
+340 mu_0     0.542          1            1         1         1
+341 mu_0     0.545          1            1         1         1
+342 mu_0     0.548          1            1         1         1
+343 mu_0     0.55           1            1         1         1
+344 mu_0     0.552          1            1         1         1
+345 mu_0     0.555          1            1         1         1
+346 mu_0     0.558          1            1         1         1
+347 mu_0     0.56           1            1         1         1
+348 mu_0     0.562          1            1         1         1
+349 mu_0     0.565          1            1         1         1
+350 mu_0     0.568          1            1         1         1
+351 mu_0     0.57           1            1         1         1
+352 mu_0     0.572          1            1         1         1
+353 mu_0     0.575          1            1         1         1
+354 mu_0     0.578          1            1         1         1
+355 mu_0     0.58           1            1         1         1
+356 mu_0     0.582          1            1         1         1
+357 mu_0     0.585          1            1         1         1
+358 mu_0     0.588          1            1         1         1
+359 mu_0     0.59           1            1         1         1
+360 mu_0     0.592          1            1         1         1
+361 mu_0     0.595          1            1         1         1
+362 mu_0     0.598          1            1         1         1
+363 mu_0     0.6            1            1         1         1
+[1] ""
+[1] "IPCW weights"
+`summarise()` has grouped output by 'estimand'. You can override using the
+`.groups` argument.
+# A tibble: 363 × 6
+# Groups:   estimand [3]
+    estimand theta mean_value median_value min_value max_value
+    <fct>    <dbl>      <dbl>        <dbl>     <dbl>     <dbl>
+  1 mu       0.3        1.05         0.795    0.0563      5.92
+  2 mu       0.302      1.05         0.802    0.0587      5.82
+  3 mu       0.305      1.05         0.811    0.0612      5.72
+  4 mu       0.308      1.04         0.818    0.0637      5.61
+  5 mu       0.31       1.04         0.825    0.0664      5.51
+  6 mu       0.312      1.04         0.833    0.0691      5.41
+  7 mu       0.315      1.04         0.839    0.0719      5.32
+  8 mu       0.318      1.04         0.847    0.0748      5.22
+  9 mu       0.32       1.04         0.854    0.0778      5.12
+ 10 mu       0.322      1.04         0.861    0.0809      5.03
+ 11 mu       0.325      1.03         0.863    0.0841      4.94
+ 12 mu       0.328      1.03         0.865    0.0873      4.85
+ 13 mu       0.33       1.03         0.868    0.0907      4.76
+ 14 mu       0.332      1.03         0.875    0.0942      4.67
+ 15 mu       0.335      1.03         0.878    0.0978      4.58
+ 16 mu       0.338      1.03         0.878    0.102       4.50
+ 17 mu       0.34       1.03         0.884    0.105       4.41
+ 18 mu       0.342      1.03         0.893    0.109       4.33
+ 19 mu       0.345      1.03         0.898    0.113       4.25
+ 20 mu       0.348      1.02         0.901    0.117       4.17
+ 21 mu       0.35       1.02         0.905    0.122       4.09
+ 22 mu       0.352      1.02         0.907    0.126       4.01
+ 23 mu       0.355      1.02         0.910    0.131       3.93
+ 24 mu       0.358      1.02         0.913    0.135       3.86
+ 25 mu       0.36       1.02         0.918    0.140       3.78
+ 26 mu       0.362      1.02         0.920    0.145       3.71
+ 27 mu       0.365      1.02         0.925    0.150       3.64
+ 28 mu       0.368      1.02         0.930    0.155       3.57
+ 29 mu       0.37       1.02         0.934    0.161       3.50
+ 30 mu       0.372      1.02         0.936    0.166       3.43
+ 31 mu       0.375      1.01         0.936    0.172       3.36
+ 32 mu       0.378      1.01         0.939    0.178       3.29
+ 33 mu       0.38       1.01         0.945    0.184       3.23
+ 34 mu       0.382      1.01         0.947    0.190       3.16
+ 35 mu       0.385      1.01         0.949    0.196       3.10
+ 36 mu       0.388      1.01         0.951    0.203       3.07
+ 37 mu       0.39       1.01         0.957    0.209       3.07
+ 38 mu       0.392      1.01         0.956    0.216       3.07
+ 39 mu       0.395      1.01         0.957    0.223       3.07
+ 40 mu       0.398      1.01         0.957    0.230       3.07
+ 41 mu       0.4        1.01         0.960    0.237       3.07
+ 42 mu       0.402      1.01         0.962    0.245       3.07
+ 43 mu       0.405      1.01         0.962    0.253       3.07
+ 44 mu       0.408      1.01         0.966    0.260       3.07
+ 45 mu       0.41       1.01         0.965    0.269       3.07
+ 46 mu       0.412      1.01         0.965    0.277       3.07
+ 47 mu       0.415      1.01         0.967    0.285       3.07
+ 48 mu       0.418      1.00         0.968    0.294       3.06
+ 49 mu       0.42       1.00         0.973    0.303       3.06
+ 50 mu       0.422      1.00         0.973    0.312       3.06
+ 51 mu       0.425      1.00         0.971    0.321       3.05
+ 52 mu       0.428      1.00         0.972    0.331       3.05
+ 53 mu       0.43       1.00         0.975    0.341       3.04
+ 54 mu       0.432      1.00         0.977    0.351       3.04
+ 55 mu       0.435      1.00         0.982    0.361       3.03
+ 56 mu       0.438      1.00         0.984    0.368       3.03
+ 57 mu       0.44       1.00         0.984    0.375       3.02
+ 58 mu       0.442      1.00         0.984    0.382       3.02
+ 59 mu       0.445      1.00         0.983    0.389       3.01
+ 60 mu       0.448      1.00         0.982    0.396       3.00
+ 61 mu       0.45       1.00         0.980    0.403       3.00
+ 62 mu       0.452      1.00         0.980    0.410       2.99
+ 63 mu       0.455      1.00         0.981    0.417       2.98
+ 64 mu       0.458      1.00         0.980    0.424       2.97
+ 65 mu       0.46       1.00         0.981    0.432       2.96
+ 66 mu       0.462      1.00         0.980    0.439       2.95
+ 67 mu       0.465      1.00         0.979    0.447       2.94
+ 68 mu       0.468      1.00         0.979    0.454       2.93
+ 69 mu       0.47       1.00         0.977    0.462       2.92
+ 70 mu       0.472      1.00         0.977    0.469       2.91
+ 71 mu       0.475      1.00         0.971    0.477       2.90
+ 72 mu       0.478      1.00         0.969    0.485       2.89
+ 73 mu       0.48       1.00         0.966    0.493       2.88
+ 74 mu       0.482      1.00         0.967    0.501       2.87
+ 75 mu       0.485      1.00         0.966    0.498       2.86
+ 76 mu       0.488      1.00         0.967    0.491       2.84
+ 77 mu       0.49       1.00         0.969    0.484       2.83
+ 78 mu       0.492      1.00         0.968    0.477       2.82
+ 79 mu       0.495      1.00         0.970    0.470       2.81
+ 80 mu       0.498      1.00         0.968    0.461       2.79
+ 81 mu       0.5        1.00         0.970    0.452       2.78
+ 82 mu       0.502      1.00         0.968    0.443       2.76
+ 83 mu       0.505      1.00         0.971    0.434       2.75
+ 84 mu       0.507      1.00         0.970    0.426       2.74
+ 85 mu       0.51       1.00         0.968    0.417       2.77
+ 86 mu       0.512      1.00         0.967    0.409       2.81
+ 87 mu       0.515      1.00         0.966    0.400       2.85
+ 88 mu       0.518      1.01         0.968    0.392       2.89
+ 89 mu       0.52       1.01         0.966    0.384       2.93
+ 90 mu       0.522      1.01         0.963    0.376       2.97
+ 91 mu       0.525      1.01         0.963    0.368       3.01
+ 92 mu       0.528      1.01         0.962    0.360       3.06
+ 93 mu       0.53       1.01         0.960    0.353       3.10
+ 94 mu       0.532      1.01         0.958    0.345       3.14
+ 95 mu       0.535      1.01         0.955    0.338       3.18
+ 96 mu       0.538      1.01         0.952    0.329       3.23
+ 97 mu       0.54       1.01         0.951    0.320       3.27
+ 98 mu       0.542      1.01         0.949    0.311       3.31
+ 99 mu       0.545      1.01         0.949    0.303       3.35
+100 mu       0.548      1.01         0.947    0.295       3.40
+101 mu       0.55       1.01         0.945    0.287       3.44
+102 mu       0.552      1.01         0.943    0.279       3.48
+103 mu       0.555      1.01         0.938    0.271       3.53
+104 mu       0.558      1.01         0.933    0.263       3.57
+105 mu       0.56       1.02         0.934    0.256       3.62
+106 mu       0.562      1.02         0.931    0.249       3.68
+107 mu       0.565      1.02         0.927    0.242       3.77
+108 mu       0.568      1.02         0.923    0.235       3.85
+109 mu       0.57       1.02         0.919    0.228       3.94
+110 mu       0.572      1.02         0.916    0.222       4.02
+111 mu       0.575      1.02         0.912    0.215       4.11
+112 mu       0.578      1.02         0.909    0.209       4.20
+113 mu       0.58       1.02         0.907    0.203       4.29
+114 mu       0.582      1.02         0.903    0.197       4.39
+115 mu       0.585      1.02         0.900    0.191       4.48
+116 mu       0.588      1.03         0.898    0.185       4.58
+117 mu       0.59       1.03         0.893    0.180       4.68
+118 mu       0.592      1.03         0.889    0.174       4.78
+119 mu       0.595      1.03         0.885    0.169       4.88
+120 mu       0.598      1.03         0.883    0.164       4.98
+121 mu       0.6        1.03         0.881    0.159       5.09
+122 mu_1     0.3        0.972        1.08     0           3.66
+123 mu_1     0.302      0.973        1.08     0           3.65
+124 mu_1     0.305      0.973        1.08     0           3.64
+125 mu_1     0.308      0.973        1.08     0           3.63
+126 mu_1     0.31       0.973        1.08     0           3.62
+127 mu_1     0.312      0.973        1.08     0           3.61
+128 mu_1     0.315      0.974        1.07     0           3.60
+129 mu_1     0.318      0.974        1.07     0           3.59
+130 mu_1     0.32       0.974        1.07     0           3.58
+131 mu_1     0.322      0.974        1.07     0           3.57
+132 mu_1     0.325      0.975        1.07     0           3.55
+133 mu_1     0.328      0.975        1.07     0           3.54
+134 mu_1     0.33       0.975        1.07     0           3.53
+135 mu_1     0.332      0.976        1.06     0           3.52
+136 mu_1     0.335      0.976        1.06     0           3.50
+137 mu_1     0.338      0.976        1.05     0           3.49
+138 mu_1     0.34       0.977        1.05     0           3.48
+139 mu_1     0.342      0.977        1.05     0           3.46
+140 mu_1     0.345      0.977        1.05     0           3.45
+141 mu_1     0.348      0.978        1.05     0           3.43
+142 mu_1     0.35       0.978        1.05     0           3.42
+143 mu_1     0.352      0.979        1.05     0           3.40
+144 mu_1     0.355      0.979        1.06     0           3.39
+145 mu_1     0.358      0.979        1.05     0           3.37
+146 mu_1     0.36       0.980        1.05     0           3.36
+147 mu_1     0.362      0.980        1.05     0           3.34
+148 mu_1     0.365      0.981        1.05     0           3.32
+149 mu_1     0.368      0.981        1.05     0           3.31
+150 mu_1     0.37       0.982        1.05     0           3.29
+151 mu_1     0.372      0.982        1.05     0           3.27
+152 mu_1     0.375      0.983        1.05     0           3.26
+153 mu_1     0.378      0.983        1.05     0           3.24
+154 mu_1     0.38       0.984        1.05     0           3.22
+155 mu_1     0.382      0.984        1.05     0           3.20
+156 mu_1     0.385      0.985        1.05     0           3.18
+157 mu_1     0.388      0.985        1.05     0           3.17
+158 mu_1     0.39       0.986        1.05     0           3.15
+159 mu_1     0.392      0.986        1.05     0           3.13
+160 mu_1     0.395      0.987        1.04     0           3.11
+161 mu_1     0.398      0.987        1.05     0           3.09
+162 mu_1     0.4        0.988        1.05     0           3.07
+163 mu_1     0.402      0.989        1.04     0           3.05
+164 mu_1     0.405      0.989        1.05     0           3.03
+165 mu_1     0.408      0.990        1.05     0           3.05
+166 mu_1     0.41       0.990        1.05     0           3.07
+167 mu_1     0.412      0.991        1.05     0           3.10
+168 mu_1     0.415      0.992        1.05     0           3.12
+169 mu_1     0.418      0.992        1.05     0           3.14
+170 mu_1     0.42       0.993        1.05     0           3.17
+171 mu_1     0.422      0.994        1.05     0           3.19
+172 mu_1     0.425      0.995        1.05     0           3.22
+173 mu_1     0.428      0.995        1.05     0           3.24
+174 mu_1     0.43       0.996        1.04     0           3.26
+175 mu_1     0.432      0.997        1.04     0           3.29
+176 mu_1     0.435      0.997        1.04     0           3.31
+177 mu_1     0.438      0.998        1.03     0           3.33
+178 mu_1     0.44       0.999        1.03     0           3.36
+179 mu_1     0.442      1.00         1.03     0           3.38
+180 mu_1     0.445      1.00         1.03     0           3.40
+181 mu_1     0.448      1.00         1.03     0           3.43
+182 mu_1     0.45       1.00         1.03     0           3.45
+183 mu_1     0.452      1.00         1.02     0           3.47
+184 mu_1     0.455      1.00         1.02     0           3.49
+185 mu_1     0.458      1.00         1.01     0           3.52
+186 mu_1     0.46       1.01         1.01     0           3.54
+187 mu_1     0.462      1.01         1.00     0           3.56
+188 mu_1     0.465      1.01         1.00     0           3.60
+189 mu_1     0.468      1.01         0.995    0           3.64
+190 mu_1     0.47       1.01         0.988    0           3.68
+191 mu_1     0.472      1.01         0.980    0           3.72
+192 mu_1     0.475      1.01         0.975    0           3.76
+193 mu_1     0.478      1.01         0.970    0           3.80
+194 mu_1     0.48       1.01         0.967    0           3.84
+195 mu_1     0.482      1.01         0.967    0           3.89
+196 mu_1     0.485      1.01         0.962    0           3.93
+197 mu_1     0.488      1.02         0.958    0           3.97
+198 mu_1     0.49       1.02         0.956    0           4.01
+199 mu_1     0.492      1.02         0.951    0           4.05
+200 mu_1     0.495      1.02         0.946    0           4.09
+201 mu_1     0.498      1.02         0.939    0           4.14
+202 mu_1     0.5        1.02         0.931    0           4.18
+203 mu_1     0.502      1.02         0.924    0           4.22
+204 mu_1     0.505      1.02         0.922    0           4.26
+205 mu_1     0.507      1.02         0.920    0           4.34
+206 mu_1     0.51       1.03         0.922    0           4.43
+207 mu_1     0.512      1.03         0.919    0           4.51
+208 mu_1     0.515      1.03         0.914    0           4.60
+209 mu_1     0.518      1.03         0.912    0           4.69
+210 mu_1     0.52       1.03         0.909    0           4.78
+211 mu_1     0.522      1.03         0.900    0           4.88
+212 mu_1     0.525      1.03         0.895    0           4.97
+213 mu_1     0.528      1.03         0.890    0           5.07
+214 mu_1     0.53       1.03         0.886    0           5.16
+215 mu_1     0.532      1.04         0.881    0           5.26
+216 mu_1     0.535      1.04         0.877    0           5.36
+217 mu_1     0.538      1.04         0.872    0           5.46
+218 mu_1     0.54       1.04         0.867    0           5.56
+219 mu_1     0.542      1.04         0.861    0           5.67
+220 mu_1     0.545      1.04         0.853    0           5.77
+221 mu_1     0.548      1.04         0.846    0           5.88
+222 mu_1     0.55       1.04         0.841    0           5.99
+223 mu_1     0.552      1.05         0.836    0           6.10
+224 mu_1     0.555      1.05         0.832    0           6.21
+225 mu_1     0.558      1.05         0.823    0           6.32
+226 mu_1     0.56       1.05         0.821    0           6.43
+227 mu_1     0.562      1.05         0.814    0           6.55
+228 mu_1     0.565      1.05         0.808    0           6.67
+229 mu_1     0.568      1.05         0.803    0           6.79
+230 mu_1     0.57       1.06         0.799    0           6.91
+231 mu_1     0.572      1.06         0.794    0           7.03
+232 mu_1     0.575      1.06         0.788    0           7.15
+233 mu_1     0.578      1.06         0.782    0           7.28
+234 mu_1     0.58       1.06         0.776    0           7.40
+235 mu_1     0.582      1.06         0.769    0           7.53
+236 mu_1     0.585      1.06         0.764    0           7.66
+237 mu_1     0.588      1.07         0.758    0           7.79
+238 mu_1     0.59       1.07         0.753    0           7.93
+239 mu_1     0.592      1.07         0.748    0           8.06
+240 mu_1     0.595      1.07         0.742    0           8.20
+241 mu_1     0.598      1.07         0.737    0           8.34
+242 mu_1     0.6        1.07         0.731    0           8.48
+243 mu_0     0.3        1.08         0.585    0           8.46
+244 mu_0     0.302      1.08         0.593    0           8.34
+245 mu_0     0.305      1.08         0.600    0           8.22
+246 mu_0     0.308      1.08         0.608    0           8.11
+247 mu_0     0.31       1.07         0.616    0           7.99
+248 mu_0     0.312      1.07         0.621    0           7.87
+249 mu_0     0.315      1.07         0.626    0           7.76
+250 mu_0     0.318      1.07         0.631    0           7.65
+251 mu_0     0.32       1.07         0.637    0           7.54
+252 mu_0     0.322      1.07         0.644    0           7.43
+253 mu_0     0.325      1.06         0.649    0           7.32
+254 mu_0     0.328      1.06         0.655    0           7.21
+255 mu_0     0.33       1.06         0.661    0           7.10
+256 mu_0     0.332      1.06         0.666    0           7.00
+257 mu_0     0.335      1.06         0.673    0           6.89
+258 mu_0     0.338      1.06         0.680    0           6.79
+259 mu_0     0.34       1.05         0.684    0           6.69
+260 mu_0     0.342      1.05         0.689    0           6.59
+261 mu_0     0.345      1.05         0.694    0           6.49
+262 mu_0     0.348      1.05         0.700    0           6.39
+263 mu_0     0.35       1.05         0.705    0           6.29
+264 mu_0     0.352      1.05         0.713    0           6.20
+265 mu_0     0.355      1.05         0.722    0           6.10
+266 mu_0     0.358      1.04         0.727    0           6.01
+267 mu_0     0.36       1.04         0.732    0           5.91
+268 mu_0     0.362      1.04         0.737    0           5.82
+269 mu_0     0.365      1.04         0.743    0           5.73
+270 mu_0     0.368      1.04         0.749    0           5.64
+271 mu_0     0.37       1.04         0.755    0           5.55
+272 mu_0     0.372      1.04         0.762    0           5.46
+273 mu_0     0.375      1.03         0.767    0           5.38
+274 mu_0     0.378      1.03         0.772    0           5.29
+275 mu_0     0.38       1.03         0.777    0           5.21
+276 mu_0     0.382      1.03         0.787    0           5.12
+277 mu_0     0.385      1.03         0.795    0           5.04
+278 mu_0     0.388      1.03         0.801    0           4.96
+279 mu_0     0.39       1.03         0.805    0           4.88
+280 mu_0     0.392      1.03         0.811    0           4.80
+281 mu_0     0.395      1.02         0.817    0           4.72
+282 mu_0     0.398      1.02         0.821    0           4.64
+283 mu_0     0.4        1.02         0.827    0           4.57
+284 mu_0     0.402      1.02         0.832    0           4.49
+285 mu_0     0.405      1.02         0.839    0           4.42
+286 mu_0     0.408      1.02         0.846    0           4.34
+287 mu_0     0.41       1.02         0.853    0           4.27
+288 mu_0     0.412      1.02         0.857    0           4.20
+289 mu_0     0.415      1.01         0.862    0           4.13
+290 mu_0     0.418      1.01         0.871    0           4.06
+291 mu_0     0.42       1.01         0.879    0           3.99
+292 mu_0     0.422      1.01         0.882    0           3.92
+293 mu_0     0.425      1.01         0.886    0           3.85
+294 mu_0     0.428      1.01         0.890    0           3.79
+295 mu_0     0.43       1.01         0.897    0           3.72
+296 mu_0     0.432      1.01         0.903    0           3.66
+297 mu_0     0.435      1.01         0.907    0           3.59
+298 mu_0     0.438      1.01         0.912    0           3.53
+299 mu_0     0.44       1.00         0.918    0           3.47
+300 mu_0     0.442      1.00         0.923    0           3.40
+301 mu_0     0.445      1.00         0.928    0           3.34
+302 mu_0     0.448      1.00         0.933    0           3.28
+303 mu_0     0.45       1.00         0.941    0           3.27
+304 mu_0     0.452      0.999        0.944    0           3.27
+305 mu_0     0.455      0.999        0.949    0           3.28
+306 mu_0     0.458      0.998        0.949    0           3.29
+307 mu_0     0.46       0.997        0.953    0           3.29
+308 mu_0     0.462      0.996        0.959    0           3.30
+309 mu_0     0.465      0.995        0.965    0           3.30
+310 mu_0     0.468      0.994        0.970    0           3.31
+311 mu_0     0.47       0.993        0.975    0           3.31
+312 mu_0     0.472      0.993        0.980    0           3.31
+313 mu_0     0.475      0.992        0.984    0           3.32
+314 mu_0     0.478      0.991        0.989    0           3.32
+315 mu_0     0.48       0.990        0.994    0           3.32
+316 mu_0     0.482      0.989        0.998    0           3.33
+317 mu_0     0.485      0.989        0.998    0           3.33
+318 mu_0     0.488      0.988        1.00     0           3.33
+319 mu_0     0.49       0.987        1.00     0           3.33
+320 mu_0     0.492      0.986        1.00     0           3.33
+321 mu_0     0.495      0.986        1.01     0           3.33
+322 mu_0     0.498      0.985        1.01     0           3.33
+323 mu_0     0.5        0.984        1.01     0           3.33
+324 mu_0     0.502      0.984        1.01     0           3.33
+325 mu_0     0.505      0.983        1.01     0           3.33
+326 mu_0     0.507      0.982        1.02     0           3.33
+327 mu_0     0.51       0.982        1.02     0           3.33
+328 mu_0     0.512      0.981        1.03     0           3.33
+329 mu_0     0.515      0.981        1.03     0           3.33
+330 mu_0     0.518      0.980        1.03     0           3.33
+331 mu_0     0.52       0.979        1.03     0           3.32
+332 mu_0     0.522      0.979        1.04     0           3.32
+333 mu_0     0.525      0.978        1.04     0           3.32
+334 mu_0     0.528      0.978        1.04     0           3.31
+335 mu_0     0.53       0.977        1.04     0           3.31
+336 mu_0     0.532      0.977        1.04     0           3.31
+337 mu_0     0.535      0.976        1.03     0           3.30
+338 mu_0     0.538      0.976        1.03     0           3.30
+339 mu_0     0.54       0.975        1.03     0           3.29
+340 mu_0     0.542      0.975        1.03     0           3.29
+341 mu_0     0.545      0.974        1.03     0           3.28
+342 mu_0     0.548      0.974        1.03     0           3.27
+343 mu_0     0.55       0.973        1.02     0           3.27
+344 mu_0     0.552      0.973        1.02     0           3.26
+345 mu_0     0.555      0.972        1.02     0           3.25
+346 mu_0     0.558      0.972        1.02     0           3.25
+347 mu_0     0.56       0.971        1.02     0           3.24
+348 mu_0     0.562      0.971        1.01     0           3.23
+349 mu_0     0.565      0.971        1.02     0           3.22
+350 mu_0     0.568      0.970        1.02     0           3.21
+351 mu_0     0.57       0.970        1.02     0           3.20
+352 mu_0     0.572      0.970        1.02     0           3.19
+353 mu_0     0.575      0.969        1.02     0           3.19
+354 mu_0     0.578      0.969        1.02     0           3.18
+355 mu_0     0.58       0.969        1.02     0           3.17
+356 mu_0     0.582      0.968        1.02     0           3.15
+357 mu_0     0.585      0.968        1.02     0           3.14
+358 mu_0     0.588      0.968        1.02     0           3.13
+359 mu_0     0.59       0.967        1.02     0           3.12
+360 mu_0     0.592      0.967        1.02     0           3.11
+361 mu_0     0.595      0.967        1.02     0           3.10
+362 mu_0     0.598      0.967        1.02     0           3.08
+363 mu_0     0.6        0.966        1.02     0           3.07
+[1] "Total run time was 434.541 seconds"

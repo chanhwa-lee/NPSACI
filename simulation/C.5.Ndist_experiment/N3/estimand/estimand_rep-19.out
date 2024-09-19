@@ -1,0 +1,43 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ readr     2.1.4
+✔ ggplot2   3.3.6     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     0.3.5     ✔ tidyr     1.2.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the [conflicted package](http://conflicted.r-lib.org/) to force all conflicts to become errors
+[1] "[Simulation setting]"
+[1] "M: 1000"
+[1] "taus: 0.1, 0.2, 0.3, 0.4, 0.5"
+[1] "thetas: 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9"
+[1] "r: 100"
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+# A tibble: 360 × 4
+# Groups:   theta [9]
+   theta   tau estimand   truth
+   <dbl> <dbl> <chr>      <dbl>
+ 1   0.1   0.1 mu        0.415 
+ 2   0.1   0.1 mu_1      0.0939
+ 3   0.1   0.1 mu_0      0.451 
+ 4   0.1   0.1 de       -0.357 
+ 5   0.1   0.1 se_1      0.0338
+ 6   0.1   0.1 se_0      0.0848
+ 7   0.1   0.1 oe        0.202 
+ 8   0.1   0.1 te       -0.272 
+ 9   0.1   0.2 mu        0.501 
+10   0.1   0.2 mu_1      0.157 
+# ℹ 350 more rows
+[1] "Total run time was 383.752 seconds"

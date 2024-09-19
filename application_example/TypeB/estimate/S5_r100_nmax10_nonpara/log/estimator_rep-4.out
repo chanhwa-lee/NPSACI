@@ -1,0 +1,647 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+Loading required package: nnls
+Loading required package: gam
+Loading required package: splines
+Loaded gam 1.20.2
+
+Super Learner
+Version: 2.0-28
+Package created on 2021-05-04
+
+
+ randomForestSRC 3.2.2 
+ 
+ Type rfsrc.news() to see new features, changes, and bug fixes. 
+ 
+
+Loading required package: Matrix
+[1] "[Analysis setting]"
+[1] "n.cpus: 8"
+[1] "method: nonpara"
+[1] "taus: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500"
+[1] "alphas: 0.3, 0.305, 0.31, 0.315, 0.32, 0.325, 0.33, 0.335, 0.34, 0.345, 0.35, 0.355, 0.36, 0.365, 0.37, 0.375, 0.38, 0.385, 0.39, 0.395, 0.4, 0.405, 0.41, 0.415, 0.42, 0.425, 0.43, 0.435, 0.44, 0.445, 0.45, 0.455, 0.46, 0.465, 0.47, 0.475, 0.48, 0.485, 0.49, 0.495, 0.5, 0.505, 0.51, 0.515, 0.52, 0.525, 0.53, 0.535, 0.54, 0.545, 0.55, 0.555, 0.56, 0.565, 0.57, 0.575, 0.58, 0.585, 0.59, 0.595, 0.6"
+[1] "r: 100"
+[1] "m: 100"
+[1] "N_total: 400"
+[1] "cluster size dist'n: "
+
+ 3  4  5 
+31 38 31 
+[1] "observed time summary: "
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    0.0   194.0   348.5   371.7   537.2   915.0 
+[1] "event indicator table: "
+
+  0   1 
+372  28 
+[1] "event time summary: "
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   12.0   143.0   221.0   203.6   259.2   368.0 
+[1] "censoring time summary: "
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    0.0   207.2   374.0   384.4   552.2   915.0 
+[1] "treatment indicator table: "
+
+  0   1 
+174 226 
+[1] ""
+[1] "Estimation start"
+[1] "   Split: 1"
+Note: Using an external vector in selections is ambiguous.
+ℹ Use `all_of(X.T.names)` instead of `X.T.names` to silence this message.
+ℹ See <https://tidyselect.r-lib.org/reference/faq-external-vector.html>.
+This message is displayed once per session.
+Note: Using an external vector in selections is ambiguous.
+ℹ Use `all_of(X.C.names)` instead of `X.C.names` to silence this message.
+ℹ See <https://tidyselect.r-lib.org/reference/faq-external-vector.html>.
+This message is displayed once per session.
+Note: Using an external vector in selections is ambiguous.
+ℹ Use `all_of(X.A.names)` instead of `X.A.names` to silence this message.
+ℹ See <https://tidyselect.r-lib.org/reference/faq-external-vector.html>.
+This message is displayed once per session.
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 200
+	number of test observations: 0
+	number of explanatory variables: 2
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) 
+[1] "     Cluster: 2"
+[1] "     Cluster: 4"
+[1] "     Cluster: 6"
+[1] "     Cluster: 8"
+[1] "     Cluster: 9"
+[1] "     Cluster: 11"
+[1] "     Cluster: 15"
+[1] "     Cluster: 16"
+[1] "     Cluster: 21"
+[1] "     Cluster: 22"
+[1] "     Cluster: 26"
+[1] "     Cluster: 27"
+[1] "     Cluster: 28"
+[1] "     Cluster: 32"
+[1] "     Cluster: 33"
+[1] "     Cluster: 34"
+[1] "     Cluster: 36"
+[1] "     Cluster: 37"
+[1] "     Cluster: 38"
+[1] "     Cluster: 41"
+[1] "     Cluster: 42"
+[1] "     Cluster: 44"
+[1] "     Cluster: 48"
+[1] "     Cluster: 51"
+[1] "     Cluster: 53"
+[1] "     Cluster: 55"
+[1] "     Cluster: 56"
+[1] "     Cluster: 60"
+[1] "     Cluster: 62"
+[1] "     Cluster: 66"
+[1] "     Cluster: 67"
+[1] "     Cluster: 68"
+[1] "     Cluster: 69"
+[1] "     Cluster: 72"
+[1] "     Cluster: 74"
+[1] "     Cluster: 77"
+[1] "     Cluster: 78"
+[1] "     Cluster: 79"
+[1] "     Cluster: 80"
+[1] "     Cluster: 81"
+[1] "     Cluster: 82"
+[1] "     Cluster: 83"
+[1] "     Cluster: 84"
+[1] "     Cluster: 87"
+[1] "     Cluster: 88"
+[1] "     Cluster: 93"
+[1] "     Cluster: 94"
+[1] "     Cluster: 95"
+[1] "     Cluster: 97"
+[1] "     Cluster: 98"
+[1] "   Split: 2"
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 200
+	number of test observations: 0
+	number of explanatory variables: 2
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) 
+[1] "     Cluster: 1"
+[1] "     Cluster: 3"
+[1] "     Cluster: 5"
+[1] "     Cluster: 7"
+[1] "     Cluster: 10"
+[1] "     Cluster: 12"
+[1] "     Cluster: 13"
+[1] "     Cluster: 14"
+[1] "     Cluster: 17"
+[1] "     Cluster: 18"
+[1] "     Cluster: 19"
+[1] "     Cluster: 20"
+[1] "     Cluster: 23"
+[1] "     Cluster: 24"
+[1] "     Cluster: 25"
+[1] "     Cluster: 29"
+[1] "     Cluster: 30"
+[1] "     Cluster: 31"
+[1] "     Cluster: 35"
+[1] "     Cluster: 39"
+[1] "     Cluster: 40"
+[1] "     Cluster: 43"
+[1] "     Cluster: 45"
+[1] "     Cluster: 46"
+[1] "     Cluster: 47"
+[1] "     Cluster: 49"
+[1] "     Cluster: 50"
+[1] "     Cluster: 52"
+[1] "     Cluster: 54"
+[1] "     Cluster: 57"
+[1] "     Cluster: 58"
+[1] "     Cluster: 59"
+[1] "     Cluster: 61"
+[1] "     Cluster: 63"
+[1] "     Cluster: 64"
+[1] "     Cluster: 65"
+[1] "     Cluster: 70"
+[1] "     Cluster: 71"
+[1] "     Cluster: 73"
+[1] "     Cluster: 75"
+[1] "     Cluster: 76"
+[1] "     Cluster: 85"
+[1] "     Cluster: 86"
+[1] "     Cluster: 89"
+[1] "     Cluster: 90"
+[1] "     Cluster: 91"
+[1] "     Cluster: 92"
+[1] "     Cluster: 96"
+[1] "     Cluster: 99"
+[1] "     Cluster: 100"
+[1] ""
+[1] "IF for proposed nonparametric estimator computed."
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta', 'tau'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'theta'. You can override using the
+`.groups` argument.
+[1] ""
+[1] "Total run time was 61.686 seconds"
+[1] "Estimation result: "
+# A tibble: 24,400 × 5
+   estimand theta   tau     est      se
+   <chr>    <dbl> <int>   <dbl>   <dbl>
+ 1 mu         0.3    10 0       0      
+ 2 mu         0.3    20 0.00118 0.00133
+ 3 mu         0.3    30 0.00118 0.00133
+ 4 mu         0.3    40 0.00118 0.00133
+ 5 mu         0.3    50 0.0157  0.0148 
+ 6 mu         0.3    60 0.0290  0.0199 
+ 7 mu         0.3    70 0.0305  0.0199 
+ 8 mu         0.3    80 0.0320  0.0200 
+ 9 mu         0.3    90 0.0320  0.0200 
+10 mu         0.3   100 0.0320  0.0200 
+# ℹ 24,390 more rows
+[1] ""
+[1] "OR weights"
+`summarise()` has grouped output by 'estimand'. You can override using the
+`.groups` argument.
+# A tibble: 183 × 6
+# Groups:   estimand [3]
+    estimand theta mean_value median_value min_value max_value
+    <fct>    <dbl>      <dbl>        <dbl>     <dbl>     <dbl>
+  1 mu       0.3            1            1         1         1
+  2 mu       0.305          1            1         1         1
+  3 mu       0.31           1            1         1         1
+  4 mu       0.315          1            1         1         1
+  5 mu       0.32           1            1         1         1
+  6 mu       0.325          1            1         1         1
+  7 mu       0.33           1            1         1         1
+  8 mu       0.335          1            1         1         1
+  9 mu       0.34           1            1         1         1
+ 10 mu       0.345          1            1         1         1
+ 11 mu       0.35           1            1         1         1
+ 12 mu       0.355          1            1         1         1
+ 13 mu       0.36           1            1         1         1
+ 14 mu       0.365          1            1         1         1
+ 15 mu       0.37           1            1         1         1
+ 16 mu       0.375          1            1         1         1
+ 17 mu       0.38           1            1         1         1
+ 18 mu       0.385          1            1         1         1
+ 19 mu       0.39           1            1         1         1
+ 20 mu       0.395          1            1         1         1
+ 21 mu       0.4            1            1         1         1
+ 22 mu       0.405          1            1         1         1
+ 23 mu       0.41           1            1         1         1
+ 24 mu       0.415          1            1         1         1
+ 25 mu       0.42           1            1         1         1
+ 26 mu       0.425          1            1         1         1
+ 27 mu       0.43           1            1         1         1
+ 28 mu       0.435          1            1         1         1
+ 29 mu       0.44           1            1         1         1
+ 30 mu       0.445          1            1         1         1
+ 31 mu       0.45           1            1         1         1
+ 32 mu       0.455          1            1         1         1
+ 33 mu       0.46           1            1         1         1
+ 34 mu       0.465          1            1         1         1
+ 35 mu       0.47           1            1         1         1
+ 36 mu       0.475          1            1         1         1
+ 37 mu       0.48           1            1         1         1
+ 38 mu       0.485          1            1         1         1
+ 39 mu       0.49           1            1         1         1
+ 40 mu       0.495          1            1         1         1
+ 41 mu       0.5            1            1         1         1
+ 42 mu       0.505          1            1         1         1
+ 43 mu       0.51           1            1         1         1
+ 44 mu       0.515          1            1         1         1
+ 45 mu       0.52           1            1         1         1
+ 46 mu       0.525          1            1         1         1
+ 47 mu       0.53           1            1         1         1
+ 48 mu       0.535          1            1         1         1
+ 49 mu       0.54           1            1         1         1
+ 50 mu       0.545          1            1         1         1
+ 51 mu       0.55           1            1         1         1
+ 52 mu       0.555          1            1         1         1
+ 53 mu       0.56           1            1         1         1
+ 54 mu       0.565          1            1         1         1
+ 55 mu       0.57           1            1         1         1
+ 56 mu       0.575          1            1         1         1
+ 57 mu       0.58           1            1         1         1
+ 58 mu       0.585          1            1         1         1
+ 59 mu       0.59           1            1         1         1
+ 60 mu       0.595          1            1         1         1
+ 61 mu       0.6            1            1         1         1
+ 62 mu_1     0.3            1            1         1         1
+ 63 mu_1     0.305          1            1         1         1
+ 64 mu_1     0.31           1            1         1         1
+ 65 mu_1     0.315          1            1         1         1
+ 66 mu_1     0.32           1            1         1         1
+ 67 mu_1     0.325          1            1         1         1
+ 68 mu_1     0.33           1            1         1         1
+ 69 mu_1     0.335          1            1         1         1
+ 70 mu_1     0.34           1            1         1         1
+ 71 mu_1     0.345          1            1         1         1
+ 72 mu_1     0.35           1            1         1         1
+ 73 mu_1     0.355          1            1         1         1
+ 74 mu_1     0.36           1            1         1         1
+ 75 mu_1     0.365          1            1         1         1
+ 76 mu_1     0.37           1            1         1         1
+ 77 mu_1     0.375          1            1         1         1
+ 78 mu_1     0.38           1            1         1         1
+ 79 mu_1     0.385          1            1         1         1
+ 80 mu_1     0.39           1            1         1         1
+ 81 mu_1     0.395          1            1         1         1
+ 82 mu_1     0.4            1            1         1         1
+ 83 mu_1     0.405          1            1         1         1
+ 84 mu_1     0.41           1            1         1         1
+ 85 mu_1     0.415          1            1         1         1
+ 86 mu_1     0.42           1            1         1         1
+ 87 mu_1     0.425          1            1         1         1
+ 88 mu_1     0.43           1            1         1         1
+ 89 mu_1     0.435          1            1         1         1
+ 90 mu_1     0.44           1            1         1         1
+ 91 mu_1     0.445          1            1         1         1
+ 92 mu_1     0.45           1            1         1         1
+ 93 mu_1     0.455          1            1         1         1
+ 94 mu_1     0.46           1            1         1         1
+ 95 mu_1     0.465          1            1         1         1
+ 96 mu_1     0.47           1            1         1         1
+ 97 mu_1     0.475          1            1         1         1
+ 98 mu_1     0.48           1            1         1         1
+ 99 mu_1     0.485          1            1         1         1
+100 mu_1     0.49           1            1         1         1
+101 mu_1     0.495          1            1         1         1
+102 mu_1     0.5            1            1         1         1
+103 mu_1     0.505          1            1         1         1
+104 mu_1     0.51           1            1         1         1
+105 mu_1     0.515          1            1         1         1
+106 mu_1     0.52           1            1         1         1
+107 mu_1     0.525          1            1         1         1
+108 mu_1     0.53           1            1         1         1
+109 mu_1     0.535          1            1         1         1
+110 mu_1     0.54           1            1         1         1
+111 mu_1     0.545          1            1         1         1
+112 mu_1     0.55           1            1         1         1
+113 mu_1     0.555          1            1         1         1
+114 mu_1     0.56           1            1         1         1
+115 mu_1     0.565          1            1         1         1
+116 mu_1     0.57           1            1         1         1
+117 mu_1     0.575          1            1         1         1
+118 mu_1     0.58           1            1         1         1
+119 mu_1     0.585          1            1         1         1
+120 mu_1     0.59           1            1         1         1
+121 mu_1     0.595          1            1         1         1
+122 mu_1     0.6            1            1         1         1
+123 mu_0     0.3            1            1         1         1
+124 mu_0     0.305          1            1         1         1
+125 mu_0     0.31           1            1         1         1
+126 mu_0     0.315          1            1         1         1
+127 mu_0     0.32           1            1         1         1
+128 mu_0     0.325          1            1         1         1
+129 mu_0     0.33           1            1         1         1
+130 mu_0     0.335          1            1         1         1
+131 mu_0     0.34           1            1         1         1
+132 mu_0     0.345          1            1         1         1
+133 mu_0     0.35           1            1         1         1
+134 mu_0     0.355          1            1         1         1
+135 mu_0     0.36           1            1         1         1
+136 mu_0     0.365          1            1         1         1
+137 mu_0     0.37           1            1         1         1
+138 mu_0     0.375          1            1         1         1
+139 mu_0     0.38           1            1         1         1
+140 mu_0     0.385          1            1         1         1
+141 mu_0     0.39           1            1         1         1
+142 mu_0     0.395          1            1         1         1
+143 mu_0     0.4            1            1         1         1
+144 mu_0     0.405          1            1         1         1
+145 mu_0     0.41           1            1         1         1
+146 mu_0     0.415          1            1         1         1
+147 mu_0     0.42           1            1         1         1
+148 mu_0     0.425          1            1         1         1
+149 mu_0     0.43           1            1         1         1
+150 mu_0     0.435          1            1         1         1
+151 mu_0     0.44           1            1         1         1
+152 mu_0     0.445          1            1         1         1
+153 mu_0     0.45           1            1         1         1
+154 mu_0     0.455          1            1         1         1
+155 mu_0     0.46           1            1         1         1
+156 mu_0     0.465          1            1         1         1
+157 mu_0     0.47           1            1         1         1
+158 mu_0     0.475          1            1         1         1
+159 mu_0     0.48           1            1         1         1
+160 mu_0     0.485          1            1         1         1
+161 mu_0     0.49           1            1         1         1
+162 mu_0     0.495          1            1         1         1
+163 mu_0     0.5            1            1         1         1
+164 mu_0     0.505          1            1         1         1
+165 mu_0     0.51           1            1         1         1
+166 mu_0     0.515          1            1         1         1
+167 mu_0     0.52           1            1         1         1
+168 mu_0     0.525          1            1         1         1
+169 mu_0     0.53           1            1         1         1
+170 mu_0     0.535          1            1         1         1
+171 mu_0     0.54           1            1         1         1
+172 mu_0     0.545          1            1         1         1
+173 mu_0     0.55           1            1         1         1
+174 mu_0     0.555          1            1         1         1
+175 mu_0     0.56           1            1         1         1
+176 mu_0     0.565          1            1         1         1
+177 mu_0     0.57           1            1         1         1
+178 mu_0     0.575          1            1         1         1
+179 mu_0     0.58           1            1         1         1
+180 mu_0     0.585          1            1         1         1
+181 mu_0     0.59           1            1         1         1
+182 mu_0     0.595          1            1         1         1
+183 mu_0     0.6            1            1         1         1
+[1] ""
+[1] "IPCW weights"
+`summarise()` has grouped output by 'estimand'. You can override using the
+`.groups` argument.
+# A tibble: 183 × 6
+# Groups:   estimand [3]
+    estimand theta mean_value median_value min_value max_value
+    <fct>    <dbl>      <dbl>        <dbl>     <dbl>     <dbl>
+  1 mu       0.3         1.11        0.470    0.0506      6.05
+  2 mu       0.305       1.11        0.485    0.0541      5.92
+  3 mu       0.31        1.11        0.500    0.0577      5.79
+  4 mu       0.315       1.11        0.515    0.0615      5.67
+  5 mu       0.32        1.11        0.529    0.0655      5.54
+  6 mu       0.325       1.11        0.544    0.0697      5.42
+  7 mu       0.33        1.11        0.559    0.0741      5.30
+  8 mu       0.335       1.10        0.574    0.0787      5.18
+  9 mu       0.34        1.10        0.589    0.0835      5.07
+ 10 mu       0.345       1.10        0.604    0.0885      4.95
+ 11 mu       0.35        1.10        0.619    0.0938      4.84
+ 12 mu       0.355       1.10        0.633    0.0992      4.73
+ 13 mu       0.36        1.10        0.648    0.105       4.62
+ 14 mu       0.365       1.10        0.663    0.111       4.51
+ 15 mu       0.37        1.09        0.678    0.117       4.41
+ 16 mu       0.375       1.09        0.693    0.124       4.30
+ 17 mu       0.38        1.09        0.708    0.130       4.21
+ 18 mu       0.385       1.09        0.722    0.137       4.13
+ 19 mu       0.39        1.09        0.737    0.145       4.05
+ 20 mu       0.395       1.09        0.751    0.152       3.97
+ 21 mu       0.4         1.09        0.766    0.160       3.89
+ 22 mu       0.405       1.08        0.780    0.168       3.81
+ 23 mu       0.41        1.08        0.792    0.177       3.73
+ 24 mu       0.415       1.08        0.805    0.185       3.64
+ 25 mu       0.42        1.08        0.817    0.194       3.56
+ 26 mu       0.425       1.08        0.830    0.204       3.48
+ 27 mu       0.43        1.08        0.842    0.214       3.40
+ 28 mu       0.435       1.08        0.854    0.224       3.32
+ 29 mu       0.44        1.08        0.868    0.234       3.24
+ 30 mu       0.445       1.08        0.885    0.245       3.17
+ 31 mu       0.45        1.07        0.902    0.256       3.09
+ 32 mu       0.455       1.07        0.918    0.268       3.01
+ 33 mu       0.46        1.07        0.933    0.280       2.93
+ 34 mu       0.465       1.07        0.949    0.292       2.86
+ 35 mu       0.47        1.07        0.966    0.305       2.78
+ 36 mu       0.475       1.07        0.983    0.318       2.71
+ 37 mu       0.48        1.07        0.995    0.332       2.63
+ 38 mu       0.485       1.07        0.995    0.346       2.56
+ 39 mu       0.49        1.07        0.991    0.360       2.49
+ 40 mu       0.495       1.07        0.994    0.375       2.41
+ 41 mu       0.5         1.07        0.999    0.391       2.34
+ 42 mu       0.505       1.07        1.00     0.406       2.29
+ 43 mu       0.51        1.07        1.00     0.423       2.24
+ 44 mu       0.515       1.07        1.01     0.440       2.20
+ 45 mu       0.52        1.07        1.01     0.457       2.15
+ 46 mu       0.525       1.06        1.01     0.475       2.10
+ 47 mu       0.53        1.06        1.02     0.493       2.06
+ 48 mu       0.535       1.06        1.03     0.512       2.01
+ 49 mu       0.54        1.06        1.04     0.531       1.96
+ 50 mu       0.545       1.06        1.04     0.551       1.92
+ 51 mu       0.55        1.06        1.04     0.572       1.87
+ 52 mu       0.555       1.06        1.03     0.593       1.83
+ 53 mu       0.56        1.06        1.02     0.614       1.78
+ 54 mu       0.565       1.06        1.03     0.637       1.74
+ 55 mu       0.57        1.06        1.02     0.660       1.69
+ 56 mu       0.575       1.06        1.03     0.652       1.65
+ 57 mu       0.58        1.06        1.04     0.621       1.61
+ 58 mu       0.585       1.06        1.04     0.592       1.61
+ 59 mu       0.59        1.07        1.03     0.564       1.68
+ 60 mu       0.595       1.07        1.03     0.537       1.75
+ 61 mu       0.6         1.07        1.02     0.511       1.83
+ 62 mu_1     0.3         1.05        0.927    0           3.60
+ 63 mu_1     0.305       1.05        0.936    0           3.50
+ 64 mu_1     0.31        1.05        0.944    0           3.40
+ 65 mu_1     0.315       1.05        0.953    0           3.30
+ 66 mu_1     0.32        1.05        0.961    0           3.21
+ 67 mu_1     0.325       1.05        0.970    0           3.11
+ 68 mu_1     0.33        1.05        0.982    0           3.02
+ 69 mu_1     0.335       1.05        0.993    0           2.93
+ 70 mu_1     0.34        1.04        1.00     0           2.85
+ 71 mu_1     0.345       1.04        1.02     0           2.76
+ 72 mu_1     0.35        1.04        1.03     0           2.68
+ 73 mu_1     0.355       1.04        1.04     0           2.60
+ 74 mu_1     0.36        1.04        1.05     0           2.52
+ 75 mu_1     0.365       1.04        1.04     0           2.44
+ 76 mu_1     0.37        1.04        1.04     0           2.36
+ 77 mu_1     0.375       1.04        1.04     0           2.29
+ 78 mu_1     0.38        1.04        1.04     0           2.23
+ 79 mu_1     0.385       1.04        1.05     0           2.17
+ 80 mu_1     0.39        1.04        1.05     0           2.12
+ 81 mu_1     0.395       1.04        1.06     0           2.07
+ 82 mu_1     0.4         1.04        1.06     0           2.02
+ 83 mu_1     0.405       1.04        1.07     0           1.97
+ 84 mu_1     0.41        1.04        1.07     0           1.92
+ 85 mu_1     0.415       1.04        1.07     0           1.87
+ 86 mu_1     0.42        1.05        1.07     0           1.82
+ 87 mu_1     0.425       1.05        1.07     0           1.80
+ 88 mu_1     0.43        1.05        1.08     0           1.81
+ 89 mu_1     0.435       1.05        1.09     0           1.81
+ 90 mu_1     0.44        1.05        1.09     0           1.82
+ 91 mu_1     0.445       1.05        1.10     0           1.82
+ 92 mu_1     0.45        1.05        1.10     0           1.82
+ 93 mu_1     0.455       1.05        1.10     0           1.83
+ 94 mu_1     0.46        1.05        1.11     0           1.83
+ 95 mu_1     0.465       1.05        1.11     0           1.83
+ 96 mu_1     0.47        1.05        1.12     0           1.84
+ 97 mu_1     0.475       1.05        1.12     0           1.84
+ 98 mu_1     0.48        1.05        1.12     0           1.84
+ 99 mu_1     0.485       1.05        1.10     0           1.84
+100 mu_1     0.49        1.05        1.10     0           1.84
+101 mu_1     0.495       1.06        1.10     0           1.84
+102 mu_1     0.5         1.06        1.10     0           1.84
+103 mu_1     0.505       1.06        1.09     0           1.84
+104 mu_1     0.51        1.06        1.10     0           1.84
+105 mu_1     0.515       1.06        1.09     0           1.84
+106 mu_1     0.52        1.06        1.08     0           1.87
+107 mu_1     0.525       1.06        1.08     0           1.90
+108 mu_1     0.53        1.06        1.08     0           1.94
+109 mu_1     0.535       1.06        1.07     0           1.98
+110 mu_1     0.54        1.06        1.07     0           2.01
+111 mu_1     0.545       1.06        1.07     0           2.08
+112 mu_1     0.55        1.07        1.07     0           2.15
+113 mu_1     0.555       1.07        1.07     0           2.23
+114 mu_1     0.56        1.07        1.07     0           2.31
+115 mu_1     0.565       1.07        1.07     0           2.40
+116 mu_1     0.57        1.07        1.07     0           2.48
+117 mu_1     0.575       1.07        1.07     0           2.57
+118 mu_1     0.58        1.07        1.06     0           2.66
+119 mu_1     0.585       1.07        1.06     0           2.76
+120 mu_1     0.59        1.07        1.05     0           2.85
+121 mu_1     0.595       1.07        1.05     0           2.95
+122 mu_1     0.6         1.07        1.05     0           3.05
+123 mu_0     0.3         1.14        0.240    0           8.64
+124 mu_0     0.305       1.14        0.248    0           8.51
+125 mu_0     0.31        1.14        0.256    0           8.39
+126 mu_0     0.315       1.14        0.264    0           8.27
+127 mu_0     0.32        1.14        0.273    0           8.15
+128 mu_0     0.325       1.14        0.281    0           8.03
+129 mu_0     0.33        1.14        0.290    0           7.91
+130 mu_0     0.335       1.13        0.299    0           7.79
+131 mu_0     0.34        1.13        0.308    0           7.68
+132 mu_0     0.345       1.13        0.317    0           7.56
+133 mu_0     0.35        1.13        0.326    0           7.45
+134 mu_0     0.355       1.13        0.336    0           7.33
+135 mu_0     0.36        1.13        0.346    0           7.22
+136 mu_0     0.365       1.13        0.357    0           7.11
+137 mu_0     0.37        1.12        0.368    0           7.00
+138 mu_0     0.375       1.12        0.379    0           6.89
+139 mu_0     0.38        1.12        0.390    0           6.78
+140 mu_0     0.385       1.12        0.402    0           6.67
+141 mu_0     0.39        1.12        0.414    0           6.56
+142 mu_0     0.395       1.12        0.426    0           6.45
+143 mu_0     0.4         1.11        0.439    0           6.35
+144 mu_0     0.405       1.11        0.451    0           6.24
+145 mu_0     0.41        1.11        0.463    0           6.14
+146 mu_0     0.415       1.11        0.475    0           6.03
+147 mu_0     0.42        1.11        0.487    0           5.93
+148 mu_0     0.425       1.11        0.500    0           5.83
+149 mu_0     0.43        1.10        0.513    0           5.73
+150 mu_0     0.435       1.10        0.525    0           5.63
+151 mu_0     0.44        1.10        0.538    0           5.53
+152 mu_0     0.445       1.10        0.551    0           5.43
+153 mu_0     0.45        1.10        0.564    0           5.33
+154 mu_0     0.455       1.09        0.577    0           5.24
+155 mu_0     0.46        1.09        0.591    0           5.14
+156 mu_0     0.465       1.09        0.604    0           5.05
+157 mu_0     0.47        1.09        0.617    0           4.95
+158 mu_0     0.475       1.09        0.631    0           4.86
+159 mu_0     0.48        1.08        0.645    0           4.77
+160 mu_0     0.485       1.08        0.658    0           4.67
+161 mu_0     0.49        1.08        0.672    0           4.58
+162 mu_0     0.495       1.08        0.686    0           4.50
+163 mu_0     0.5         1.08        0.700    0           4.41
+164 mu_0     0.505       1.08        0.714    0           4.32
+165 mu_0     0.51        1.07        0.728    0           4.23
+166 mu_0     0.515       1.07        0.742    0           4.15
+167 mu_0     0.52        1.07        0.756    0           4.06
+168 mu_0     0.525       1.07        0.771    0           3.98
+169 mu_0     0.53        1.07        0.785    0           3.89
+170 mu_0     0.535       1.07        0.799    0           3.81
+171 mu_0     0.54        1.07        0.814    0           3.73
+172 mu_0     0.545       1.06        0.828    0           3.65
+173 mu_0     0.55        1.06        0.843    0           3.57
+174 mu_0     0.555       1.06        0.857    0           3.49
+175 mu_0     0.56        1.06        0.872    0           3.41
+176 mu_0     0.565       1.06        0.886    0           3.34
+177 mu_0     0.57        1.06        0.901    0           3.26
+178 mu_0     0.575       1.06        0.915    0           3.18
+179 mu_0     0.58        1.06        0.930    0           3.11
+180 mu_0     0.585       1.06        0.944    0           3.04
+181 mu_0     0.59        1.06        0.959    0           2.96
+182 mu_0     0.595       1.05        0.973    0           2.89
+183 mu_0     0.6         1.05        0.989    0           2.82
+[1] "Total run time was 65.095 seconds"
