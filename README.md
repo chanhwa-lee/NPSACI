@@ -166,5 +166,6 @@ Provides toy example to perform real data analysis instead of cholera vaccine da
 
 
 ## References
-- Lee, C., Zeng, D., Emch, M., Clemens, J. D., & Hudgens, M. G. (2024). '[Nonparametric Causal Survival Analysis with Clustered Interference](https://arxiv.org/abs/2409.13190)'. arXiv preprint arXiv:2409.13190.
+- Lee, C., Zeng, D., Emch, M., Clemens, J. D., & Hudgens, M. G. (2024). [Nonparametric Causal Survival Analysis with Clustered Interference](https://arxiv.org/abs/2409.13190). arXiv preprint arXiv:2409.13190.
 
+- Chakladar, S., Rosin, S., Hudgens, M. G., Halloran, M. E., Clemens, J. D., Ali, M., & Emch, M. E. (2022). [Inverse probability weighted estimators of vaccine effects accommodating partial interference and censoring](https://doi.org/10.1111/biom.13459). Biometrics, 78(2), 777-788.
