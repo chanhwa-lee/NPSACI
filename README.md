@@ -137,67 +137,58 @@ Scripts (.R) and HPC SLURM files (.sh) for simulation studies:
 * `estimand/`: saved estimands
 * `estimate/`: saved estimates
 
-**Main Simulations in paper:**
+**Main Simulations in paper**
 
-* **Performance under TypeB policy ** (Table 1):
+* **Performance under TypeB policy** (Table 1)
   
   :page_facing_up: `M.main_simulation/estimator.R`
   
   *Settings*: `policy = "TypeB"`, `m = 200`, `r = 100`
 
-* **Proposed vs. ** (Figure 1):
+* **Proposed vs. IPCW estimators** (Figure 1)
   
   :page_facing_up: `M.main_simulation/estimator_chakladar.R`
   
   Compares the proposed estimator to the IPCW estimator by [Chakladar et al. (2021)](https://doi.org/10.1111/biom.13459)
 
-**Simulations in paper:**
+**Supplementary Simulations**
 
-### Supplementary Simulations
-
-* **Section C.1** – Performance under TPB policy (Table S1):
+* **Section C.1** – Performance under TPB policy (Table S1)
+  
   :page_facing_up: `M.main_simulation/estimator.R`
+
   *Settings*: `policy = "TPB"`, `m = 200`, `r = 100`
 
-* **Section C.2** – Performance over number of clusters *m* (Figure S1):
+* **Section C.2** – Performance over number of clusters *m* (Figure S1)
+
   :page_facing_up: `M.main_simulation/estimator.R`
+
   *Settings*: `policy = "TypeB"`, `m ∈ {25, 50, 100, 200, 400}`, `r = 100`
 
-* **Section C.3** – Bounded vs. unbounded estimators (Figure S2):
+* **Section C.3** – Bounded vs. unbounded estimators (Figure S2)
+
   :page_facing_up: `estimator_unbounded.R`
+
   Evaluates estimators without the bounding modification
 
-* **Section C.4** – Performance over subsampling degree *r* (Figure S3):
+* **Section C.4** – Performance over subsampling degree *r* (Figure S3)
+
   :page_facing_up: `M.main_simulation/estimator.R`
+
   *Settings*: `policy = "TypeB"`, `m = 200`, `r ∈ {10, 20, 50, 100, 200, 500}`
 
-* **Section C.5** – Performance under different correlation structures in treatment assignment (Figure S4):
-  \:file\_folder: `C5.sigmab_experiment`
+* **Section C.5** – Performance under different correlation structures in treatment assignment (Figure S4)
+
+  :file_folder: `C5.sigmab_experiment`
+
   Varies treatment correlation `σ_b = corr(A_ij, A_ik)`
 
 * **Section C.6** – Performance under different cluster size distributions (Figure S5):
-  \:file\_folder: `C6.Ndist_experiment`
+
+  :file_folder: `C6.Ndist_experiment`
+
   Varies distribution of cluster sizes `N_i`
 
-
-
-
-
-
-
-
-**Simulations in paper:**
-
-* Table 1: `M.main_simulation/estimator.R` (TypeB, m=200, r=100)
-* Figure 1: `estimator_chakladar.R` vs Chakladar et al. (2021)
-* Supplementary Figures S1–S5 explore sensitivity to:
-
-  * Table S1: policy type (TPB)
-  * number of clusters (m)
-  * bounded vs unbounded estimators
-  * subsampling degree (r)
-  * treatment correlation (σ\_b)
-  * cluster size distributions
 
 ### `/application`
 
