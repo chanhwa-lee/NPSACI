@@ -169,3 +169,166 @@ Provides toy example to perform real data analysis instead of cholera vaccine da
 - Lee, C., Zeng, D., Emch, M., Clemens, J. D., & Hudgens, M. G. (2024). [Nonparametric Causal Survival Analysis with Clustered Interference](https://arxiv.org/abs/2409.13190). arXiv preprint arXiv:2409.13190.
 
 - Chakladar, S., Rosin, S., Hudgens, M. G., Halloran, M. E., Clemens, J. D., Ali, M., & Emch, M. E. (2022). [Inverse probability weighted estimators of vaccine effects accommodating partial interference and censoring](https://doi.org/10.1111/biom.13459). Biometrics, 78(2), 777-788.
+
+
+Here’s an improved and professional version of your `README.md`, tailored for clarity, structure, and accessibility to both statisticians and general R users:
+
+---
+
+# NPSACI
+
+This repository contains the code accompanying the paper:
+
+**[Nonparametric Causal Survival Analysis with Clustered Interference](https://arxiv.org/abs/2409.13190)**
+*Chanhwa Lee, Donglin Zeng, Michael Emch, John D. Clemens, Michael G. Hudgens (2024)*
+
+We develop nonparametric, cross-fitted estimators for causal survival effects under clustered interference and right censoring.
+
+---
+
+## 📦 Quick Start
+
+Run `QuickStart.R` to replicate a minimal example.
+
+### Step 1: Prepare the dataset
+
+Your dataset should contain the following variables:
+
+* `id`: cluster ID
+* `Y`: observed time
+* `D`: event indicator (`D = I(T ≤ C)`)
+* `A`: binary treatment
+* `X`: covariates (any column names)
+
+Here is a synthetic data generator:
+
+```r
+library(dplyr)
+library(glue)
+library(conflicted)
+conflicts_prefer(dplyr::filter)
+
+generate_cluster_data = function(N) {
+  age <- round(runif(N, 15, 65))
+  dist.river <- runif(N, 0, 5)
+  b <- rnorm(1, 0, 0.5)
+  pi <- plogis(0.2 + 0.2*(age/40 - 1)^2 + 0.2*pmax(dist.river/5, 0.3) + b)
+  A <- rbinom(N, 1, pi)
+  g.A <- (sum(A) - A) / (N - 1)
+  T_ <- round(100 * rexp(N, 1 / exp(2 + A + g.A + A * g.A + 0.5 * dist.river - 0.5 * (age/40 - 1))))
+  C <- round(runif(N, 0, 500 + 200 * A + 50 * dist.river + 100 * (age/40 - 1)))
+  Y <- pmin(T_, C)
+  D <- as.numeric(T_ <= C)
+  data.frame(Y = Y, D = D, A = A, age = age, dist.river = dist.river)
+}
+
+m <- 100
+toy_data <- lapply(sample(3:5, m, replace = TRUE), generate_cluster_data) %>%
+  bind_rows(.id = "id") %>% mutate(id = as.numeric(id))
+```
+
+### Step 2: Estimate causal effects
+
+Set parameters for nuisance models and target estimands:
+
+```r
+source("code/help_util.R")
+source("code/help_TypeB.R")
+source("code/help_TPB.R")
+source("code/help_nuis_est.R")
+
+result <- estimator(
+  data = toy_data,
+  X.T.names = c("age", "dist.river"),
+  X.C.names = c("age"),
+  X.A.names = c("age", "dist.river"),
+  policy = "TypeB",
+  taus = 20 * (1:25),
+  thetas = seq(0.3, 0.6, length.out = 31),
+  theta0 = 0.45
+)
+```
+
+### Step 3: View results
+
+```r
+result$result %>%
+  filter(estimand == "mu", tau == 360)
+```
+
+**Result Columns**:
+
+* `est`: estimated causal effect
+* `se`: estimated standard error
+* `PCL`/`PCU`: 95% **pointwise** confidence interval
+* `UCL`/`UCU`: 95% **uniform** confidence band
+
+---
+
+## 📁 Repository Structure
+
+### `/code`
+
+Core functions for estimation:
+
+* `help_util.R`: main estimation workflow
+* `help_TypeB.R`: policy-specific functions (TypeB)
+* `help_TPB.R`: policy-specific functions (TPB)
+* `help_nuis_est.R`: nuisance parameter estimation
+
+### `/simulation`
+
+Scripts and HPC SLURM files for simulation studies:
+
+* `help_simul.R`: simulation settings
+* `estimand.R`: defines target estimands
+* `estimator.R`: applies estimators
+* `readresult.R`: reads and summarizes outputs
+
+**Subfolders:**
+
+* `estimand/`: saved estimands
+* `estimate/`: saved estimates
+
+**Simulations in paper:**
+
+* Table 1: `M.main_simulation/estimator.R` (TypeB, m=200, r=100)
+* Figure 1: `estimator_chakladar.R` vs Chakladar et al. (2021)
+* Supplementary Figures S1–S5 explore sensitivity to:
+
+  * policy type (TPB)
+  * number of clusters (m)
+  * bounded vs unbounded estimators
+  * subsampling degree (r)
+  * treatment correlation (σ\_b)
+  * cluster size distributions
+
+### `/application`
+
+Cholera vaccine effect analysis under clustered interference.
+⚠️ **Raw data and outputs not public.**
+
+* `preprocessing.R`: preprocessing + exploratory analysis (Figs S6–S8)
+* `estimator.R`: causal estimation
+* `visualization.R`: plotting (Figs 2–3, S9–S11)
+
+### `/application_example`
+
+Toy example replicating the application pipeline.
+
+* `generate_toy_data.R`: create synthetic dataset
+* `estimate/`: results using toy dataset
+
+---
+
+## 📚 References
+
+* Lee, C., Zeng, D., Emch, M., Clemens, J. D., & Hudgens, M. G. (2024).
+  *[Nonparametric Causal Survival Analysis with Clustered Interference](https://arxiv.org/abs/2409.13190)*. arXiv:2409.13190
+
+* Chakladar, S. et al. (2022).
+  *[Inverse probability weighted estimators of vaccine effects accommodating partial interference and censoring](https://doi.org/10.1111/biom.13459)*. Biometrics, 78(2), 777–788.
+
+---
+
+Let me know if you’d like this in `README.Rmd` format or rendered from `rmarkdown::render`.
