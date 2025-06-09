@@ -105,7 +105,7 @@ Results
 - UCU: 95% Uniform Confidence band Upper limit
 
  
-## Summary
+## File Description
 
 The GitHub repository comprises four folders: :file_folder:`code`, :file_folder:`simulation`, :file_folder:`application`, and :file_folder:`application_example`, which store reproducible codes for all computational work in the manuscript.
 
@@ -128,6 +128,22 @@ R files are the main scripts, while bash files (.sh) are for submitting parellel
 - :page_facing_up: `readresult.R`: Read and summarize estimation result
 - :file_folder: `estimand`: Target causal estimands
 - :file_folder: `estimate`: Estimates of target causal estimands
+
+- :file_folder: `M.main_simulation`: Perform simulations in main text and supplementary material C.1--C.4
+    - Main simulation 1 (Table 1):
+    - Main simulation 2 (Figure 1):
+    - Supplementary section C.1 Simulation results on TPB policy estimands (Table S1):
+    - Supplementary section C.2 Finite sample performance over number of clusters 𝑚 (Figure S2):
+    - Supplementary section C.3 Finite sample performance over number of clusters 𝑚 (Figure S2):
+    - Supplementary section C.3 Finite sample performance over number of clusters 𝑚 (Figure S2):
+    - Supplementary section C.3 Finite sample performance over number of clusters 𝑚 (Figure S2):
+    - Supplementary section C.3 Finite sample performance over number of clusters 𝑚 (Figure S2):
+    - Supplementary section C.3 Finite sample performance over number of clusters 𝑚 (Figure S2):
+    - Supplementary section C.3 Finite sample performance over number of clusters 𝑚 (Figure S2):
+    - :page_facing_up: `estimator_chakladar.R`: [Chakladar et al. (2021)](https://doi.org/10.1111/biom.13459)'s IPCW estimator compared to the proposed method
+    - :page_facing_up: `estimator_unbounded.R`: Computes proposed estimators without bounding modification to 
+- :file_folder: `C5.sigmab_experiment`: Perform simulations in supplementary material C.5
+- :file_folder: `C6.Ndist_experiment`: Perform simulations in supplementary material C.6
 
 ## :file_folder: application
 
