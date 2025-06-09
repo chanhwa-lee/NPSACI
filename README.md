@@ -137,15 +137,14 @@ Scripts (.R) and HPC SLURM files (.sh) for simulation studies:
 * `estimand/`: saved estimands
 * `estimate/`: saved estimates
 
-
-### Simulation Studies
+**Simulations in paper:**
 
 * **Main Simulation 1** (Table 1):
-  \:page\_facing\_up: `M.main_simulation/estimator.R`
+  :page_facing_up: `M.main_simulation/estimator.R`
   *Settings*: `policy = "TypeB"`, `m = 200`, `r = 100`
 
 * **Main Simulation 2** (Figure 1):
-  \:page\_facing\_up: `M.main_simulation/estimator_chakladar.R`
+  :page_facing_up: `M.main_simulation/estimator_chakladar.R`
   Compares the proposed estimator to the IPCW estimator by [Chakladar et al. (2021)](https://doi.org/10.1111/biom.13459)
 
 ---
@@ -153,19 +152,19 @@ Scripts (.R) and HPC SLURM files (.sh) for simulation studies:
 ### Supplementary Simulations
 
 * **Section C.1** – TPB policy estimands (Table S1):
-  \:page\_facing\_up: `M.main_simulation/estimator.R`
+  :page_facing_up: `M.main_simulation/estimator.R`
   *Settings*: `policy = "TPB"`, `m = 200`, `r = 100`
 
 * **Section C.2** – Performance over number of clusters *m* (Figure S1):
-  \:page\_facing\_up: `M.main_simulation/estimator.R`
+  :page_facing_up: `M.main_simulation/estimator.R`
   *Settings*: `policy = "TypeB"`, `m ∈ {25, 50, 100, 200, 400}`, `r = 100`
 
 * **Section C.3** – Bounded vs. unbounded estimators (Figure S2):
-  \:page\_facing\_up: `estimator_unbounded.R`
+  :page_facing_up: `estimator_unbounded.R`
   Evaluates estimators without the bounding modification
 
 * **Section C.4** – Performance over subsampling degree *r* (Figure S3):
-  \:page\_facing\_up: `M.main_simulation/estimator.R`
+  :page_facing_up: `M.main_simulation/estimator.R`
   *Settings*: `policy = "TypeB"`, `m = 200`, `r ∈ {10, 20, 50, 100, 200, 500}`
 
 * **Section C.5** – Performance under different correlation structures in treatment assignment (Figure S4):
