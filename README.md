@@ -129,21 +129,22 @@ R files are the main scripts, while bash files (.sh) are for submitting parellel
 - :file_folder: `estimand`: Target causal estimands
 - :file_folder: `estimate`: Estimates of target causal estimands
 
-- :file_folder: `M.main_simulation`: Perform simulations in main text and supplementary material C.1--C.4
-    - Main simulation 1 (Table 1):
-    - Main simulation 2 (Figure 1):
-    - Supplementary section C.1 Simulation results on TPB policy estimands (Table S1):
-    - Supplementary section C.2 Finite sample performance over number of clusters 𝑚 (Figure S2):
-    - Supplementary section C.3 Finite sample performance over number of clusters 𝑚 (Figure S2):
-    - Supplementary section C.3 Finite sample performance over number of clusters 𝑚 (Figure S2):
-    - Supplementary section C.3 Finite sample performance over number of clusters 𝑚 (Figure S2):
-    - Supplementary section C.3 Finite sample performance over number of clusters 𝑚 (Figure S2):
-    - Supplementary section C.3 Finite sample performance over number of clusters 𝑚 (Figure S2):
-    - Supplementary section C.3 Finite sample performance over number of clusters 𝑚 (Figure S2):
-    - :page_facing_up: `estimator_chakladar.R`: [Chakladar et al. (2021)](https://doi.org/10.1111/biom.13459)'s IPCW estimator compared to the proposed method
+- Main simulation 1 (Table 1):
+    - :page_facing_up: `M.main_simulation/estimator.R`
+- Main simulation 2 (Figure 1):
+    - :page_facing_up: `M.main_simulation/estimator_chakladar.R`: [Chakladar et al. (2021)](https://doi.org/10.1111/biom.13459)'s IPCW estimator compared to the proposed method
+- Supplementary section C.1 Simulation results on TPB policy estimands (Table S1):
+    - :page_facing_up: `M.main_simulation/estimator.R`
+- Supplementary section C.2 Finite sample performance over number of clusters 𝑚 (Figure S1):
+    - :page_facing_up: `M.main_simulation/estimator.R`
+- Supplementary section C.3. Finite sample performance of bounded estimators (Figure S2):
     - :page_facing_up: `estimator_unbounded.R`: Computes proposed estimators without bounding modification to 
-- :file_folder: `C5.sigmab_experiment`: Perform simulations in supplementary material C.5
-- :file_folder: `C6.Ndist_experiment`: Perform simulations in supplementary material C.6
+- Supplementary section C.4. Finite sample performance over 𝑟 (Figure S3):
+    - :page_facing_up: `M.main_simulation/estimator.R`
+- Supplementary section C.5. Finite sample performance over correlation between 𝐴 (Figure S4):
+    - :file_folder: `C5.sigmab_experiment`: Perform simulations in supplementary material C.5
+- Supplementary section C.6. Finite sample performance over distribution of 𝑁 (Figure S5):
+    - :file_folder: `C6.Ndist_experiment`: Perform simulations in supplementary material C.6
 
 ## :file_folder: application
 
