@@ -137,21 +137,25 @@ Scripts (.R) and HPC SLURM files (.sh) for simulation studies:
 * `estimand/`: saved estimands
 * `estimate/`: saved estimates
 
-**Simulations in paper:**
+**Main Simulations in paper:**
 
-* **Main Simulation 1** (Table 1):
+* **Performance under TypeB policy ** (Table 1):
+  
   :page_facing_up: `M.main_simulation/estimator.R`
+  
   *Settings*: `policy = "TypeB"`, `m = 200`, `r = 100`
 
-* **Main Simulation 2** (Figure 1):
+* **Proposed vs. ** (Figure 1):
+  
   :page_facing_up: `M.main_simulation/estimator_chakladar.R`
+  
   Compares the proposed estimator to the IPCW estimator by [Chakladar et al. (2021)](https://doi.org/10.1111/biom.13459)
 
----
+**Simulations in paper:**
 
 ### Supplementary Simulations
 
-* **Section C.1** – TPB policy estimands (Table S1):
+* **Section C.1** – Performance under TPB policy (Table S1):
   :page_facing_up: `M.main_simulation/estimator.R`
   *Settings*: `policy = "TPB"`, `m = 200`, `r = 100`
 
