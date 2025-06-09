@@ -1,3 +1,9 @@
+/code_save20250520
+/simulation_old
+
+/application/animation
+/application/estimate
 /application/cholera_data.csv
-/application_example/generate_toy_data.R
-/application_example/toy_data_backup.csv
+
+/simulation/nonpara*
+/simulation/simul*

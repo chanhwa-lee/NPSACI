@@ -1,0 +1,175 @@
+##############################################################
+### Job started at Thu Jun  5 15:56:38 EDT 2025 with m=200, r=100, n=4 ###
+##############################################################
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+ randomForestSRC 3.2.2 
+ 
+ Type rfsrc.news() to see new features, changes, and bug fixes. 
+ 
+
+[conflicted] Will prefer dplyr::select over any other package.
+[conflicted] Will prefer dplyr::filter over any other package.
+[conflicted] Will prefer reshape2::melt over any other package.
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ readr     2.1.4
+✔ ggplot2   3.5.2     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     0.3.5     ✔ tidyr     1.2.1
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+
+==========================================================================
+===========================   Analysis setting  ==========================
+==========================================================================
+
+- taus: 0.2 
+
+- policy: TypeB 
+
+- thetas: 0.3, 0.4, 0.5, 0.6, 0.7 
+
+- r: 100 
+
+- K: 2 
+
+- Nuisance estimation method: T nonpara / C nonpara / A nonpara 
+
+- m: 200 
+
+- N_total: 15117 
+
+- cluster size dist'n: 
+ 50  51  52  53  54  55  56  57  58  59  60  61  62  63  64  65  66  68  69  70 
+  3   2   4   4   8   3   4   2   6   3   4   2   2   2   9   3   8   2   5   2 
+ 71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90 
+  5   4   5   7   5   1   3   2   3   3   1   5   6   3   6   4   6   3   4   6 
+ 91  92  93  94  95  96  97  98  99 100 
+  5   3   1   3   4   5   5   6   4   4 
+
+ - observed time summary: 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.02678 0.21327 0.56814 0.74301 9.04833 
+
+ - event indicator table: 
+   0    1 
+6163 8954 
+
+ - event time summary: 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.01971 0.18453 0.52140 0.66443 9.04833 
+
+ - censoring time summary: 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.03967 0.26488 0.63603 0.86916 8.64283 
+
+ - treatment indicator table: 
+   0    1 
+7843 7274 
+
+==========================================================================
+===========================   Estimation start  ==========================
+==========================================================================
+
+--- Split:1 ---
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 7586
+	number of test observations: 0
+	number of explanatory variables: 15
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) (3: 100) (4: 100) (5: 100) 
+(6: 100) (7: 100) (8: 100) (9: 100) (10: 100) 
+(11: 100) (12: 100) (13: 100) (14: 100) (15: 100) 
+
+
+   [*---------] 10% | ET: 46.7s 
+   [**--------] 20% | ET: 100.3s 
+   [***-------] 30% | ET: 155.3s 
+   [****------] 40% | ET: 206.4s 
+   [*****-----] 50% | ET: 257.4s 
+   [******----] 60% | ET: 314.4s 
+   [*******---] 70% | ET: 365.1s 
+   [********--] 80% | ET: 415.2s 
+   [*********-] 90% | ET: 467.5s 
+   [**********] 100% | ET: 521.3s 
+
+--- Split:2 ---
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 7531
+	number of test observations: 0
+	number of explanatory variables: 15
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) (3: 100) (4: 100) (5: 100) 
+(6: 100) (7: 100) (8: 100) (9: 100) (10: 100) 
+(11: 100) (12: 100) (13: 100) (14: 100) (15: 100) 
+
+
+   [*---------] 10% | ET: 45.2s 
+   [**--------] 20% | ET: 95.2s 
+   [***-------] 30% | ET: 147.4s 
+   [****------] 40% | ET: 195.9s 
+   [*****-----] 50% | ET: 242.8s 
+   [******----] 60% | ET: 297.8s 
+   [*******---] 70% | ET: 346.8s 
+   [********--] 80% | ET: 397.6s 
+   [*********-] 90% | ET: 447.9s 
+   [**********] 100% | ET: 497.1s 
+
+--- IF for proposed nonparametric estimator computed --- ET: 1351.8 seconds
+--- Estimator computed: mu --- ET: 0.2 seconds --- 
+--- Estimator computed: mu_1 --- ET: 0.2 seconds --- 
+--- Estimator computed: mu_0 --- ET: 0.2 seconds --- 
+--- Estimator computed: de --- ET: 0.2 seconds --- 
+--- Estimator computed: oe --- ET: 0.2 seconds --- 
+--- Estimator computed: se_1 --- ET: 0.2 seconds --- 
+--- Estimator computed: se_0 --- ET: 0.1 seconds --- 
+--- Total run time: 1355.9 seconds --- 
+--- Total run time: 1360.4 seconds --- 
+###################################################
+### Job finished at Thu Jun  5 16:19:19 EDT 2025 ###
+###################################################

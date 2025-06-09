@@ -1,0 +1,93 @@
+##############################################################
+### Job started at Thu Jun  5 22:39:34 EDT 2025 with p=TypeB, m=400, r=100, s=1 ###
+##############################################################
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+ randomForestSRC 3.2.2 
+ 
+ Type rfsrc.news() to see new features, changes, and bug fixes. 
+ 
+
+[conflicted] Will prefer dplyr::select over any other package.
+[conflicted] Will prefer dplyr::filter over any other package.
+[conflicted] Will prefer reshape2::melt over any other package.
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ readr     2.1.4
+✔ ggplot2   3.5.2     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     0.3.5     ✔ tidyr     1.2.1
+# A tibble: 42 × 4
+   theta   tau estimand   truth
+   <dbl> <dbl> <chr>      <dbl>
+ 1  0.3    0.2 de       -0.277 
+ 2  0.3    0.2 mu        0.446 
+ 3  0.3    0.2 mu_0      0.529 
+ 4  0.3    0.2 mu_1      0.252 
+ 5  0.3    0.2 oe        0.0632
+ 6  0.3    0.2 se_0      0.0219
+ 7  0.3    0.2 se_1      0.0213
+ 8  0.45   0.2 de       -0.276 
+ 9  0.45   0.2 mu        0.383 
+10  0.45   0.2 mu_0      0.507 
+11  0.45   0.2 mu_1      0.231 
+12  0.45   0.2 oe        0     
+13  0.45   0.2 se_0      0     
+14  0.45   0.2 se_1      0     
+15  0.6    0.2 de       -0.278 
+16  0.6    0.2 mu        0.321 
+17  0.6    0.2 mu_0      0.488 
+18  0.6    0.2 mu_1      0.210 
+19  0.6    0.2 oe       -0.0613
+20  0.6    0.2 se_0     -0.0186
+21  0.6    0.2 se_1     -0.0207
+22  0.3    0.4 de       -0.258 
+23  0.3    0.4 mu        0.546 
+24  0.3    0.4 mu_0      0.623 
+25  0.3    0.4 mu_1      0.366 
+26  0.3    0.4 oe        0.0596
+27  0.3    0.4 se_0      0.0186
+28  0.3    0.4 se_1      0.0237
+29  0.45   0.4 de       -0.263 
+30  0.45   0.4 mu        0.486 
+31  0.45   0.4 mu_0      0.605 
+32  0.45   0.4 mu_1      0.342 
+33  0.45   0.4 oe        0     
+34  0.45   0.4 se_0      0     
+35  0.45   0.4 se_1      0     
+36  0.6    0.4 de       -0.270 
+37  0.6    0.4 mu        0.425 
+38  0.6    0.4 mu_0      0.587 
+39  0.6    0.4 mu_1      0.317 
+40  0.6    0.4 oe       -0.0615
+41  0.6    0.4 se_0     -0.0175
+42  0.6    0.4 se_1     -0.0250
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Error in gzfile(file, "rb") : cannot open the connection
+Calls: readRDS -> gzfile
+In addition: Warning message:
+In gzfile(file, "rb") :
+  cannot open compressed file '../../data/m400/data_id724.rds', probable reason 'No such file or directory'
+Execution halted
+###################################################
+### Job finished at Thu Jun  5 22:39:50 EDT 2025 ###
+###################################################

@@ -1,3 +1,5 @@
+library(dplyr, ggplot, MASS)
+
 ###------------------------------------------------------###
 ###----------- Exploratory Data Analysis  ---------------###
 ###---------- (Supplementary Section D.1)  --------------###
@@ -29,7 +31,46 @@ ggplot(Ni.bari, aes(x = Ni)) +
   theme_bw()
 
 # Save the plot to a PDF file
-ggsave("FigS5.Bari_size_histogram.jpeg", width = 8, height = 2, units = "in")
+ggsave("FigS6.Bari_size_histogram.jpeg", width = 8, height = 2, units = "in")
+
+
+## Fit Negative binomial distribution for simulation setting resembling Ni distribution
+
+fit <- MASS::fitdistr(Ni.bari$Ni, "Negative Binomial")
+size <- fit$estimate["size"]        # size = 1.79
+mu   <- fit$estimate["mu"]          # mu = 19.94
+
+x_vals <- 1:250
+pmf_vals <- dnbinom(x_vals, size = size, mu = mu)
+
+# Scale PMF to match histogram counts
+total_count <- nrow(Ni.bari)
+bin_width <- 3
+scaled_pmf <- pmf_vals * total_count * bin_width  # approximate bin height
+
+# Create data frame for plotting
+pmf_df <- data.frame(x = x_vals, y = scaled_pmf)
+
+# Plot histogram + overlay PMF
+ggplot(Ni.bari, aes(x = Ni)) +
+  geom_histogram(breaks = seq(1, 250, by = bin_width), 
+                 fill = "lightblue", 
+                 color = "black",
+                 size = 0.1) +
+  ## Red line for 
+  geom_line(data = pmf_df, aes(x = x, y = y), 
+            color = "red", size = 1) +
+  labs(x = "Bari size", 
+       y = "Number of Baris") +
+  annotate("text", 
+           x = 239, y = 100, 
+           label = "Bari size 239 \n \u2193", 
+           hjust = 0.5) + 
+  theme_bw()
+
+
+
+
 
 
 ###--- Observed time distribution ---###
@@ -69,7 +110,7 @@ p.C.dist = ggplot(data, aes(x = C)) +
   theme_minimal()
 
 plot_grid(p.T.dist, p.C.dist, ncol = 1, align = "v")
-ggsave("FigS6.Event_time_censoring_time_distribution.pdf", width = 8, height = 6)
+ggsave("FigS7.Event_time_censoring_time_distribution.pdf", width = 8, height = 6)
 
 
 ###--- Vaccination coverage distribution ---###
@@ -86,4 +127,4 @@ ggplot(data %>%
   theme_bw()
 
 # Save the plot to a PDF file
-ggsave("FigS7.Vaccine_coverage_histogram.pdf", width = 8, height = 2)
+ggsave("FigS8.Vaccine_coverage_histogram.pdf", width = 8, height = 2)

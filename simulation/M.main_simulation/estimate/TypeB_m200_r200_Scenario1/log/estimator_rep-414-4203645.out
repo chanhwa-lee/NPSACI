@@ -1,0 +1,215 @@
+##############################################################
+### Job started at Thu Jun  5 14:04:48 EDT 2025 with p=TypeB, m=200, r=200, s=1 ###
+##############################################################
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+ randomForestSRC 3.2.2 
+ 
+ Type rfsrc.news() to see new features, changes, and bug fixes. 
+ 
+
+[conflicted] Will prefer dplyr::select over any other package.
+[conflicted] Will prefer dplyr::filter over any other package.
+[conflicted] Will prefer reshape2::melt over any other package.
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ readr     2.1.4
+✔ ggplot2   3.5.2     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     0.3.5     ✔ tidyr     1.2.1
+# A tibble: 42 × 4
+   theta   tau estimand   truth
+   <dbl> <dbl> <chr>      <dbl>
+ 1  0.3    0.2 de       -0.280 
+ 2  0.3    0.2 mu        0.436 
+ 3  0.3    0.2 mu_0      0.520 
+ 4  0.3    0.2 mu_1      0.240 
+ 5  0.3    0.2 oe        0.0761
+ 6  0.3    0.2 se_0      0.0409
+ 7  0.3    0.2 se_1      0.0259
+ 8  0.45   0.2 de       -0.265 
+ 9  0.45   0.2 mu        0.360 
+10  0.45   0.2 mu_0      0.479 
+11  0.45   0.2 mu_1      0.214 
+12  0.45   0.2 oe        0     
+13  0.45   0.2 se_0      0     
+14  0.45   0.2 se_1      0     
+15  0.6    0.2 de       -0.256 
+16  0.6    0.2 mu        0.296 
+17  0.6    0.2 mu_0      0.450 
+18  0.6    0.2 mu_1      0.194 
+19  0.6    0.2 oe       -0.0636
+20  0.6    0.2 se_0     -0.0294
+21  0.6    0.2 se_1     -0.0202
+22  0.3    0.4 de       -0.267 
+23  0.3    0.4 mu        0.539 
+24  0.3    0.4 mu_0      0.619 
+25  0.3    0.4 mu_1      0.352 
+26  0.3    0.4 oe        0.0767
+27  0.3    0.4 se_0      0.0411
+28  0.3    0.4 se_1      0.0315
+29  0.45   0.4 de       -0.257 
+30  0.45   0.4 mu        0.462 
+31  0.45   0.4 mu_0      0.578 
+32  0.45   0.4 mu_1      0.321 
+33  0.45   0.4 oe        0     
+34  0.45   0.4 se_0      0     
+35  0.45   0.4 se_1      0     
+36  0.6    0.4 de       -0.251 
+37  0.6    0.4 mu        0.396 
+38  0.6    0.4 mu_0      0.547 
+39  0.6    0.4 mu_1      0.296 
+40  0.6    0.4 oe       -0.0661
+41  0.6    0.4 se_0     -0.0311
+42  0.6    0.4 se_1     -0.0251
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+
+==========================================================================
+===========================   Analysis setting  ==========================
+==========================================================================
+
+- taus: 0.1, 0.2, 0.3, 0.4, 0.5 
+
+- policy: TypeB 
+
+- thetas: 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.6 
+
+- r: 200 
+
+- K: 2 
+
+- Nuisance estimation method: T nonpara / C nonpara / A nonpara 
+
+- m: 200 
+
+- N_total: 2609 
+
+- cluster size dist'n: 
+ 5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 
+11 11  3 11 14 17 13 12 12  8 18 19 12  9 12 18 
+
+ - observed time summary: 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.02328 0.20616 0.61129 0.76812 8.13830 
+
+ - event indicator table: 
+   0    1 
+ 980 1629 
+
+ - event time summary: 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.01441 0.16628 0.57246 0.68797 8.13830 
+
+ - censoring time summary: 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.05592 0.28208 0.67583 0.91466 7.55103 
+
+ - treatment indicator table: 
+   0    1 
+1346 1263 
+
+==========================================================================
+===========================   Estimation start  ==========================
+==========================================================================
+
+--- Split:1 ---
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 1303
+	number of test observations: 0
+	number of explanatory variables: 15
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) (3: 100) (4: 100) (5: 100) 
+(6: 100) (7: 100) (8: 100) (9: 100) (10: 100) 
+(11: 100) (12: 100) (13: 100) (14: 100) (15: 100) 
+
+
+   [*---------] 10% | ET: 19s 
+   [**--------] 20% | ET: 41s 
+   [***-------] 30% | ET: 66.5s 
+   [****------] 40% | ET: 88.5s 
+   [*****-----] 50% | ET: 113.9s 
+   [******----] 60% | ET: 131.1s 
+   [*******---] 70% | ET: 154.4s 
+   [********--] 80% | ET: 174s 
+   [*********-] 90% | ET: 198.7s 
+   [**********] 100% | ET: 218.5s 
+
+--- Split:2 ---
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 1306
+	number of test observations: 0
+	number of explanatory variables: 15
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) (3: 100) (4: 100) (5: 100) 
+(6: 100) (7: 100) (8: 100) (9: 100) (10: 100) 
+(11: 100) (12: 100) (13: 100) (14: 100) (15: 100) 
+
+
+   [*---------] 10% | ET: 20.8s 
+   [**--------] 20% | ET: 47.7s 
+   [***-------] 30% | ET: 70.6s 
+   [****------] 40% | ET: 84.8s 
+   [*****-----] 50% | ET: 103.8s 
+   [******----] 60% | ET: 120.9s 
+   [*******---] 70% | ET: 144.7s 
+   [********--] 80% | ET: 164s 
+   [*********-] 90% | ET: 187.1s 
+   [**********] 100% | ET: 205.6s 
+
+--- IF for proposed nonparametric estimator computed --- ET: 443.6 seconds
+--- Estimator computed: mu --- ET: 0.6 seconds --- 
+--- Estimator computed: mu_1 --- ET: 0.6 seconds --- 
+--- Estimator computed: mu_0 --- ET: 0.6 seconds --- 
+--- Estimator computed: de --- ET: 0.6 seconds --- 
+--- Estimator computed: oe --- ET: 0.6 seconds --- 
+--- Estimator computed: se_1 --- ET: 0.6 seconds --- 
+--- Estimator computed: se_0 --- ET: 0.6 seconds --- 
+--- Total run time: 449.9 seconds --- 
+--- Total run time: 463.5 seconds --- ###################################################
+### Job finished at Thu Jun  5 14:12:32 EDT 2025 ###
+###################################################

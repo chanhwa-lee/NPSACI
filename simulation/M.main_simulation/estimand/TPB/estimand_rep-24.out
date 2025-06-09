@@ -1,0 +1,97 @@
+##############################################################
+### Job started at Thu Jun  5 01:05:31 EDT 2025 ###
+##############################################################
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ readr     2.1.4
+✔ ggplot2   3.5.2     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     0.3.5     ✔ tidyr     1.2.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the [conflicted package](http://conflicted.r-lib.org/) to force all conflicts to become errors
+# A tibble: 42 × 4
+   theta   tau estimand   truth
+   <dbl> <dbl> <chr>      <dbl>
+ 1  0.3    0.2 de       -0.282 
+ 2  0.3    0.2 mu        0.437 
+ 3  0.3    0.2 mu_0      0.521 
+ 4  0.3    0.2 mu_1      0.239 
+ 5  0.3    0.2 oe        0.0710
+ 6  0.3    0.2 se_0      0.0359
+ 7  0.3    0.2 se_1      0.0200
+ 8  0.45   0.2 de       -0.266 
+ 9  0.45   0.2 mu        0.366 
+10  0.45   0.2 mu_0      0.485 
+11  0.45   0.2 mu_1      0.219 
+12  0.45   0.2 oe        0     
+13  0.45   0.2 se_0      0     
+14  0.45   0.2 se_1      0     
+15  0.6    0.2 de       -0.265 
+16  0.6    0.2 mu        0.306 
+17  0.6    0.2 mu_0      0.465 
+18  0.6    0.2 mu_1      0.200 
+19  0.6    0.2 oe       -0.0594
+20  0.6    0.2 se_0     -0.0201
+21  0.6    0.2 se_1     -0.0191
+22  0.3    0.4 de       -0.268 
+23  0.3    0.4 mu        0.536 
+24  0.3    0.4 mu_0      0.617 
+25  0.3    0.4 mu_1      0.349 
+26  0.3    0.4 oe        0.0692
+27  0.3    0.4 se_0      0.0347
+28  0.3    0.4 se_1      0.0222
+29  0.45   0.4 de       -0.255 
+30  0.45   0.4 mu        0.467 
+31  0.45   0.4 mu_0      0.582 
+32  0.45   0.4 mu_1      0.327 
+33  0.45   0.4 oe        0     
+34  0.45   0.4 se_0      0     
+35  0.45   0.4 se_1      0     
+36  0.6    0.4 de       -0.259 
+37  0.6    0.4 mu        0.408 
+38  0.6    0.4 mu_0      0.563 
+39  0.6    0.4 mu_1      0.304 
+40  0.6    0.4 oe       -0.0596
+41  0.6    0.4 se_0     -0.0188
+42  0.6    0.4 se_1     -0.0230
+
+[Simulation setting] 
+
+- M: 1000 
+
+- taus: 0.1, 0.2, 0.3, 0.4, 0.5 
+
+- thetas: 0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.275, 0.3, 0.325, 0.35, 0.375, 0.4, 0.425, 0.45, 0.475, 0.5 
+
+- r: 100 
+
+# A tibble: 735 × 4
+   theta   tau estimand  truth
+   <dbl> <dbl> <chr>     <dbl>
+ 1     0   0.1 mu        0.305
+ 2     0   0.1 mu_1      0.151
+ 3     0   0.1 mu_0      0.420
+ 4     0   0.1 de       -0.269
+ 5     0   0.1 se_1      0    
+ 6     0   0.1 se_0      0    
+ 7     0   0.1 oe        0    
+ 8     0   0.2 mu        0.382
+ 9     0   0.2 mu_1      0.226
+10     0   0.2 mu_0      0.503
+# ℹ 725 more rows
+[1] "Total run time was 1420.044 seconds"
+###################################################
+### Job finished at Thu Jun  5 01:29:12 EDT 2025 ###
+###################################################

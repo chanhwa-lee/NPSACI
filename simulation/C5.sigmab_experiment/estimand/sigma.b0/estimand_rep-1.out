@@ -1,0 +1,52 @@
+##############################################################
+### Job started at Fri Jun  6 01:51:53 EDT 2025 ###
+##############################################################
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ readr     2.1.4
+✔ ggplot2   3.5.2     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     0.3.5     ✔ tidyr     1.2.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the [conflicted package](http://conflicted.r-lib.org/) to force all conflicts to become errors
+
+[Simulation setting] 
+
+- M: 1000 
+
+- taus: 0.2 
+
+- thetas: 0.3, 0.4, 0.5, 0.6, 0.7 
+
+- r: 100 
+
+# A tibble: 35 × 4
+   theta   tau estimand truth
+   <dbl> <dbl> <chr>    <dbl>
+ 1   0.3   0.2 mu         Inf
+ 2   0.3   0.2 mu_1       NaN
+ 3   0.3   0.2 mu_0       NaN
+ 4   0.3   0.2 de         NaN
+ 5   0.3   0.2 se_1       NaN
+ 6   0.3   0.2 se_0       NaN
+ 7   0.3   0.2 oe         NaN
+ 8   0.4   0.2 mu         Inf
+ 9   0.4   0.2 mu_1       NaN
+10   0.4   0.2 mu_0       NaN
+# ℹ 25 more rows
+[1] "Total run time was 120.296 seconds"
+###################################################
+### Job finished at Fri Jun  6 01:53:53 EDT 2025 ###
+###################################################

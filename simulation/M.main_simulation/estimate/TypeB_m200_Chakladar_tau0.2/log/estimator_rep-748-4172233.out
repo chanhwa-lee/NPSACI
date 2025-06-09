@@ -1,0 +1,159 @@
+##############################################################
+### Job started at Thu Jun  5 11:30:09 EDT 2025 with m=200 for Chakladar IPCW ###
+##############################################################
+Loading required package: stats4
+
+Attaching package: ‘sn’
+
+The following object is masked from ‘package:stats’:
+
+    sd
+
+Loading required package: survival
+Loading required package: Matrix
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:plyr’:
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘geex’
+
+The following object is masked from ‘package:lme4’:
+
+    show
+
+The following object is masked from ‘package:Matrix’:
+
+    show
+
+The following object is masked from ‘package:sn’:
+
+    show
+
+The following object is masked from ‘package:stats4’:
+
+    show
+
+The following object is masked from ‘package:methods’:
+
+    show
+
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ readr     2.1.4
+✔ ggplot2   3.4.4     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     0.3.5     ✔ tidyr     1.2.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::arrange()   masks plyr::arrange()
+✖ purrr::compact()   masks plyr::compact()
+✖ dplyr::count()     masks plyr::count()
+✖ dplyr::desc()      masks plyr::desc()
+✖ lubridate::dst()   masks sn::dst()
+✖ tidyr::expand()    masks Matrix::expand()
+✖ dplyr::failwith()  masks plyr::failwith()
+✖ dplyr::filter()    masks stats::filter()
+✖ dplyr::id()        masks plyr::id()
+✖ dplyr::lag()       masks stats::lag()
+✖ dplyr::mutate()    masks plyr::mutate()
+✖ tidyr::pack()      masks Matrix::pack()
+✖ dplyr::rename()    masks plyr::rename()
+✖ lubridate::show()  masks geex::show(), lme4::show(), Matrix::show(), sn::show(), stats4::show(), methods::show()
+✖ dplyr::summarise() masks plyr::summarise()
+✖ dplyr::summarize() masks plyr::summarize()
+✖ tidyr::unpack()    masks Matrix::unpack()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+# A tibble: 42 × 4
+   theta   tau estimand   truth
+   <dbl> <dbl> <chr>      <dbl>
+ 1  0.3    0.2 de       -0.283 
+ 2  0.3    0.2 mu        0.448 
+ 3  0.3    0.2 mu_0      0.533 
+ 4  0.3    0.2 mu_1      0.250 
+ 5  0.3    0.2 oe        0.0728
+ 6  0.3    0.2 se_0      0.0325
+ 7  0.3    0.2 se_1      0.0277
+ 8  0.45   0.2 de       -0.278 
+ 9  0.45   0.2 mu        0.375 
+10  0.45   0.2 mu_0      0.500 
+11  0.45   0.2 mu_1      0.222 
+12  0.45   0.2 oe        0     
+13  0.45   0.2 se_0      0     
+14  0.45   0.2 se_1      0     
+15  0.6    0.2 de       -0.271 
+16  0.6    0.2 mu        0.307 
+17  0.6    0.2 mu_0      0.470 
+18  0.6    0.2 mu_1      0.199 
+19  0.6    0.2 oe       -0.0677
+20  0.6    0.2 se_0     -0.0303
+21  0.6    0.2 se_1     -0.0231
+22  0.3    0.4 de       -0.268 
+23  0.3    0.4 mu        0.553 
+24  0.3    0.4 mu_0      0.633 
+25  0.3    0.4 mu_1      0.365 
+26  0.3    0.4 oe        0.0731
+27  0.3    0.4 se_0      0.0322
+28  0.3    0.4 se_1      0.0339
+29  0.45   0.4 de       -0.269 
+30  0.45   0.4 mu        0.480 
+31  0.45   0.4 mu_0      0.601 
+32  0.45   0.4 mu_1      0.331 
+33  0.45   0.4 oe        0     
+34  0.45   0.4 se_0      0     
+35  0.45   0.4 se_1      0     
+36  0.6    0.4 de       -0.266 
+37  0.6    0.4 mu        0.409 
+38  0.6    0.4 mu_0      0.569 
+39  0.6    0.4 mu_1      0.302 
+40  0.6    0.4 oe       -0.0708
+41  0.6    0.4 se_0     -0.0322
+42  0.6    0.4 se_1     -0.0293
+[1] "[Analysis setting]"
+[1] "taus: 0.2"
+[1] "thetas: 0.3, 0.45, 0.6"
+[1] "m: 200"
+[1] "N_total: 2385"
+[1] "cluster size dist'n: "
+
+ 5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 
+12 13 14 17 13  8 14 18 22 12 12  9  8  9 10  9 
+[1] "observed time summary: "
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+ 0.00000  0.02032  0.20136  0.63495  0.80326 13.44242 
+[1] "event indicator table: "
+
+   0    1 
+ 919 1466 
+[1] "treatment indicator table: "
+
+   0    1 
+1261 1124 
+[1] "C model fitted"
+[1] "A model fitted"
+[1] "Estimates computed"
+[1] "SEs computed"
+  estimand theta tau       est         se       PCL       PCU UCL UCU
+1     mu_1  0.30 0.2 0.2343808 0.02868179 0.1781645 0.2905971   0   0
+2     mu_1  0.45 0.2 0.1934921 0.01686775 0.1604313 0.2265529   0   0
+3     mu_1  0.60 0.2 0.1620923 0.01655617 0.1296422 0.1945424   0   0
+4     mu_0  0.30 0.2 0.5517868 0.04345555 0.4666139 0.6369597   0   0
+5     mu_0  0.45 0.2 0.5059992 0.03017782 0.4468507 0.5651478   0   0
+6     mu_0  0.60 0.2 0.4437756 0.03505616 0.3750655 0.5124857   0   0
+Warning message:
+In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
+  Model failed to converge with max|grad| = 0.0180308 (tol = 0.002, component 1)
+[1] "Total run time was 788.45 seconds"
+###################################################
+### Job finished at Thu Jun  5 11:43:18 EDT 2025 ###
+###################################################
