@@ -1,6 +1,69 @@
 # NPSACI
 
 - The code in this repository implements the nonparametric cross-fitting estimators developed in the paper "**Nonparametric Causal Survival Analysis with Clustered Interference**"
+
+## Quick start
+
+Run `QuickStart.R` to quick start.
+
+First, prepare dataset with column names 
+- id: cluster id
+- Y: observed time
+- D: event indicator (D = I(T \le C))
+- A: binary treatment status
+- X: can be artibrary variable names indicating covariates
+
+```r
+# --- Generate toy example data ---
+generate_cluster_data = function(N){
+  
+  ## Step1. Covariate generation
+  age <- round(runif(N, 15, 65)); dist.river <- runif(N, 0, 5)
+  
+  ## Step2. Treatment model
+  b = rnorm(1,0,0.5)
+  pi = plogis(0.2 + 0.2*(age/40-1)^2 + 0.2*pmax(dist.river/5,0.3) + b)
+  A <- rbinom(N, 1, pi)
+  g.A <- (sum(A)-A)/(N-1)
+  
+  ## Step3. Survival time model
+  T_ <- round(100*rexp(N, 1/exp(2 + 1*A + 1*g.A + 1*A*g.A + 0.5*dist.river - 0.5*(age/40-1))))
+  C <- round(runif(N, 0, 500 + 200*A + 50*dist.river + 100*(age/40-1)))
+  
+  ## Step 4. Combine all data
+  Y <- pmin(T_,C)
+  D <- as.numeric(T_ <= C)
+  
+  return(data.frame(Y = Y, D = D, A = A, age = age, dist.river = dist.river))
+  
+}
+
+m = 100
+
+toy_data = lapply(sample(x = 3:5, size = m, replace = T), generate_cluster_data) %>%
+  dplyr::bind_rows(.id = "id") %>% mutate(id = as.numeric(id))
+```
+
+Next, specify 
+
+```r
+## Help functions for estimator main functions
+source("/code/help_util.R")
+
+## Help functions for policy specific functions
+source("/code/help_TypeB.R")
+source("/code/help_TPB.R")
+
+## Help functions for nuisance functions estimation method
+source("/code/help_nuis_est.R")
+
+## Compute estimates
+result = estimator(data = toy_data,
+                   X.T.names = c("age", "dist.river"),
+                   X.C.names = c("age"),
+                   X.A.names = c("age", "dist.river"),
+                   taus = 10*(1:50), thetas = seq(0.3, 0.6, length.out = 121), theta0 = 0.45)
+```
  
 ## Summary
 
@@ -45,15 +108,18 @@ Provides toy example to perform real data analysis instead of cholera vaccine da
 
 ***
 
-## File Description
 
-## :file_folder: code
-- :page_facing_up: `help_util.R`: R functions for estimand and estimator computation
-- :page_facing_up: `help_TypeB.R`: R functions specific to TypeB policy
-- :page_facing_up: `help_TPB.R`: R functions specific to TPB policy
-- :page_facing_up: `help_nuis_est.R`: R functions to fit and evaluate nuisance function estimators
+
+
+# Detailed File Description
 
 ## :file_folder: simulation
+
+- :file_folder: `M.main_simulation`: Perform simulations in main text and supplementary material C.1--C.4
+- :file_folder: `C5.sigmab_experiment`: Perform simulations in supplementary material C.5
+- :file_folder: `C6.Ndist_experiment`: Perform simulations in supplementary material C.6
+
+
 
 R files are the main scripts, while bash files (.sh) are for submitting jobs to computing clusters.
 
