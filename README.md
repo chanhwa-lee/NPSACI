@@ -14,7 +14,12 @@ First, prepare dataset with column names
 - X: can be artibrary variable names indicating covariates
 
 ```r
-# --- Generate toy example data ---
+library(dplyr)
+library(glue)
+library(conflicted)
+conflicts_prefer(dplyr::filter)
+
+# --- Generate synthetic data ---
 generate_cluster_data = function(N){
   
   ## Step1. Covariate generation
@@ -44,26 +49,61 @@ toy_data = lapply(sample(x = 3:5, size = m, replace = T), generate_cluster_data)
   dplyr::bind_rows(.id = "id") %>% mutate(id = as.numeric(id))
 ```
 
-Next, specify 
+Then, specify estimation parameters
+
+- X.T.names: covariates names in T model
+- X.C.names: covariates names in C model
+- X.A.names: covariates namce on A model
+- policy: Either "TypeB" or "TPB"
+- taus: times of interest
+- thetas: policy indices of interest
+- theta0: baseline policy index (for causal effect computation)
 
 ```r
+# --- Compute estimates ---
+
 ## Help functions for estimator main functions
-source("/code/help_util.R")
+source("code/help_util.R")
 
 ## Help functions for policy specific functions
-source("/code/help_TypeB.R")
-source("/code/help_TPB.R")
+source("code/help_TypeB.R")
+source("code/help_TPB.R")
 
 ## Help functions for nuisance functions estimation method
-source("/code/help_nuis_est.R")
+source("code/help_nuis_est.R")
 
 ## Compute estimates
 result = estimator(data = toy_data,
                    X.T.names = c("age", "dist.river"),
                    X.C.names = c("age"),
                    X.A.names = c("age", "dist.river"),
-                   taus = 10*(1:50), thetas = seq(0.3, 0.6, length.out = 121), theta0 = 0.45)
+                   policy = "TypeB",
+                   taus = 20*(1:25), thetas = seq(0.3, 0.6, length.out = 31), theta0 = 0.45)
+
+## Estimation Result
+result$result %>% filter(estimand == "mu", tau == 360) 
+      estimand theta tau        est         se        PCL        PCU        UCL       UCU
+#> 1        mu  0.30 360 0.17202130 0.04597763 0.08190515 0.26213745 0.07347707 0.2705655
+#> 2        mu  0.31 360 0.16870090 0.04469703 0.08109472 0.25630708 0.07290139 0.2645004
+#> 3        mu  0.32 360 0.16534002 0.04343936 0.08019888 0.25048117 0.07223608 0.2584440
+#> 4        mu  0.33 360 0.16193982 0.04220139 0.07922510 0.24465455 0.07148923 0.2523904
+#> 5        mu  0.34 360 0.15850180 0.04098049 0.07818003 0.23882356 0.07066796 0.2463356
+#> 6        mu  0.35 360 0.15502781 0.03977458 0.07706964 0.23298598 0.06977862 0.2402770
+#> 7        mu  0.36 360 0.15152010 0.03858205 0.07589929 0.22714091 0.06882688 0.2342133
+#> 8        mu  0.37 360 0.14798130 0.03740175 0.07467387 0.22128873 0.06781781 0.2281448
+#> 9        mu  0.38 360 0.14441442 0.03623297 0.07339781 0.21543104 0.06675600 0.2220728
+#> 10       mu  0.39 360 0.14082292 0.03507536 0.07207521 0.20957062 0.06564560 0.2160002
+
 ```
+
+Results
+- est: estimates of target estimand
+- se: standard error estimates
+- PCL: 95% Point-wise Confidence interval Lower limit
+- PCU: 95% Point-wise Confidence interval Upper limit
+- UCL: 95% Uniform Confidence band Lower limit
+- UCU: 95% Uniform Confidence band Upper limit
+
  
 ## Summary
 
