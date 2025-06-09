@@ -2,10 +2,10 @@
 
 This repository contains the code accompanying the paper:
 
-**[Nonparametric Causal Survival Analysis with Clustered Interference](https://arxiv.org/abs/2409.13190)**
-*Chanhwa Lee, Donglin Zeng, Michael Emch, John D. Clemens, Michael G. Hudgens (2024)*
+* Lee, C., Zeng, D., Emch, M., Clemens, J. D., & Hudgens, M. G. (2024).
+  *[Nonparametric Causal Survival Analysis with Clustered Interference](https://arxiv.org/abs/2409.13190)*
 
-We develop nonparametric, cross-fitted estimators for causal survival effects under clustered interference and right censoring.
+We develop nonparametric cross-fitting estimators for causal survival effects under clustered interference and right censoring.
 
 ---
 
@@ -107,8 +107,8 @@ result$result %>% filter(estimand == "mu", tau == 360)
 
 * `est`: estimated causal effect
 * `se`: estimated standard error
-* `PCL`/`PCU`: 95% **pointwise** confidence interval
-* `UCL`/`UCU`: 95% **uniform** confidence band
+* `PCL`/`PCU`: 95% **pointwise** confidence interval (L:lower, U:upper)
+* `UCL`/`UCU`: 95% **uniform** confidence band (L:lower, U:upper)
 
 ---
 
@@ -125,11 +125,11 @@ Core functions for estimation:
 
 ### `/simulation`
 
-Scripts and HPC SLURM files for simulation studies:
+Scripts (.R) and HPC SLURM files (.sh) for simulation studies:
 
 * `help_simul.R`: simulation settings
-* `estimand.R`: defines target estimands
-* `estimator.R`: applies estimators
+* `estimand.R`: computes target estimands
+* `estimator.R`: computes estimators
 * `readresult.R`: reads and summarizes outputs
 
 **Subfolders:**
@@ -137,13 +137,59 @@ Scripts and HPC SLURM files for simulation studies:
 * `estimand/`: saved estimands
 * `estimate/`: saved estimates
 
+
+### Simulation Studies
+
+* **Main Simulation 1** (Table 1):
+  \:page\_facing\_up: `M.main_simulation/estimator.R`
+  *Settings*: `policy = "TypeB"`, `m = 200`, `r = 100`
+
+* **Main Simulation 2** (Figure 1):
+  \:page\_facing\_up: `M.main_simulation/estimator_chakladar.R`
+  Compares the proposed estimator to the IPCW estimator by [Chakladar et al. (2021)](https://doi.org/10.1111/biom.13459)
+
+---
+
+### Supplementary Simulations
+
+* **Section C.1** – TPB policy estimands (Table S1):
+  \:page\_facing\_up: `M.main_simulation/estimator.R`
+  *Settings*: `policy = "TPB"`, `m = 200`, `r = 100`
+
+* **Section C.2** – Performance over number of clusters *m* (Figure S1):
+  \:page\_facing\_up: `M.main_simulation/estimator.R`
+  *Settings*: `policy = "TypeB"`, `m ∈ {25, 50, 100, 200, 400}`, `r = 100`
+
+* **Section C.3** – Bounded vs. unbounded estimators (Figure S2):
+  \:page\_facing\_up: `estimator_unbounded.R`
+  Evaluates estimators without the bounding modification
+
+* **Section C.4** – Performance over subsampling degree *r* (Figure S3):
+  \:page\_facing\_up: `M.main_simulation/estimator.R`
+  *Settings*: `policy = "TypeB"`, `m = 200`, `r ∈ {10, 20, 50, 100, 200, 500}`
+
+* **Section C.5** – Performance under different correlation structures in treatment assignment (Figure S4):
+  \:file\_folder: `C5.sigmab_experiment`
+  Varies treatment correlation `σ_b = corr(A_ij, A_ik)`
+
+* **Section C.6** – Performance under different cluster size distributions (Figure S5):
+  \:file\_folder: `C6.Ndist_experiment`
+  Varies distribution of cluster sizes `N_i`
+
+
+
+
+
+
+
+
 **Simulations in paper:**
 
 * Table 1: `M.main_simulation/estimator.R` (TypeB, m=200, r=100)
 * Figure 1: `estimator_chakladar.R` vs Chakladar et al. (2021)
 * Supplementary Figures S1–S5 explore sensitivity to:
 
-  * policy type (TPB)
+  * Table S1: policy type (TPB)
   * number of clusters (m)
   * bounded vs unbounded estimators
   * subsampling degree (r)
