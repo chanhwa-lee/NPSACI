@@ -1,162 +1,217 @@
-# NPCI
+# NPSACI
 
-- The code in this repository implements the nonparametric sample splitting estimators developed in the paper "**Efficient Nonparametric Estimation of Stochastic Policy Effects with Clustered Interference**"
- 
-- The estimator utilizes ensemble estimator of the nuisance functions via SuperLearner in R
+This repository contains the code accompanying the paper:
 
-## Summary
+* Lee, C., Zeng, D., Emch, M., Clemens, J. D., & Hudgens, M. G. (2024).
+  *[Nonparametric Causal Survival Analysis with Clustered Interference](https://arxiv.org/abs/2409.13190)*
 
-The GitHub repository comprises two folders: `~/simulation` and `~/application`, which store reproducible codes for all computational work in the manuscript.
+We develop nonparametric cross-fitting estimators for causal survival effects under clustered interference and right censoring.
 
-In the `~/simulation` folder, reproducible codes for simulation results in the main text and the supplementary materials are stored. Running the shell scripts `~/simulation/CIPS/estimand_main.sh` and `~/simulation/CIPS/estimator_main.sh` computes causal estimands under the CIPS policy and their proposed estimates. The main code implementing the proposed method is found in the `estimand.R`, `estimator.R`, and `Helpfunc.R` files in the same directory. The simulation results are summarized by `readresult.R`. The simulation study for the TPB policy is done similarly, and the codes and results are in `~/simulation/TPB`. Additional simulation code and results in supplementary materials are available in `~/simulation/additional_simulation`.
+---
 
-In the `~/application` folder, code for real data analysis is stored. 
-Senegal Demographic Health Survey (DHS) provides sociodemographic, enviromental, and health-related information on household members. 
-In the survey, households were randomly sampled from census blocks. 
-The survey data was used to assess the effect of water, sanitation, and hygiene (WASH) facilities on diarrhea incidence among children in Senegal.
-Senegal DHS WASH data is publicly available upon request at [https://dhsprogram.com/data/available-datasets.cfm](https://dhsprogram.com/data/available-datasets.cfm).
-Place the Senegal DHS WASH data (described below) at `~/application/Data`, 
-and run `~/application/Data/Preprocessing.R` to get cleaned data for the analysis. 
-Run the `~/application/CIPS/estimator_main.sh` shell scripts to get estimates of Senegal DHS WASH causal estimands under the CIPS policy. The main code is in `estimator.R` in the same directory. The estimation results are summarized and visualized by `Visualization.R`. Estimation results for the TPB policy are done similarly, and the codes and results are in `~/application/TPB`.
+## 📦 Quick Start
 
-***
+Run `QuickStart.R` to replicate a minimal example.
 
-## File Description
+### Step 1: Prepare the dataset
 
-## :file_folder: simulation
+Your dataset should contain the following variables:
 
-R files are the main scripts, while bash files (.sh) are for submitting jobs to computing clusters.
+* `id`: cluster ID
+* `Y`: observed time
+* `D`: event indicator (`D = I(T ≤ C)`)
+* `A`: binary treatment
+* `X`: covariates (any column names)
 
-### :file_folder: CIPS
+Here is a synthetic data generator:
 
-CIPS policy simulation code and results included in the main text
+```r
+library(dplyr)
+library(glue)
+library(conflicted)
+conflicts_prefer(dplyr::filter)
 
-- :page_facing_up: `Helpfunc.R`: R functions for estimand and estimator computation
-- :page_facing_up: `estimand.R`: Causal estimands approximation
-- :page_facing_up: `estimator.R`: Proposed estimators computation
-- :page_facing_up: `readresult.R`: Read and summarize simulation result, reproduces Table 1
-- :file_folder: `estimand`: Target causal estimands
-- :file_folder: `data`: Estimates of target causal estimands
+generate_cluster_data = function(N) {
+  age <- round(runif(N, 15, 65))
+  dist.river <- runif(N, 0, 5)
+  b <- rnorm(1, 0, 0.5)
+  pi <- plogis(0.2 + 0.2*(age/40 - 1)^2 + 0.2*pmax(dist.river/5, 0.3) + b)
+  A <- rbinom(N, 1, pi)
+  g.A <- (sum(A) - A) / (N - 1)
+  T_ <- round(100 * rexp(N, 1 / exp(2 + A + g.A + A * g.A + 0.5 * dist.river - 0.5 * (age/40 - 1))))
+  C <- round(runif(N, 0, 500 + 200 * A + 50 * dist.river + 100 * (age/40 - 1)))
+  Y <- pmin(T_, C)
+  D <- as.numeric(T_ <= C)
+  data.frame(Y = Y, D = D, A = A, age = age, dist.river = dist.river)
+}
 
-### :file_folder: TPB
+m <- 100
+toy_data <- lapply(sample(3:5, m, replace = TRUE), generate_cluster_data) %>%
+  bind_rows(.id = "id") %>% mutate(id = as.numeric(id))
+```
 
-TPB policy simulation code and results included in the main text
+### Step 2: Estimate causal effects
 
-- :page_facing_up: `Helpfunc.R`: R functions for estimand and estimator computation
-- :page_facing_up: `estimand.R`: Causal estimands approximation
-- :page_facing_up: `estimator.R`: Proposed estimators computation
-- :page_facing_up: `readresult.R`: Read and summarize simulation result, reproduces Table 2
-- :page_facing_up: `estimands.RDS`: Target causal estimands
-- :file_folder: `data`: Estimates of target causal estimands
+Set parameters for nuisance models and target estimands:
+
+* `X.T.names`: covariates used in the survival time model (`T`)
+* `X.C.names`: covariates used in the censoring time model (`C`)
+* `X.A.names`: covariates used in the treatment assignment model (`A`)
+* `policy`: treatment allocation policy, either `"TypeB"` or `"TPB"`
+* `taus`: time points of interest for survival analysis
+* `thetas`: policy indices for which causal effects are estimated
+* `theta0`: baseline policy index for causal effect comparison
+
+
+```r
+# --- Compute estimates ---
+
+## Help functions for estimator main functions
+source("code/help_util.R")
+
+## Help functions for policy specific functions
+source("code/help_TypeB.R")
+source("code/help_TPB.R")
+
+## Help functions for nuisance functions estimation method
+source("code/help_nuis_est.R")
+
+## Compute estimates
+result <- estimator(
+  data = toy_data,
+  X.T.names = c("age", "dist.river"),
+  X.C.names = c("age"),
+  X.A.names = c("age", "dist.river"),
+  policy = "TypeB",
+  taus = 20 * (1:25),
+  thetas = seq(0.3, 0.6, length.out = 31),
+  theta0 = 0.45
+)
+
+## Estimation Result
+result$result %>% filter(estimand == "mu", tau == 360) 
+      estimand theta tau        est         se        PCL        PCU        UCL       UCU
+#> 1        mu  0.30 360 0.17202130 0.04597763 0.08190515 0.26213745 0.07347707 0.2705655
+#> 2        mu  0.31 360 0.16870090 0.04469703 0.08109472 0.25630708 0.07290139 0.2645004
+#> 3        mu  0.32 360 0.16534002 0.04343936 0.08019888 0.25048117 0.07223608 0.2584440
+#> 4        mu  0.33 360 0.16193982 0.04220139 0.07922510 0.24465455 0.07148923 0.2523904
+#> 5        mu  0.34 360 0.15850180 0.04098049 0.07818003 0.23882356 0.07066796 0.2463356
+#> 6        mu  0.35 360 0.15502781 0.03977458 0.07706964 0.23298598 0.06977862 0.2402770
+#> 7        mu  0.36 360 0.15152010 0.03858205 0.07589929 0.22714091 0.06882688 0.2342133
+#> 8        mu  0.37 360 0.14798130 0.03740175 0.07467387 0.22128873 0.06781781 0.2281448
+#> 9        mu  0.38 360 0.14441442 0.03623297 0.07339781 0.21543104 0.06675600 0.2220728
+#> 10       mu  0.39 360 0.14082292 0.03507536 0.07207521 0.20957062 0.06564560 0.2160002
+```
+
+**Result Columns**:
+
+* `est`: estimated causal effect
+* `se`: estimated standard error
+* `PCL`/`PCU`: 95% **pointwise** confidence interval (L:lower, U:upper)
+* `UCL`/`UCU`: 95% **uniform** confidence band (L:lower, U:upper)
+
+---
+
+## 📁 Repository Structure
+
+### `/code`
+
+Core functions for estimation:
+
+* `help_util.R`: main estimation workflow
+* `help_TypeB.R`: policy-specific functions (TypeB)
+* `help_TPB.R`: policy-specific functions (TPB)
+* `help_nuis_est.R`: nuisance parameter estimation
+
+### `/simulation`
+
+Scripts (.R) and HPC SLURM files (.sh) for simulation studies:
+
+* `help_simul.R`: simulation settings
+* `estimand.R`: computes target estimands
+* `estimator.R`: computes estimators
+* `readresult.R`: reads and summarizes outputs
+
+**Subfolders:**
+
+* `estimand/`: saved estimands
+* `estimate/`: saved estimates
+
+**Main Simulations in paper**
+
+* **Performance under TypeB policy** (Table 1)
   
-### :file_folder: additional_simulation
+  :page_facing_up: `M.main_simulation/estimator.R`
+  
+  *Settings*: `policy = "TypeB"`, `m = 200`, `r = 100`
 
-Additional simulation code and results included in the supplementary material
+* **Proposed vs. IPCW estimators** (Figure 1)
+  
+  :page_facing_up: `M.main_simulation/estimator_chakladar.R`
+  
+  Compares the proposed estimator to the IPCW estimator by [Chakladar et al. (2021)](https://doi.org/10.1111/biom.13459)
 
-> #### :file_folder: C.1.sizevarydelta
-> CIPS with varying delta policy simulation code and results
-> - :page_facing_up: `Helpfunc.R`: R functions for estimand and estimator computation
-> - :page_facing_up: `estimand.R`: Causal estimands approximation
-> - :page_facing_up: `estimator.R`: Proposed estimators computation
-> - :page_facing_up: `readresult.R`: Read and summarize simulation result, reproduces Table S2
-> - :file_folder: `estimand`: Target causal estimands
-> - :file_folder: `data`: Estimates of target causal estimands
+**Supplementary Simulations**
 
-> #### :file_folder: C.2.Pro_IPW_comparison
-> Proposed nonparametric estimator versus [Barkley et al. (2020)](https://projecteuclid.org/journals/annals-of-applied-statistics/volume-14/issue-3/Causal-inference-from-observational-studies-with-clustered-interference-with-application/10.1214/19-AOAS1314.full)'s IPW estimator comparison
-> - :page_facing_up: `Helpfunc.R`: R functions for estimand and estimator computation
-> - :page_facing_up: `compute_alpha.R`: Compute alpha values in Barkley et al. (2020) corresponding to delta values in CIPS
-> - :page_facing_up: `alphas.rds`: Computed alpha values
-> - :page_facing_up: `estimator.R`: Proposed estimators computation
-> - :page_facing_up: `readresult.R`: Read and summarize simulation result, reproduces Figure S1
-> - :file_folder: `data`: Estimates of target causal estimands 
-> - NOTE: estimands were not computed here and instead loaded from `~/simulation/CIPS/estimand`
+* **Section C.1** – Performance under TPB policy (Table S1)
+  
+  :page_facing_up: `M.main_simulation/estimator.R`
 
-> #### :file_folder: C.3.r_comparison
-> Proposed estimator performance over r (subsampling approximation degree) values
-> - :page_facing_up: `Helpfunc.R`: R functions for estimand and estimator computation
-> - :page_facing_up: `estimator.R`: Proposed estimators computation
-> - :page_facing_up: `readresult.R`: Read and summarize simulation result, reproduces Figure S2
-> - :file_folder: `data`: Estimates of target causal estimands
-> - NOTE: estimands were not computed here and instead loaded from `~/simulation/CIPS/estimand`
+  *Settings*: `policy = "TPB"`, `m = 200`, `r = 100`
 
-> #### :file_folder: C.4.N_dist_comparison
-> Proposed estimator performance over various cluster sizes distributions
-> - :file_folder: `N3`, `N3_5`, `N5`, `N5_10`: Simulation results stored for various cluster sizes distributions. Structure is similar to `~/simulation/CIPS`
-> - :page_facing_up: `readresult.R`: Read and summarize simulation result, reproduces Figure S3
+* **Section C.2** – Performance over number of clusters *m* (Figure S1)
+
+  :page_facing_up: `M.main_simulation/estimator.R`
+
+  *Settings*: `policy = "TypeB"`, `m ∈ {25, 50, 100, 200, 400}`, `r = 100`
+
+* **Section C.3** – Bounded vs. unbounded estimators (Figure S2)
+
+  :page_facing_up: `M.main_simulation/estimator_unbounded.R`
+
+  Evaluates estimators without the bounding modification
+
+* **Section C.4** – Performance over subsampling degree *r* (Figure S3)
+
+  :page_facing_up: `M.main_simulation/estimator.R`
+
+  *Settings*: `policy = "TypeB"`, `m = 200`, `r ∈ {10, 20, 50, 100, 200, 500}`
+
+* **Section C.5** – Performance under different correlation structures in treatment assignment (Figure S4)
+
+  :file_folder: `C5.sigmab_experiment`
+
+  Varies treatment correlation `σ_b = corr(A_ij, A_ik)`
+
+* **Section C.6** – Performance under different cluster size distributions (Figure S5):
+
+  :file_folder: `C6.Ndist_experiment`
+
+  Varies distribution of cluster sizes `N_i`
 
 
+### `/application`
 
+Cholera vaccine effect analysis under clustered interference.
+⚠️ **Raw data and outputs not public.**
 
+* `preprocessing.R`: preprocessing + exploratory analysis (Figures S6–S8)
+* `estimator.R`: causal estimation
+* `visualization.R`: plotting (Figures 2–3, S9–S11)
 
-## :file_folder: application
+### `/application_example`
 
-Analysis on the effect of water, sanitation, and hygiene (WASH) facilities on diarrhea among children in Senegal accounting for the clustered interference.
+Toy example replicating the application pipeline.
 
-### :file_folder: Data
+* `generate_toy_data.R`: create synthetic dataset
+* `estimate/`: results using toy dataset
 
-#### Senegal DHS data [(ANSD and ICF, 2020)](https://www.dhsprogram.com/pubs/pdf/FR368/FR368.pdf)
-- Sociodemographic, enviromental, and health-related survey on household members 
-- Used to assess the effect of WASH facilities on diarrhea incidence among children, allowing for interference within census blocks
-- The data can be downloaded from the Demographic and Health Surveys Program website [https://dhsprogram.com](https://dhsprogram.com) after submitting a data request for research purposes. 
-The process is as follows:
+---
 
-- **Register**
-First, register for an account at the following link: [https://dhsprogram.com/data/new-user-registration.cfm](https://dhsprogram.com/data/new-user-registration.cfm). 
-Fill in user information and select "Sub-Saharan Africa" from the drop-down menu under "Select Region". 
-Then, click on the "Survey" checkbox for "Senegal" and submit the dataset request.
+## 📚 References
 
-- **Download dataset**
-Upon approval of your account registration, log in to the website at [https://dhsprogram.com/data/dataset_admin/login_main.cfm](https://dhsprogram.com/data/dataset_admin/login_main.cfm).
-Select your project, then click on the "Download by Single Survey" link and select the country: "Senegal". 
-Click on the "Download" link under the "Survey Datasets" column for "Country/Year: Senegal 2015" and "Type: Continuous DHS" row. 
-Download "SNKR7HDT.ZIP" (Stata dataset) under the "Household Recode" tab. 
-Uncompress the downloaded .ZIP folder. 
-Rename "SNKR7HFL.DTA" to "senegal15.DTA". 
-In the same folder, the .MAP file is the data dictionary.
+* Lee, C., Zeng, D., Emch, M., Clemens, J. D., & Hudgens, M. G. (2024).
+  *[Nonparametric Causal Survival Analysis with Clustered Interference](https://arxiv.org/abs/2409.13190)*. arXiv:2409.13190
 
-- For other years (2016 - 2019), repeat the process according to the following steps:
-
-  >- Senegal: Continuous DHS, 2015 -> (download) `SNKR7HDT.ZIP` -> (uncompress) `SNKR7HFL.DTA` -> (rename) `senegal15.DTA`
-  >- Senegal: Continuous DHS, 2016 -> (download) `SNKR7IDT.ZIP` -> (uncompress) `SNKR7IFL.DTA` -> (rename) `senegal16.DTA`
-  >- Senegal: Continuous DHS, 2017 -> (download) `SNKR7ZDT.ZIP` -> (uncompress) `SNKR7ZFL.DTA` -> (rename) `senegal17.DTA`
-  >- Senegal: Continuous DHS, 2018 -> (download) `SNKR81DT.ZIP` -> (uncompress) `SNKR81FL.DTA` -> (rename) `senegal18.DTA`
-  >- Senegal: Continuous DHS, 2019 -> (download) `SNKR8BDT.ZIP` -> (uncompress) `SNKR8BFL.DTA` -> (rename) `senegal19.DTA`
-
-- Place the datasets in `~/application/Data/`
-
-- :page_facing_up: `Preprocessing.R`: Preprocessing raw data files to generate `HHData.Rdata` and generate exploratory figures, reproduces Figures S4 and S5.
-
-### :file_folder: CIPS
-
-CIPS policy application code and results
-
-- :page_facing_up: `estimator.R`: Proposed estimators computation
-- :page_facing_up: `Visualization.R`: Read and summarize simulation results to generate Figures 1, S6, S7
-- :file_folder: `Rdata`: Estimates of target causal estimands were stored.
-- :file_folder: D.4. Comparison with [Park et al (2021)](https://arxiv.org/abs/2111.09932v1)
-  >- :page_facing_up: `Preprocessing.R`: Preprocessing raw data files to generate HHData.Rdata from `~/application/Data/senegal18.DTA`
-  >- :page_facing_up: `estimator.R`: Proposed estimators computation
-  >- :page_facing_up: `Visualization.R`: Read and summarize simulation results to generate Figure S9
-  >- :file_folder: `Rdata`: Estimates of target causal estimands
-
-### :file_folder: TPB
-
-TPB policy application code and results
-
-- :page_facing_up: `Estimator.R`: Proposed estimators computation
-- :page_facing_up: `Estimation.R`: Script for job submission to computing clusters
-- :page_facing_up: `Visualization.R`: Read and summarize simulation results to generate Figures 2 and S8.
-- :file_folder: `result`: Estimates of target causal estimands
-
-***
-
-## References
-- [Barkley, B. G., Hudgens, M. G., Clemens, J. D., Ali, M. & Emch, M. E. (2020), ‘Causal
-inference from observational studies with clustered interference, with application to a
-cholera vaccine study’, The Annals of Applied Statistics 14(3), 1432–1448.](https://projecteuclid.org/journals/annals-of-applied-statistics/volume-14/issue-3/Causal-inference-from-observational-studies-with-clustered-interference-with-application/10.1214/19-AOAS1314.full)
-
-- [Park, C., Chen, G., Yu, M. & Kang, H. (2021), ‘Optimal allocation of water and sanitation
-facilities to prevent communicable diarrheal diseases in Senegal under partial interference’,
-arXiv preprint arXiv:2004.08950 .](https://arxiv.org/abs/2111.09932v1)https://arxiv.org/abs/2111.09932v1
-
+* Chakladar, S. et al. (2022).
+  *[Inverse probability weighted estimators of vaccine effects accommodating partial interference and censoring](https://doi.org/10.1111/biom.13459)*. Biometrics, 78(2), 777–788.
