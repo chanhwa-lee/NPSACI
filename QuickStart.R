@@ -1,3 +1,5 @@
+conflicts_prefer(dplyr::filter)
+
 # --- Generate synthetic data ---
 generate_cluster_data = function(N){
   
@@ -27,12 +29,24 @@ m = 100
 toy_data = lapply(sample(x = 3:5, size = m, replace = T), generate_cluster_data) %>%
   dplyr::bind_rows(.id = "id") %>% mutate(id = as.numeric(id))
 
-summary(toy_data)
 
-write.csv(toy_data, "toy_data.csv", row.names = FALSE)
+# --- Compute estimates ---
 
-# --- Fit Cox proportional hazards model ---
-model <- coxph(Surv(Y, D) ~ A + g.A + A*g.A + age + dist.river, 
-               data = toy_data %>% group_by(id) %>% mutate(g.A = (sum(A)-A)/(n()-1)))
+## Help functions for estimator main functions
+source("code/help_util.R")
 
-summary(model)
+## Help functions for policy specific functions
+source("code/help_TypeB.R")
+source("code/help_TPB.R")
+
+## Help functions for nuisance functions estimation method
+source("code/help_nuis_est.R")
+
+## Compute estimates
+result = estimator(data = toy_data,
+                   X.T.names = c("age", "dist.river"),
+                   X.C.names = c("age"),
+                   X.A.names = c("age", "dist.river"),
+                   policy = "TypeB",
+                   taus = 10*(1:50), thetas = seq(0.3, 0.6, length.out = 121), theta0 = 0.45)
+
