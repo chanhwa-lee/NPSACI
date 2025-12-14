@@ -145,7 +145,7 @@ phi2.over.H = function(A.i, X.i, N.i, a.i, thetas, H.fit, P.A_bar.thetas){
 #' @note Using parallel computing, need n.cpus
 #' @example OutReg(A.i, X.i, N.i, taus, thetas, F.fit, pi.fit, r)
 
-OutReg.TPB = function(A.i, X.i, N.i, taus, thetas, r = 0, F.fit, H.fit, P.A_bar.thetas){
+OutReg.TPB = function(A.i, X.i, N.i, taus, thetas, r = 0, F.fit, H.fit, P.A_bar.thetas, parallel_computing){
   
   ##------ I. Compute part 1 ------##
   ### First, compute summation wrt phiQ1 which is not approximated by subsampling
@@ -214,6 +214,9 @@ OutReg.TPB = function(A.i, X.i, N.i, taus, thetas, r = 0, F.fit, H.fit, P.A_bar.
     
   }
   
+  ### Parallel operation (dopar) or sequential operation (do) 
+  `%op%` <- if (parallel_computing) `%dopar%` else `%do%`
+  
   if(r == 0){
     
     ### if r == 0: no subsampling
@@ -227,13 +230,14 @@ OutReg.TPB = function(A.i, X.i, N.i, taus, thetas, r = 0, F.fit, H.fit, P.A_bar.
     ### res.taus.thetas[q]$`mu`: length(taus) x length(thetas) matrix of 
     ### [{w(a.i.q; thetas[d]) + phi(a.i.q; thetas[d])}^T F(taus[t] | a.i.q)]_(t,d)
     
-    res.thetas.taus <- foreach(q = 1:2^N.i) %dopar% {
-      OR.over.H.i.a.i.q = OR.over.H.i(a.i.rep[,q])
-      H.i.a.i.q = H(a.i.rep[,q], X.i, N.i, H.fit)
-      OR.i.a.i.q = list(mu   = OR.over.H.i.a.i.q$mu   * H.i.a.i.q,
-                        mu_1 = OR.over.H.i.a.i.q$mu_1 * H.i.a.i.q,
-                        mu_0 = OR.over.H.i.a.i.q$mu_0 * H.i.a.i.q)
-      return(OR.i.a.i.q)
+    res.thetas.taus <- foreach(q = 1:2^N.i) %op% {
+      OR.over.H.i.a.i.q <- OR.over.H.i(a.i.rep[, q])
+      H.i.a.i.q <- H(a.i.rep[, q], X.i, N.i, H.fit)
+      list(
+        mu   = OR.over.H.i.a.i.q$mu   * H.i.a.i.q,
+        mu_1 = OR.over.H.i.a.i.q$mu_1 * H.i.a.i.q,
+        mu_0 = OR.over.H.i.a.i.q$mu_0 * H.i.a.i.q
+      )
     }
     
     ### Compute sum_{q} {w(a.i.q) + phi(a.i.q)}^T F(tau | a.i.q) for all a.i.q \in A(N.i)
@@ -274,7 +278,7 @@ OutReg.TPB = function(A.i, X.i, N.i, taus, thetas, r = 0, F.fit, H.fit, P.A_bar.
     ### res.taus.thetas[q]$`mu`: length(taus) x length(thetas) matrix of 
     ### [{w/H(a.i.q; thetas[d]) + phi/H(a.i.q; thetas[d])}^T F(taus[t] | a.i.q)]_(t,d)
     
-    res.thetas.taus <- foreach(q = 1:r) %dopar% OR.over.H.i(a.i.rep[,q])
+    res.thetas.taus <- foreach(q = 1:r) %op% OR.over.H.i(a.i.rep[,q])
     
     ### Compute 1/r * sum_{q} {w(a.i.q) + phi(a.i.q)}^T F(tau | a.i.q) / f(a.i.q)
     ### where f(a.i.q) = H(a.i.q,Xi,Ni) 
@@ -314,7 +318,7 @@ OutReg.TPB = function(A.i, X.i, N.i, taus, thetas, r = 0, F.fit, H.fit, P.A_bar.
 #' @intermediate F, G, H, w, phi, OutReg, martingale integral
 #' @output evaluated IFs over thetas by taus matrix for mu, mu_1, mu_0 
 
-IF.TPB = function(Y.i, D.i, A.i, X.i, N.i, taus, thetas, r = 0, F.fit, G.fit, H.fit){
+IF.TPB = function(Y.i, D.i, A.i, X.i, N.i, taus, thetas, r = 0, F.fit, G.fit, H.fit, parallel_computing){
   
   ### First, compute P(A_bar >= rho | X, N)
   if(r == 0){

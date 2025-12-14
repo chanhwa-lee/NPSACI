@@ -4,6 +4,7 @@ library(cowplot)
 library(patchwork)
 library(tidyr)
 library(reshape2)
+library(conflicted)
 conflicts_prefer(dplyr::filter)
 
 setwd("~/research/NPSACI/application_example")
@@ -90,7 +91,7 @@ make_effect_plot = function(data, policy, times){
   
   # Set theta values depending on policy
   if (policy == "TypeB") {
-    thetas <- c(0.3, 0.45, 0.6)
+    
     ## Define label expressions using a named list
     label_greek <- as_labeller(c(
       "mu"   = "mu['B'](alpha)", 
@@ -103,7 +104,7 @@ make_effect_plot = function(data, policy, times){
     ), label_parsed)
     
   } else if (policy == "TPB") {
-    thetas <- c(0, 0.25, 0.5)
+    
     ## Define label expressions using a named list
     label_greek <- as_labeller(c(
       "mu"   = "mu['TPB'](rho)", 

@@ -28,6 +28,9 @@ Here is a synthetic data generator:
 ```r
 library(dplyr)
 library(glue)
+library(doMC)
+library(randomForestSRC)
+library(dbarts)
 library(conflicted)
 conflicts_prefer(dplyr::filter)
 
@@ -45,7 +48,7 @@ generate_cluster_data = function(N) {
   data.frame(Y = Y, D = D, A = A, age = age, dist.river = dist.river)
 }
 
-m <- 100
+m <- 200
 toy_data <- lapply(sample(3:5, m, replace = TRUE), generate_cluster_data) %>%
   bind_rows(.id = "id") %>% mutate(id = as.numeric(id))
 ```
@@ -83,32 +86,109 @@ result <- estimator(
   X.C.names = c("age"),
   X.A.names = c("age", "dist.river"),
   policy = "TypeB",
-  taus = 20 * (1:25),
+  taus = 20 * (1:20),
   thetas = seq(0.3, 0.6, length.out = 31),
-  theta0 = 0.45
+  theta0 = 0.45,
+  parallel_computing = FALSE
 )
 
 ## Estimation Result
-result$result %>% filter(estimand == "mu", tau == 360) 
-      estimand theta tau        est         se        PCL        PCU        UCL       UCU
-#> 1        mu  0.30 360 0.17202130 0.04597763 0.08190515 0.26213745 0.07347707 0.2705655
-#> 2        mu  0.31 360 0.16870090 0.04469703 0.08109472 0.25630708 0.07290139 0.2645004
-#> 3        mu  0.32 360 0.16534002 0.04343936 0.08019888 0.25048117 0.07223608 0.2584440
-#> 4        mu  0.33 360 0.16193982 0.04220139 0.07922510 0.24465455 0.07148923 0.2523904
-#> 5        mu  0.34 360 0.15850180 0.04098049 0.07818003 0.23882356 0.07066796 0.2463356
-#> 6        mu  0.35 360 0.15502781 0.03977458 0.07706964 0.23298598 0.06977862 0.2402770
-#> 7        mu  0.36 360 0.15152010 0.03858205 0.07589929 0.22714091 0.06882688 0.2342133
-#> 8        mu  0.37 360 0.14798130 0.03740175 0.07467387 0.22128873 0.06781781 0.2281448
-#> 9        mu  0.38 360 0.14441442 0.03623297 0.07339781 0.21543104 0.06675600 0.2220728
-#> 10       mu  0.39 360 0.14082292 0.03507536 0.07207521 0.20957062 0.06564560 0.2160002
+result$result %>% 
+  filter(estimand == "mu", tau == 360) %>% 
+  mutate(dplyr::across(c(est, se, PCL, PCU, UCL, UCU), ~ round(.x, 4)))
+  
+      estimand theta tau    est     se    PCL    PCU    UCL    UCU
+#> 1        mu  0.30 360 0.0675 0.0232 0.0219 0.1130 0.0174 0.1175
+#> 2        mu  0.31 360 0.0662 0.0225 0.0221 0.1103 0.0177 0.1147
+#> 3        mu  0.32 360 0.0650 0.0218 0.0222 0.1077 0.0180 0.1119
+#> 4        mu  0.33 360 0.0637 0.0211 0.0223 0.1050 0.0182 0.1091
+#> 5        mu  0.34 360 0.0623 0.0204 0.0224 0.1023 0.0184 0.1063
+#> 6        mu  0.35 360 0.0610 0.0197 0.0223 0.0997 0.0185 0.1035
+#> 7        mu  0.36 360 0.0597 0.0191 0.0223 0.0970 0.0186 0.1007
+#> 8        mu  0.37 360 0.0583 0.0184 0.0222 0.0944 0.0186 0.0980
+#> 9        mu  0.38 360 0.0569 0.0178 0.0221 0.0918 0.0186 0.0953
+#> 10       mu  0.39 360 0.0555 0.0172 0.0219 0.0892 0.0185 0.0926
 ```
 
 **Result Columns**:
 
 * `est`: estimated causal effect
 * `se`: estimated standard error
-* `PCL`/`PCU`: 95% **pointwise** confidence interval (L:lower, U:upper)
-* `UCL`/`UCU`: 95% **uniform** confidence band (L:lower, U:upper)
+* `PCL`/`PCU`: 95% **pointwise** confidence interval (L: lower, U: upper)
+* `UCL`/`UCU`: 95% **uniform** confidence band (L: lower, U: upper)
+
+
+### Step 3: Visualize estimates
+```r
+estimates = result$result %>% mutate(theta = round(theta, 4))
+
+## Risk over time plot
+thetas = c(0.3, 0.45, 0.6)
+
+ggplot(data = estimates %>%
+         filter(estimand %in% c("mu_1", "mu_0")) %>%
+         filter(theta %in% thetas) %>%
+         mutate(theta = paste0("alpha == ", theta)),
+       aes(x = tau, y = est, group = estimand, color = estimand)) +
+  geom_line(aes(linetype = estimand)) +
+  facet_grid(. ~ theta, labeller = label_parsed) +
+  labs(x = "Time (Days)", y = "Risk of Cholera") +
+  scale_linetype_manual(values = c("mu_0" = "solid", "mu_1" = "dashed"),
+                        labels = c("mu_0" = "Unvaccinated", "mu_1" = "Vaccinated"),
+                        guide = guide_legend(title = NULL)) +
+  scale_color_manual(values = c("mu_0" = "black", "mu_1" = "blue"),
+                     labels = c("mu_0" = "Unvaccinated", "mu_1" = "Vaccinated"),
+                     guide = guide_legend(title = NULL)) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+
+
+## Effects over theta plot
+times = c(180,360)
+
+ggplot(estimates %>%
+         dplyr::filter(estimand %in% c("de", "se_1", "se_0", "oe")) %>%
+         dplyr::mutate(estimand = factor(estimand, levels = c("de", "oe", "se_0", "se_1"))) %>%
+         dplyr::filter(tau %in% times) %>%
+         mutate(tau = factor(paste0("tau == ", tau), levels = paste0("tau == ", times))),
+       aes(x = theta, y = est)) +
+  geom_ribbon(aes(ymin = UCL, ymax = UCU, fill = "95% Uniform Confidence Band"), alpha = 1) +
+  geom_ribbon(aes(ymin = PCL, ymax = PCU, fill = "95% Pointwise Confidence Interval"), alpha = 1) +
+  geom_line(aes(color = "Estimate"), linewidth = 0.5) +
+  geom_hline(data = expand.grid(estimand = c("de", "se_1", "se_0", "oe")),
+             aes(yintercept = 0), color = "red", linetype = "dashed") +
+  facet_grid(tau ~ estimand, labeller = labeller(
+    estimand = as_labeller(
+      c("mu"   = "mu['B'](alpha)",
+        "mu_1" = "mu['B,1'](alpha)",
+        "mu_0" = "mu['B,0'](alpha)",
+        "de"   = 'DE["B"](tau:alpha)',
+        "se_1" = 'SE["B,1"](tau:alpha,0.45)',
+        "se_0" = 'SE["B,0"](tau:alpha,0.45)',
+        "oe"   = 'OE["B"](tau:alpha,0.45)'),
+      label_parsed
+    ),
+    tau = label_parsed
+  )) +
+  scale_fill_manual(name = NULL,
+                    values = c("95% Pointwise Confidence Interval" = "lightblue3",
+                               "95% Uniform Confidence Band" = "lightblue1"),
+                    guide = guide_legend(title = NULL)) +
+  scale_color_manual(name = NULL,
+                     values = c("Estimate" = "black"),
+                     guide = guide_legend(title = NULL)) +
+  labs(x = expression(alpha), y = "Effects") +
+  theme_bw() +
+  theme(legend.position = "bottom",
+        legend.background = element_blank(),
+        legend.key = element_blank())
+```
+
+### Risk of Cholera over Time
+![](QuickStart_risk_over_time.png)
+
+### Effects over Vaccine Coverage
+![](QuickStart_effects_over_theta.png)
 
 ---
 

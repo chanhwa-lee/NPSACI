@@ -21,7 +21,8 @@ estimator <- function(data,
                       policy,
                       taus, thetas, theta0, 
                       K = 2, r = 100, bounding = TRUE,
-                      Tfit.method = "nonpara", Cfit.method = "nonpara", Afit.method = "nonpara"){
+                      Tfit.method = "nonpara", Cfit.method = "nonpara", Afit.method = "nonpara",
+                      parallel_computing = TRUE){
   
   ## Record run time
   start_time = Sys.time()
@@ -127,10 +128,10 @@ estimator <- function(data,
       
       ## Compute IF value for cluster i
       if (policy == "TypeB") {
-        IF.i = IF.TypeB(Y.i, D.i, A.i, X.i, N.i, taus, thetas, r, F.fit, G.fit, H.fit)  
+        IF.i = IF.TypeB(Y.i, D.i, A.i, X.i, N.i, taus, thetas, r, F.fit, G.fit, H.fit, parallel_computing)  
         
       } else if (policy == "TPB"){
-        IF.i = IF.TPB(Y.i, D.i, A.i, X.i, N.i, taus, thetas, r, F.fit, G.fit, H.fit)  
+        IF.i = IF.TPB(Y.i, D.i, A.i, X.i, N.i, taus, thetas, r, F.fit, G.fit, H.fit, parallel_computing)  
         
       } else {
         stop(glue("Policy specified ({policy}) is not supported."))

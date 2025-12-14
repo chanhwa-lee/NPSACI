@@ -75,7 +75,7 @@ phi.over.H.TypeB = function(A.i, X.i, N.i, a.i, thetas, H.fit){
 #' @note Using parallel computing, need n.cpus
 #' @example OutReg(A.i, X.i, N.i, taus, thetas, F.fit, pi.fit, r)
 
-OutReg.TypeB = function(A.i, X.i, N.i, taus, thetas, r = 0, F.fit, H.fit){
+OutReg.TypeB = function(A.i, X.i, N.i, taus, thetas, r = 0, F.fit, H.fit, parallel_computing){
   
   ### Define OR.over.H function, which is
   ### {w/H(ai,Xi,Ni) + phi/H(Ai,Xi,Ni,ai)}^T F(tau|ai,Xi,Ni)
@@ -109,6 +109,9 @@ OutReg.TypeB = function(A.i, X.i, N.i, taus, thetas, r = 0, F.fit, H.fit){
     
   }
   
+  ### Parallel operation (dopar) or sequential operation (do) 
+  `%op%` <- if (parallel_computing) `%dopar%` else `%do%`
+  
   if(r == 0){
     
     ### if r == 0: no subsampling
@@ -122,13 +125,14 @@ OutReg.TypeB = function(A.i, X.i, N.i, taus, thetas, r = 0, F.fit, H.fit){
     ### res.taus.thetas[q]$`mu`: length(taus) x length(thetas) matrix of 
     ### [{w(a.i.q; thetas[d]) + phi(a.i.q; thetas[d])}^T F(taus[t] | a.i.q)]_(t,d)
     
-    res.thetas.taus <- foreach(q = 1:2^N.i) %dopar% {
-      OR.over.H.i.a.i.q = OR.over.H.i(a.i.rep[,q])
-      H.i.a.i.q = H(a.i.rep[,q], X.i, N.i, H.fit)
-      OR.i.a.i.q = list(mu   = OR.over.H.i.a.i.q$mu   * H.i.a.i.q,
-                        mu_1 = OR.over.H.i.a.i.q$mu_1 * H.i.a.i.q,
-                        mu_0 = OR.over.H.i.a.i.q$mu_0 * H.i.a.i.q)
-      return(OR.i.a.i.q)
+    res.thetas.taus <- foreach(q = 1:2^N.i) %op% {
+      OR.over.H.i.a.i.q <- OR.over.H.i(a.i.rep[, q])
+      H.i.a.i.q <- H(a.i.rep[, q], X.i, N.i, H.fit)
+      list(
+        mu   = OR.over.H.i.a.i.q$mu   * H.i.a.i.q,
+        mu_1 = OR.over.H.i.a.i.q$mu_1 * H.i.a.i.q,
+        mu_0 = OR.over.H.i.a.i.q$mu_0 * H.i.a.i.q
+      )
     }
     
     ### Compute sum_{q} {w(a.i.q) + phi(a.i.q)}^T F(tau | a.i.q) for all a.i.q \in A(N.i)
@@ -170,7 +174,9 @@ OutReg.TypeB = function(A.i, X.i, N.i, taus, thetas, r = 0, F.fit, H.fit){
     ### res.taus.thetas[q]$`mu`: length(taus) x length(thetas) matrix of 
     ### [{w/H(a.i.q; thetas[d]) + phi/H(a.i.q; thetas[d])}^T F(taus[t] | a.i.q)]_(t,d)
     
-    res.thetas.taus <- foreach(q = 1:r) %dopar% OR.over.H.i(a.i.rep[,q])
+    res.thetas.taus <- foreach(q = 1:r) %op% OR.over.H.i(a.i.rep[,q])
+    
+    # res.thetas.taus <- foreach(q = 1:r) %dopar% OR.over.H.i(a.i.rep[,q])
     # If foreach (parallel computing) not working
     # res.thetas.taus <- lapply(1:r, function(q) OR.over.H.i(a.i.rep[,q]))
     
@@ -212,7 +218,7 @@ OutReg.TypeB = function(A.i, X.i, N.i, taus, thetas, r = 0, F.fit, H.fit){
 #' @intermediate F, G, H, w, phi, OutReg, martingale integral
 #' @output evaluated IFs over thetas by taus matrix for mu, mu_1, mu_0 
 
-IF.TypeB = function(Y.i, D.i, A.i, X.i, N.i, taus, thetas, r = 0, F.fit, G.fit, H.fit){
+IF.TypeB = function(Y.i, D.i, A.i, X.i, N.i, taus, thetas, r = 0, F.fit, G.fit, H.fit, parallel_computing){
   
   ### Wrap up functions for convenience
   F.i.taus = F(taus, A.i, X.i, N.i, F.fit)
@@ -232,7 +238,7 @@ IF.TypeB = function(Y.i, D.i, A.i, X.i, N.i, taus, thetas, r = 0, F.fit, G.fit, 
   
   ## IF r >= 2**N.i, then do OR_all instead of OR_sub
   rr = ifelse(r >= 2**N.i, 0, r)
-  OR.thetas.taus = OutReg.TypeB(A.i, X.i, N.i, taus, thetas, rr, F.fit, H.fit)
+  OR.thetas.taus = OutReg.TypeB(A.i, X.i, N.i, taus, thetas, rr, F.fit, H.fit, parallel_computing)
   
   OR.i = list()
   OR.i$mu   = OR.thetas.taus$mu
