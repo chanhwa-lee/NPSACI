@@ -427,115 +427,71 @@ ggsave(filename = glue("FigS3.SimulationOver_r.TypeB.pdf"), width = 9, height = 
 
 
 
-###-------------------------------------------------------###
-###------ Supplementary: Performance over nuis est -------###
-###-------------------------------------------------------###
+# ###-------------------------------------------------------###
+# ###------ Supplementary: Performance over nuis est -------###
+# ###-------------------------------------------------------###
+# 
+# make_performance_plot = function(result, thetas, taus, policy){
+#   
+#   # Long form to generate plotting dataset
+#   data.plot = 
+#     reshape::melt(as.data.frame(result), 
+#                   id.vars = c("estimand", "theta", "tau", "Scenario"), 
+#                   var = "metric") %>%
+#     dplyr::filter(metric %in% c("RelBias", "ASE", "ESE", "COV", "UCOV"), 
+#                   estimand %in% c("mu", "mu_1", "mu_0")) %>%
+#     dplyr::mutate(Scenario = factor(Scenario, 
+#                                     levels = c("1", "21", "22", "23", "3", "41", "42", "43")))
+#   
+#   ggplot(data.plot %>% 
+#            dplyr::filter(theta %in% thetas,
+#                          tau   %in% taus) %>%
+#            dplyr::mutate(theta = paste0( ifelse(policy == "TypeB", "alpha == ", "rho == "), theta),
+#                          tau   = glue("tau == {tau}")), 
+#          aes(x = estimand, y = value, group = Scenario, fill = as.factor(Scenario)))+ 
+#     
+#     geom_bar(stat = "identity", position = position_dodge()) +
+#     
+#     ### 95% CI benchmark line ###
+#     geom_hline(data = expand.grid(metric = "COV"), 
+#                aes(yintercept = 95),
+#                color = "black",
+#                linetype = "dashed") +
+#     
+#     ### 95% UCB benchmark line ###
+#     geom_hline(data = expand.grid(metric = "UCOV"), 
+#                aes(yintercept = 95),
+#                color = "black",
+#                linetype = "dashed") +
+#     
+#     scale_fill_discrete("Nuisance estimators",
+#                         labels = c("1"  = "1 : T np / C np / A np",
+#                                    "21" = "21: T np / C np / A p",
+#                                    "22" = "22: T np / C p  / A np",
+#                                    "23" = "23: T np / C p  / A p",
+#                                    "3"  = "3 : T p  / C np / A np",
+#                                    "41" = "41: T p  / C np / A p",
+#                                    "42" = "42: T p  / C p  / A np",
+#                                    "43" = "43: T p  / C p  / A p")) +
+#     scale_x_discrete(labels = label_estimands) + 
+#     labs(x = "Estimand") + 
+#     theme_bw() + 
+#     theme(axis.title.y = element_blank(),
+#           legend.position = "bottom",
+#           legend.box = "horizontal") + 
+#     ggh4x::facet_nested(metric ~ theta+ tau, scales = "free", labeller = label_parsed)
+# }
+# 
+# 
+# make_performance_plot(result_TypeB, thetas = c(0.3,0.45,0.6), taus = c(0.2,0.4), "TypeB")
+# ggsave(filename = glue("FigS.SimulationOverNuisanceEstimators.TypeB.m{m}.r{r}.pdf"), width = 12, height = 8)
+# 
+# make_performance_plot(result_TPB, thetas = c(0, 0.025*10, 0.5), taus = c(0.2,0.4), "TPB")
+# ggsave(filename = glue("FigS.SimulationOverNuisanceEstimators.TPB.m{m}.r{r}.pdf"), width = 12, height = 8)
+# 
+# 
+# make_performance_plot(result_TypeB %>% filter(Scenario %in% c(1,23,3,43)), thetas = c(0.3,0.45,0.6), taus = c(0.2,0.4), "TypeB")
 
-make_performance_plot = function(result, thetas, taus, policy){
-  
-  # Long form to generate plotting dataset
-  data.plot = 
-    reshape::melt(as.data.frame(result), 
-                  id.vars = c("estimand", "theta", "tau", "Scenario"), 
-                  var = "metric") %>%
-    dplyr::filter(metric %in% c("RelBias", "ASE", "ESE", "COV", "UCOV"), 
-                  estimand %in% c("mu", "mu_1", "mu_0")) %>%
-    dplyr::mutate(Scenario = factor(Scenario, 
-                                    levels = c("1", "21", "22", "23", "3", "41", "42", "43")))
-  
-  ggplot(data.plot %>% 
-           dplyr::filter(theta %in% thetas,
-                         tau   %in% taus) %>%
-           dplyr::mutate(theta = paste0( ifelse(policy == "TypeB", "alpha == ", "rho == "), theta),
-                         tau   = glue("tau == {tau}")), 
-         aes(x = estimand, y = value, group = Scenario, fill = as.factor(Scenario)))+ 
-    
-    geom_bar(stat = "identity", position = position_dodge()) +
-    
-    ### 95% CI benchmark line ###
-    geom_hline(data = expand.grid(metric = "COV"), 
-               aes(yintercept = 95),
-               color = "black",
-               linetype = "dashed") +
-    
-    ### 95% UCB benchmark line ###
-    geom_hline(data = expand.grid(metric = "UCOV"), 
-               aes(yintercept = 95),
-               color = "black",
-               linetype = "dashed") +
-    
-    scale_fill_discrete("Nuisance estimators",
-                        labels = c("1"  = "1 : T np / C np / A np",
-                                   "21" = "21: T np / C np / A p",
-                                   "22" = "22: T np / C p  / A np",
-                                   "23" = "23: T np / C p  / A p",
-                                   "3"  = "3 : T p  / C np / A np",
-                                   "41" = "41: T p  / C np / A p",
-                                   "42" = "42: T p  / C p  / A np",
-                                   "43" = "43: T p  / C p  / A p")) +
-    scale_x_discrete(labels = label_estimands) + 
-    labs(x = "Estimand") + 
-    theme_bw() + 
-    theme(axis.title.y = element_blank(),
-          legend.position = "bottom",
-          legend.box = "horizontal") + 
-    ggh4x::facet_nested(metric ~ theta+ tau, scales = "free", labeller = label_parsed)
-}
-
-
-make_performance_plot(result_TypeB, thetas = c(0.3,0.45,0.6), taus = c(0.2,0.4), "TypeB")
-ggsave(filename = glue("FigS.SimulationOverNuisanceEstimators.TypeB.m{m}.r{r}.pdf"), width = 12, height = 8)
-
-make_performance_plot(result_TPB, thetas = c(0, 0.025*10, 0.5), taus = c(0.2,0.4), "TPB")
-ggsave(filename = glue("FigS.SimulationOverNuisanceEstimators.TPB.m{m}.r{r}.pdf"), width = 12, height = 8)
-
-
-make_performance_plot(result_TypeB %>% filter(Scenario %in% c(1,23,3,43)), thetas = c(0.3,0.45,0.6), taus = c(0.2,0.4), "TypeB")
-
-
-
-
-
-
-#--- Supplementary: Nuisance estimators convergence plot ---
-nuis_est.df = data.frame()
-
-for(m in c(25, 50, 100, 200, 400, 800, 1600)){
-  nuis_est.file.list = list.files(glue("nuis_estimates/m{m}/Rdata"),
-                                  pattern = "nuis_estimate.*rds", full.names = T)
-
-  if(length(nuis_est.file.list) < 10){next}
-
-  nuis_est.list <- lapply(nuis_est.file.list, function(file) readRDS(file))
-
-  print(glue("m = {m}, {length(nuis_est.file.list)} files were loaded"))
-
-  nuis_est = bind_rows(nuis_est.list, .id = "d")
-
-  nuis_est.df = rbind(nuis_est.df, nuis_est %>% mutate(m = m))
-}
-
-ggplot(nuis_est.df, aes(x = factor(m), y = bias, col = method)) +
-  geom_boxplot(position = position_dodge(width = 0.75)) +
-  theme_bw() +
-  labs(
-    x = "Number of clusters (m)",
-    y = "Average Relative Bias",
-    col = "Method"
-  ) +
-  facet_wrap(
-    ~nuis,
-    labeller = as_labeller(
-      c("F" = "bold(F)^T ~ '(Event time)'",
-        "G" = "bold(S)^C ~ '(Censoring time)'",
-        "H" = "H ~ '(Treatment)'"), 
-      default = label_parsed)) +
-  ylim(c(0, 1)) +
-  theme(legend.position = c(0.05, 0.95),
-        legend.justification = c(0, 1),
-        legend.background = element_rect(fill = "white", color = "black"))
-
-ggsave(filename = glue("FigS.NuisanceEstimatorsBias.pdf"), width = 12, height = 4)
 
 
 
