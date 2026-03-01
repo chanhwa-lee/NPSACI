@@ -1,0 +1,57 @@
+##############################################################
+### Job started at Wed Jan  7 12:35:49 AM EST 2026 with m=200 using no intereference methods ###
+##############################################################
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+ randomForestSRC 3.4.5 
+ 
+ Type rfsrc.news() to see new features, changes, and bug fixes. 
+ 
+
+[conflicted] Will prefer dplyr::select over any other package.
+[conflicted] Will prefer dplyr::filter over any other package.
+[conflicted] Will prefer reshape2::melt over any other package.
+Loading required package: prodlim
+Loaded gbm 2.2.2
+This version of gbm is no longer under development. Consider transitioning to gbm3, https://github.com/gbm-developers/gbm3
+randomForest 4.7-1.2
+Type rfNews() to see new features/changes/bug fixes.
+riskRegression version 2025.09.17
+[1] "--- Starting Comprehensive ATE Analysis ---"
+[1] "Running 1. T-Learner (Bootstrap CI)..."
+[1] "   -> Finished in 216.79 seconds."
+[1] "Running 2. X-Learner (Bootstrap CI)..."
+[1] "   -> Finished in 230.8 seconds."
+[1] "Running 3. AIPTW (analytical CI)..."
+[1] "   -> Finished in 2.36 seconds."
+[1] "Running 4. CSF (EIF CI)..."
+[1] "   -> Finished in 18.71 seconds."
+[1] "Running 5. MISTR (Rubin's Rule CI)..."
+[1] "   -> Finished in 60.03 seconds."
+[1] "--- Analysis Complete ---"
+[1] "--------------------------------------------------"
+[1] " FINAL ESTIMATED ATE RESULTS (95% CI) "
+[1] "--------------------------------------------------"
+     Method Estimate Lower_95_CI Upper_95_CI
+1 T-Learner   0.2705      0.2332      0.2979
+2 X-Learner   0.2654      0.2438      0.2902
+3     AIPTW  -0.0062     -0.1219      0.1094
+4       CSF   0.2657      0.2291      0.3022
+5     MISTR   0.2583      0.2226      0.2941
+--- Total run time: 537.4 seconds --- 
+\n###################################################
+### Job finished at Wed Jan  7 12:44:47 AM EST 2026 ###
+###################################################

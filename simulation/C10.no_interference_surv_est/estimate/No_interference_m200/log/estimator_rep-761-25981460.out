@@ -1,0 +1,62 @@
+##############################################################
+### Job started at Wed Jan  7 12:36:53 AM EST 2026 with m=200 using no intereference methods ###
+##############################################################
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+ randomForestSRC 3.4.5 
+ 
+ Type rfsrc.news() to see new features, changes, and bug fixes. 
+ 
+
+[conflicted] Will prefer dplyr::select over any other package.
+[conflicted] Will prefer dplyr::filter over any other package.
+[conflicted] Will prefer reshape2::melt over any other package.
+Loading required package: prodlim
+Loaded gbm 2.2.2
+This version of gbm is no longer under development. Consider transitioning to gbm3, https://github.com/gbm-developers/gbm3
+randomForest 4.7-1.2
+Type rfNews() to see new features/changes/bug fixes.
+riskRegression version 2025.09.17
+[1] "--- Starting Comprehensive ATE Analysis ---"
+[1] "Running 1. T-Learner (Bootstrap CI)..."
+[1] "   -> Finished in 162.9 seconds."
+[1] "Running 2. X-Learner (Bootstrap CI)..."
+[1] "   -> Finished in 183.38 seconds."
+[1] "Running 3. AIPTW (analytical CI)..."
+[1] "   -> Finished in 1.96 seconds."
+[1] "Running 4. CSF (EIF CI)..."
+[1] "   -> Finished in 17.04 seconds."
+[1] "Running 5. MISTR (Rubin's Rule CI)..."
+[1] "   -> Finished in 66.08 seconds."
+[1] "--- Analysis Complete ---"
+Warning messages:
+1: In selectJump(object$iid, times = times, type = type) :
+  selectJump may not handle correctly negative times
+2: In selectJump(object$iid, times = times, type = type) :
+  selectJump may not handle correctly negative times
+[1] "--------------------------------------------------"
+[1] " FINAL ESTIMATED ATE RESULTS (95% CI) "
+[1] "--------------------------------------------------"
+     Method Estimate Lower_95_CI Upper_95_CI
+1 T-Learner   0.2814      0.2509      0.3220
+2 X-Learner   0.2787      0.2349      0.3095
+3     AIPTW  -0.3210     -0.7012      0.0592
+4       CSF   0.2771      0.2402      0.3139
+5     MISTR   0.2736      0.2341      0.3131
+--- Total run time: 435.8 seconds --- 
+\n###################################################
+### Job finished at Wed Jan  7 12:44:09 AM EST 2026 ###
+###################################################
