@@ -1,0 +1,171 @@
+##############################################################
+### Job started at Tue Dec 23 05:38:27 AM EST 2025 with m=200, r=100, CensoringRate=0.5 ###
+##############################################################
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Warning message:
+package ‘dplyr’ was built under R version 4.5.0 
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+
+ randomForestSRC 3.4.5 
+ 
+ Type rfsrc.news() to see new features, changes, and bug fixes. 
+ 
+
+[conflicted] Will prefer dplyr::select over any other package.
+[conflicted] Will prefer dplyr::filter over any other package.
+[conflicted] Will prefer reshape2::melt over any other package.
+--- Target Censoring rate: 0.5 || Censoring factor: 0.28 --- 
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+--- Censoring rate: 51.4% --- 
+--- Desired censoring rate: 50% --- 
+
+==========================================================================
+===========================   Analysis setting  ==========================
+==========================================================================
+
+- taus: 0.2, 0.4 
+
+- policy: TypeB 
+
+- thetas: 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.6 
+
+- r: 100 
+
+- K: 2 
+
+- Nuisance estimation method: T nonpara / C nonpara / A nonpara 
+
+- m: 200 
+
+- N_total: 2468 
+
+- cluster size dist'n: 
+ 5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 
+11 13 13 19 10 15 15  7  9 14 14 13  8 14 16  9 
+
+ - observed time summary: 
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.009669 0.132794 0.451111 0.578027 6.736858 
+
+ - event indicator table: 
+   0    1 
+1269 1199 
+
+ - event time summary: 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.01028 0.13039 0.43781 0.56928 6.73686 
+
+ - censoring time summary: 
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.008959 0.136034 0.463675 0.591324 5.470916 
+
+ - treatment indicator table: 
+   0    1 
+1315 1153 
+
+==========================================================================
+===========================   Estimation start  ==========================
+==========================================================================
+
+--- Split:1 ---
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, default number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 1257
+	number of test observations: 0
+	number of explanatory variables: 15
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) (3: 100) (4: 100) (5: 100) 
+(6: 100) (7: 100) (8: 100) (9: 100) (10: 100) 
+(11: 100) (12: 100) (13: 100) (14: 100) (15: 100) 
+
+
+   [*---------] 10% | ET: 9.7s 
+   [**--------] 20% | ET: 20.8s 
+   [***-------] 30% | ET: 30.8s 
+   [****------] 40% | ET: 39.8s 
+   [*****-----] 50% | ET: 50.1s 
+   [******----] 60% | ET: 60.2s 
+   [*******---] 70% | ET: 71.1s 
+   [********--] 80% | ET: 81.8s 
+   [*********-] 90% | ET: 92.4s 
+   [**********] 100% | ET: 103s 
+
+--- Split:2 ---
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, default number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 1211
+	number of test observations: 0
+	number of explanatory variables: 15
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) (3: 100) (4: 100) (5: 100) 
+(6: 100) (7: 100) (8: 100) (9: 100) (10: 100) 
+(11: 100) (12: 100) (13: 100) (14: 100) (15: 100) 
+
+
+   [*---------] 10% | ET: 10.4s 
+   [**--------] 20% | ET: 20.7s 
+   [***-------] 30% | ET: 30.9s 
+   [****------] 40% | ET: 40.6s 
+   [*****-----] 50% | ET: 51s 
+   [******----] 60% | ET: 62.7s 
+   [*******---] 70% | ET: 73.3s 
+   [********--] 80% | ET: 83.5s 
+   [*********-] 90% | ET: 93.8s 
+   [**********] 100% | ET: 104.9s 
+
+--- IF for proposed nonparametric estimator computed --- ET: 229.2 seconds
+--- Estimator computed: mu --- ET: 0.3 seconds --- 
+--- Estimator computed: mu_1 --- ET: 0.3 seconds --- 
+--- Estimator computed: mu_0 --- ET: 0.3 seconds --- 
+--- Estimator computed: de --- ET: 0.3 seconds --- 
+--- Estimator computed: oe --- ET: 0.4 seconds --- 
+--- Estimator computed: se_1 --- ET: 0.3 seconds --- 
+--- Estimator computed: se_0 --- ET: 0.3 seconds --- 
+--- Total run time: 232.4 seconds --- 
+--- Total run time: 235.8 seconds --- 
+\n###################################################
+### Job finished at Tue Dec 23 05:42:23 AM EST 2025 ###
+###################################################

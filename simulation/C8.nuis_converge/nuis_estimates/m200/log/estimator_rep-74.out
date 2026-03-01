@@ -1,0 +1,85 @@
+##############################################################
+### Job started at Thu Dec 25 06:04:27 PM EST 2025 with m=200  ###
+##############################################################
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+[conflicted] Will prefer dplyr::select over any other package.
+[conflicted] Will prefer dplyr::filter over any other package.
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+Running in parallel with 8 cores using doMC...
+Loading required package: Matrix
+
+ randomForestSRC 3.4.5 
+ 
+ Type rfsrc.news() to see new features, changes, and bug fixes. 
+ 
+
+[1] "[Analysis setting]"
+[1] "taus: 0.1, 0.2, 0.3, 0.4, 0.5"
+[1] "m: 200"
+[1] "N_total: 2450"
+[1] "cluster size dist'n: "
+
+ 5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 
+16 11 14 18 12 10  6 18 14  8 14 11 11 12 11 14 
+[1] "observed time summary: "
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.02068 0.20111 0.55934 0.70172 7.24256 
+[1] "event indicator table: "
+
+   0    1 
+ 994 1456 
+[1] "treatment indicator table: "
+
+   0    1 
+1290 1160 
+[1] ""
+[1] "Parametric nuisance estimators training"
+[1] "Nonparametric nuisance estimators training"
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, default number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 2450
+	number of test observations: 0
+	number of explanatory variables: 15
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) (3: 100) (4: 100) (5: 100) 
+(6: 100) (7: 100) (8: 100) (9: 100) (10: 100) 
+(11: 100) (12: 100) (13: 100) (14: 100) (15: 100) 
+
+[1] "Evaluation using data (Parallel)"
+# A tibble: 6 × 3
+  method  nuis    bias
+  <chr>   <chr>  <dbl>
+1 nonpara F     0.385 
+2 nonpara G     0.292 
+3 nonpara H     0.0110
+4 para    F     0.571 
+5 para    G     0.428 
+6 para    H     0.0122
+[1] "Total run time was 108.735 seconds"
+###################################################
+### Job finished at Thu Dec 25 06:06:16 PM EST 2025 ###
+###################################################

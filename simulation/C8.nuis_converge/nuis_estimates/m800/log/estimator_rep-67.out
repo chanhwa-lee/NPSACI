@@ -1,0 +1,88 @@
+##############################################################
+### Job started at Thu Dec 25 06:11:36 PM EST 2025 with m=800  ###
+##############################################################
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+[conflicted] Will prefer dplyr::select over any other package.
+[conflicted] Will prefer dplyr::filter over any other package.
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+Running in parallel with 8 cores using doMC...
+Loading required package: Matrix
+
+ randomForestSRC 3.4.5 
+ 
+ Type rfsrc.news() to see new features, changes, and bug fixes. 
+ 
+
+[1] "[Analysis setting]"
+[1] "taus: 0.1, 0.2, 0.3, 0.4, 0.5"
+[1] "m: 800"
+[1] "N_total: 10083"
+[1] "cluster size dist'n: "
+
+ 5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 
+39 46 46 56 49 50 56 53 51 48 48 64 62 38 48 46 
+[1] "observed time summary: "
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+ 0.00000  0.02152  0.18991  0.54414  0.69438 12.92407 
+[1] "event indicator table: "
+
+   0    1 
+4202 5881 
+[1] "treatment indicator table: "
+
+   0    1 
+5362 4721 
+[1] ""
+[1] "Parametric nuisance estimators training"
+Warning message:
+In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
+  Model failed to converge with max|grad| = 0.00586548 (tol = 0.002, component 1)
+[1] "Nonparametric nuisance estimators training"
+
+Running BART with binary y
+
+number of trees: 25
+number of chains: 1, default number of threads 1
+tree thinning rate: 1
+Prior:
+	prior on k: chi with 1.250000 degrees of freedom and inf scale
+	power and base for tree prior: 2.000000 0.950000
+	use quantiles for rule cut points: false
+	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
+data:
+	number of training observations: 10083
+	number of test observations: 0
+	number of explanatory variables: 15
+
+Cutoff rules c in x<=c vs x>c
+Number of cutoffs: (var: number of possible c):
+(1: 100) (2: 100) (3: 100) (4: 100) (5: 100) 
+(6: 100) (7: 100) (8: 100) (9: 100) (10: 100) 
+(11: 100) (12: 100) (13: 100) (14: 100) (15: 100) 
+
+[1] "Evaluation using data (Parallel)"
+# A tibble: 6 × 3
+  method  nuis     bias
+  <chr>   <chr>   <dbl>
+1 nonpara F     0.275  
+2 nonpara G     0.235  
+3 nonpara H     0.00679
+4 para    F     0.546  
+5 para    G     0.428  
+6 para    H     0.0102 
+[1] "Total run time was 744.53 seconds"
+###################################################
+### Job finished at Thu Dec 25 06:24:01 PM EST 2025 ###
+###################################################
