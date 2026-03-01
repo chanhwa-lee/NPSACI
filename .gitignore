@@ -1,8 +1,5 @@
 *.rds
 
-/code/help_nuis_est_backup_20251227.R
-/code/help_TypeB_backup_20251227.R
-
 /application/animation
 /application/estimate
 /application/cholera_data.csv

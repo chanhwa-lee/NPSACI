@@ -1,9 +1,6 @@
 # NPSACI
 
-This repository contains the code accompanying the paper:
-
-* Lee, C., Zeng, D., Emch, M., Clemens, J. D., & Hudgens, M. G. (2024).
-  *[Nonparametric Causal Survival Analysis with Clustered Interference](https://arxiv.org/abs/2409.13190)*
+This repository contains the code accompanying the paper: **Nonparametric Causal Survival Analysis with Clustered Interference**
 
 We develop nonparametric cross-fitting estimators for causal survival effects under clustered interference and right censoring.
 
@@ -214,12 +211,12 @@ Scripts (.R) and HPC SLURM files (.sh) for simulation studies:
 
 **Subfolders:**
 
-* `estimand/`: saved estimands
-* `estimate/`: saved estimates
+* `estimand/`: saved estimands ⚠️ **Outputs (.rds files) not included due to repo size limit.**
+* `estimate/`: saved estimates ⚠️ **Outputs (.rds files) not included due to repo size limit.**
 
 **Main Simulations in paper**
 
-* **Performance under TypeB policy** (Table 1)
+* **Performance under TypeB policy** (Table 3)
   
   :page_facing_up: `M.main_simulation/estimator.R`
   
@@ -269,15 +266,39 @@ Scripts (.R) and HPC SLURM files (.sh) for simulation studies:
 
   Varies distribution of cluster sizes `N_i`
 
+* **Section C.7** – Performance over high censoring rates (Figure S6):
+
+  :file_folder: `C7.high_censoring_experiment`
+
+  Varies censoring rates 40%, 50%, 60%, 70%, 80%, 90%
+
+* **Section C.8** – Convergence of nuisance function estimators (Figure S7):
+
+  :file_folder: `C8.nuis_converge`
+
+  L_2(P) error of nonparametric and parametric nuisance function estimators over `m ∈ {50, 100, 200, 400, 800, 1600}`
+
+* **Section C.9** – Performance under small number of clusters but large cluster size (Figure S8):
+
+  :file_folder: `C9.smallm_largeN_experiment`
+
+  Number of clusters is small (`m = 10`) but cluster sizes are large (`N_i ∈ {100, 300, 500, 700, 900}`)
+
+* **Section C.10** – Performance of non-interference nonparametric survival estimators (Figure S9):
+
+  :file_folder: `C10.no_interference_surv_est`
+
+  Comparison of the proposed estimator with non-interference methods including
+causal survival forest (CSF) ([Cui et al. 2023](https://doi.org/10.1093/jrsssb/qkac001)), Multiple Imputation for Survival Treatment Response (MISTR) ([Meiret al. 2025](https://arxiv.org/abs/2502.01575)), and random survival forest with T-learner and X-learner ([Bo et al. 2024](https://jds-online.org/journal/JDS/article/1354/info)). 
 
 ### `/application`
 
 Cholera vaccine effect analysis under clustered interference.
 ⚠️ **Raw data and outputs not public.**
 
-* `preprocessing.R`: preprocessing + exploratory analysis (Figures S6–S8)
+* `preprocessing.R`: preprocessing + exploratory analysis (Figures S10–S12)
 * `estimator.R`: causal estimation
-* `visualization.R`: plotting (Figures 2–3, S9–S11)
+* `visualization.R`: plotting (Figures 2–3, S13–S15)
 
 ### `/application_example`
 
@@ -287,11 +308,3 @@ Toy example replicating the application pipeline.
 * `estimate/`: results using toy dataset
 
 ---
-
-## 📚 References
-
-* Lee, C., Zeng, D., Emch, M., Clemens, J. D., & Hudgens, M. G. (2024).
-  *[Nonparametric Causal Survival Analysis with Clustered Interference](https://arxiv.org/abs/2409.13190)*. arXiv:2409.13190
-
-* Chakladar, S. et al. (2022).
-  *[Inverse probability weighted estimators of vaccine effects accommodating partial interference and censoring](https://doi.org/10.1111/biom.13459)*. Biometrics, 78(2), 777–788.
