@@ -497,39 +497,45 @@ make_performance_plot(result_TypeB %>% filter(Scenario %in% c(1,23,3,43)), theta
 
 
 
-# #--- Supplementary: Nuisance estimators convergence plot ---
-# nuis_est.df = data.frame()
-# 
-# for(m in c(25, 50, 100, 200, 400, 800)){
-#   nuis_est.file.list = list.files(glue("nuis_estimates/m{m}/Rdata"),
-#                                   pattern = "nuis_estimate.*rds", full.names = T)
-# 
-#   if(length(nuis_est.file.list) < 10){next}
-# 
-#   nuis_est.list <- lapply(nuis_est.file.list, function(file) readRDS(file))
-# 
-#   print(glue("m = {m}, {length(nuis_est.file.list)} files were loaded"))
-# 
-#   nuis_est = bind_rows(nuis_est.list, .id = "d")
-# 
-#   nuis_est.df = rbind(nuis_est.df, nuis_est %>% mutate(m = m))
-# }
-# 
-# ggplot(nuis_est.df, aes(x = factor(m), y = bias, col = method)) +
-#   geom_boxplot(position = position_dodge(width = 0.75)) +
-#   theme_bw() +
-#   labs(
-#     x = "Number of clusters (m)",
-#     y = "Average Relative Bias",
-#     col = "Method"
-#   ) +
-#   facet_wrap(~nuis) +
-#   ylim(c(0,1)) +
-#   theme(legend.position = c(0.05, 0.95),  # (x, y) in [0,1] coordinates: left (0.05), top (0.95)
-#         legend.justification = c(0,1),    # anchor the legend box to top-left
-#         legend.background = element_rect(fill = "white", color = "black"))  # white background box
-# 
-# ggsave(filename = glue("FigS.NuisanceEstimatorsBias.pdf"), width = 12, height = 4)
+#--- Supplementary: Nuisance estimators convergence plot ---
+nuis_est.df = data.frame()
+
+for(m in c(25, 50, 100, 200, 400, 800, 1600)){
+  nuis_est.file.list = list.files(glue("nuis_estimates/m{m}/Rdata"),
+                                  pattern = "nuis_estimate.*rds", full.names = T)
+
+  if(length(nuis_est.file.list) < 10){next}
+
+  nuis_est.list <- lapply(nuis_est.file.list, function(file) readRDS(file))
+
+  print(glue("m = {m}, {length(nuis_est.file.list)} files were loaded"))
+
+  nuis_est = bind_rows(nuis_est.list, .id = "d")
+
+  nuis_est.df = rbind(nuis_est.df, nuis_est %>% mutate(m = m))
+}
+
+ggplot(nuis_est.df, aes(x = factor(m), y = bias, col = method)) +
+  geom_boxplot(position = position_dodge(width = 0.75)) +
+  theme_bw() +
+  labs(
+    x = "Number of clusters (m)",
+    y = "Average Relative Bias",
+    col = "Method"
+  ) +
+  facet_wrap(
+    ~nuis,
+    labeller = as_labeller(
+      c("F" = "bold(F)^T ~ '(Event time)'",
+        "G" = "bold(S)^C ~ '(Censoring time)'",
+        "H" = "H ~ '(Treatment)'"), 
+      default = label_parsed)) +
+  ylim(c(0, 1)) +
+  theme(legend.position = c(0.05, 0.95),
+        legend.justification = c(0, 1),
+        legend.background = element_rect(fill = "white", color = "black"))
+
+ggsave(filename = glue("FigS.NuisanceEstimatorsBias.pdf"), width = 12, height = 4)
 
 
 

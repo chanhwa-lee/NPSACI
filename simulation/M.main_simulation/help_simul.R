@@ -1,5 +1,5 @@
 library(dplyr)
-library(tidyverse)
+# library(tidyverse)
 library(glue)
 
 ## Policy specific help functions
@@ -97,7 +97,7 @@ Tmodel = function(A,X,N, type = "data"){
   
   shape_T <- function(A, X, N){
     g.A <- (sum(A)-A)/(N-1)
-    with(X, 0.1 + 0.3*A + 0.3*sin(base::pi/2*g.A)*X2^2 + 0.1*A*g.A + 0.1*X2^2*pmax(Xc1,0.1) + 0.1*I(Xc1*Xc2 < 0.5))
+    with(X, 0.1 + 0.3*A + 0.3*sin(base::pi/2*g.A)*X1^2 + 0.1*A*g.A + 0.1*X2^2*pmax(Xc1,0.1) + 0.1*I(Xc1*Xc2 < 0.5))
   }  
   
   if(type == "data"){
@@ -374,8 +374,8 @@ estimands.sim = function(M, policy, taus, thetas, theta0, r){
 data = data.sim(1000)
 summary(data)
 
-estimands.TypeB = estimands.sim(M = 100, policy = "TypeB", taus = c(0.2,0.4), thetas = c(0.3,0.45,0.6), theta0 = 0.45, r = 100)
-estimands.TypeB %>% arrange(tau, theta, estimand) %>% print(n=100)
+# estimands.TypeB = estimands.sim(M = 100, policy = "TypeB", taus = c(0.2,0.4), thetas = c(0.3,0.45,0.6), theta0 = 0.45, r = 100)
+# estimands.TypeB %>% arrange(tau, theta, estimand) %>% print(n=100)
 
 # estimands.TPB = estimands.sim(M = 10, policy = "TPB", taus = c(0.1,0.2,0.3), thetas = c(0,0.2,0.4), theta0 = 0, r = 10)
 # estimands.TPB

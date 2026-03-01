@@ -245,9 +245,10 @@ G <- function(taus, a.i, X.i, N.i, G.fit) {
 #' @param X.i Covariate data frame (N.i x p)
 #' @param N.i Number of observations in cluster i
 #' @param H.fit Trained A model object (RBART or GLMM)
+#' @param log.H If TRUE, return value with logarithm
 #'
 #' @return A scalar representing P(A_i | X_i, N_i)
-H <- function(a.i, X.i, N.i, H.fit) {
+H <- function(a.i, X.i, N.i, H.fit, log.H = FALSE) {
   
   # --- Nonparametric estimator: Random BART ---
   if ("rbart" %in% class(H.fit)) {
@@ -268,7 +269,7 @@ H <- function(a.i, X.i, N.i, H.fit) {
       return(out)
     }
     
-    # --- Parametric estimator: Generalized Linear Mixed Model ---
+  # --- Parametric estimator: Generalized Linear Mixed Model ---
   } else if ("glmerMod" %in% class(H.fit)) {
     beta <- lme4::getME(H.fit, "fixef")
     sigma.b <- lme4::getME(H.fit, "theta")
@@ -282,6 +283,18 @@ H <- function(a.i, X.i, N.i, H.fit) {
       return(out)
     }
     
+  # --- True H function: Used for simulation ---
+  } else if(setequal(names(H.fit), c("fx", "sigma.b"))) {
+    fx = H.fit$fx
+    sigma.b = H.fit$sigma.b
+      
+    f = function(b){
+      pr.b <- pnorm(drop(outer(fx(X.i, N.i), b, "+")))
+      hh <- pr.b^a.i * (1 - pr.b)^(1 - a.i)
+      out <- apply(hh, 2, prod) * stats::dnorm(b, mean = 0, sd = sigma.b)
+      return(out)
+    }
+      
   } else {
     stop("H.fit was trained using an unsupported method")
   }
@@ -289,7 +302,11 @@ H <- function(a.i, X.i, N.i, H.fit) {
   # Compute integral over b
   H.hat <- stats::integrate(f, lower = -Inf, upper = Inf)$value
   
-  return(H.hat)
+  if(log.H){
+    return(log(H.hat))
+  } else {
+    return(H.hat)
+  }
 }
 
 

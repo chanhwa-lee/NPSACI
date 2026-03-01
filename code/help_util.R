@@ -276,7 +276,7 @@ estimator <- function(data,
       rownames(ifvals.tau) = thetas
       
       ## estimate replicated mat: (n.thetas) x m
-      est.tau = rowMeans(ifvals.tau)
+      est.tau = rowMeans(ifvals.tau, na.rm = TRUE)
       est.mat.tau = matrix(rep(est.tau, m), ncol = m, byrow = FALSE)
       rownames(est.mat.tau) = thetas
       

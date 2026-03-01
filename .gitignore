@@ -1,9 +1,34 @@
 /code_save20250520
 /simulation_old
 
+/code/help_nuis_est_backup_20251227.R
+/code/help_TypeB_backup_20251227.R
+
 /application/animation
 /application/estimate
 /application/cholera_data.csv
 
 /simulation/nonpara*
 /simulation/simul*
+
+/simulation/C8.nuis_converge/nuis_estimates/m25
+/simulation/C8.nuis_converge/nuis_estimates/m300
+/simulation/C8.nuis_converge/nuis_estimates/m500
+/simulation/C8.nuis_converge/nuis_estimates/m600
+/simulation/C8.nuis_converge/nuis_estimates/m700
+/simulation/C8.nuis_converge/nuis_estimates/m900
+/simulation/C8.nuis_converge/nuis_estimates/m1000
+
+/simulation/C9.smallm_largeN_experiment/estimand/N20
+/simulation/C9.smallm_largeN_experiment/estimand/N50
+/simulation/C9.smallm_largeN_experiment/estimand/N200
+/simulation/C9.smallm_largeN_experiment/estimand/N1100
+/simulation/C9.smallm_largeN_experiment/estimand/N1300
+/simulation/C9.smallm_largeN_experiment/estimand/N1500
+
+/simulation/C9.smallm_largeN_experiment/estimate/TypeB_m2_*
+/simulation/C9.smallm_largeN_experiment/estimate/TypeB_m4_*
+/simulation/C9.smallm_largeN_experiment/estimate/TypeB_m20_*
+/simulation/C9.smallm_largeN_experiment/estimate/TypeB_m50_*
+/simulation/C9.smallm_largeN_experiment/estimate/TypeB_m100_*
+/simulation/C9.smallm_largeN_experiment/estimate/TypeB_m200_*

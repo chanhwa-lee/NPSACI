@@ -17,14 +17,20 @@ w.over.H.TypeB = function(a.i, X.i, N.i, thetas, H.fit){
   pi.hat.thetas = rep(1,N.i) %o% thetas        
   colnames(pi.hat.thetas) = thetas
   
-  ### Take column-product to compute Q.hat for each theta
-  Q.hat.thetas = apply(a.i*pi.hat.thetas + (1-a.i)*(1-pi.hat.thetas), 2, prod)
+  ### Q.over.H is first computed using logarithm to deal with cases where Q.hat 
+  ### and H.hat both being extremely small
   
-  ## H(a.i, X.i, N.i) estimate
-  H.hat = H(a.i, X.i, N.i, H.fit)
+  ## Take column-sum to compute Q.hat.log for each theta
+  Q.hat.thetas.log = colSums(log(a.i * pi.hat.thetas + (1 - a.i) * (1 - pi.hat.thetas)))
+  
+  ## H(a.i, X.i, N.i) logarithm estimate
+  H.hat.log = H(a.i, X.i, N.i, H.fit, log.H = TRUE)
+  
+  ## Compute ratio between Q and H
+  Q.over.H.hat.thetas = exp(Q.hat.thetas.log - H.hat.log)
   
   ### w/H(a,X,N) for mu(Q) over theta \in thetas
-  w.over.H.thetas = 1/N.i * rep(1, N.i) %o% (Q.hat.thetas/H.hat)
+  w.over.H.thetas = 1/N.i * rep(1, N.i) %o% (Q.over.H.hat.thetas)
   
   ### w_t/H(a,X,N) for mu_t(Q) (t = 0,1)
   ### Equation is given by
@@ -33,12 +39,12 @@ w.over.H.TypeB = function(a.i, X.i, N.i, thetas, H.fit){
   w.over.H_1.thetas = 
     1/N.i * 
     I(a.i == 1) / (a.i*pi.hat.thetas + (1-a.i)*(1-pi.hat.thetas)) * 
-    rep(1, N.i) %o% (Q.hat.thetas/H.hat)
+    rep(1, N.i) %o% (Q.over.H.hat.thetas)
   
   w.over.H_0.thetas = 
     1/N.i * 
     I(a.i == 0) / (a.i*pi.hat.thetas + (1-a.i)*(1-pi.hat.thetas)) * 
-    rep(1, N.i) %o% (Q.hat.thetas/H.hat)
+    rep(1, N.i) %o% (Q.over.H.hat.thetas)
   
   return(list(mu = w.over.H.thetas, 
               mu_1 = w.over.H_1.thetas, 

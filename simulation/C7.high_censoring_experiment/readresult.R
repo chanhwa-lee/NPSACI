@@ -93,7 +93,7 @@ for(censoring_rate in c(0.4, 0.5, 0.6, 0.7, 0.8, 0.9)){
   
   df_result = rbind(df_result, result)
   
-  write.csv(table, glue("Table.Simulation_TypeB_CensoringRate{censoring_rate}.csv"))
+  # write.csv(table, glue("Table.Simulation_TypeB_CensoringRate{censoring_rate}.csv"))
 }
 
 # Long form to generate plotting dataset
