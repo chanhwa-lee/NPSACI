@@ -1,5 +1,4 @@
-/code_save20250520
-/simulation_old
+*.rds
 
 /code/help_nuis_est_backup_20251227.R
 /code/help_TypeB_backup_20251227.R
@@ -7,9 +6,6 @@
 /application/animation
 /application/estimate
 /application/cholera_data.csv
-
-/simulation/nonpara*
-/simulation/simul*
 
 /simulation/C8.nuis_converge/nuis_estimates/m25
 /simulation/C8.nuis_converge/nuis_estimates/m300
